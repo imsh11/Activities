@@ -22,7 +22,7 @@ class User(db.Model, UserMixin):
     orders = db.relationship('Order_Item', foreign_keys='Order_Item.user_id', back_populates='user', cascade='all, delete')
     places = db.relationship('Place_To_Visit', foreign_keys='Place_To_Visit.user_id', back_populates='user_places', cascade='all, delete')
     review_places = db.relationship('Reviews', foreign_keys='Reviews.user_id', back_populates='user_review', cascade='all, delete')
-    cart = db.relationship('Cart_Order', foreign_keys='Cart_Order.user_id', back_populate='user_cart', cascade='all, delete')
+    cart = db.relationship('Cart_Order', foreign_keys='Cart_Order.user_id', back_populates='user_cart', cascade='all, delete')
 
     @property
     def password(self):
