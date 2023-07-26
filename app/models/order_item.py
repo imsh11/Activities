@@ -20,7 +20,7 @@ class Order_Item(db.Model, UserMixin):
 
     user = db.relationship('User', foreign_keys='User.id', back_populates='orders')
     order_item_for_place = db.relationship('Place', foreign_keys='Place.id', back_populates='order_place')
-    cart_order = db.relationship('Cart_Order', foreign_keys='Cart_Order.id', back_populates='cart')
+    cart_order = db.relationship('Cart_Order', foreign_keys='Order_Item.cart_order_id', back_populates='cart')
 
     def to_dict_order_item(self):
         return {
