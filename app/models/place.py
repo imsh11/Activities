@@ -19,7 +19,7 @@ class Place(db.Model, UserMixin):
 
     order_place = db.relationship('Order_Item', forigen_keys='Order_Item.place_id', back_populates='order_item_for_place', cascade='all, delete')
     place_for_review = db.relationship('Review', forigen_keys='Review.place_id', back_populates='place_reviewed', cascade='all, delete')
-    place_to_visit = db.relationship('Place_To_Visit', forigen_keys='Place_To_Visit.place_id', cascade='all, delete')
+    place_to_visit = db.relationship('Place_To_Visit', forigen_keys='Place_To_Visit.place_id', back_populates='places_add_by_user', cascade='all, delete')
 
     def to_dict_place(self):
         return {
