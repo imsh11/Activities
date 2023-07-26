@@ -11,13 +11,13 @@ class Review(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     review = db.Column(db.String(100), nullable=False)
     stars = db.Column(db.Float, nullable=False)
-    place_id = db.Column(db.Integer, db.ForigenKey(add_prefix_for_prod('places.id')), nullable=False)
-    user_id = db.Column(db.Integer, db.ForigenKey(add_prefix_for_prod('users.id')), nullable=False)
+    place_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('places.id')), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    user_review = db.relationship('User', forigen_keys='Review.user_id', back_populates='review_places', cascade='all, delete')
-    place_reviewed = db.relationship('Place', forigen_keys='Reviews.place_id', back_populate='place_for_review', cascade='all, delete')
+    user_review = db.relationship('User', foreign_keys='Review.user_id', back_populates='review_places', cascade='all, delete')
+    place_reviewed = db.relationship('Place', foreign_keys='Reviews.place_id', back_populates='place_for_review', cascade='all, delete')
 
     def to_dict_review(self):
         return {

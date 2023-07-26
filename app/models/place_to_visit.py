@@ -15,7 +15,7 @@ class Place_To_Visit(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    places_add_by_user = db.relationship('Place', forigen_keys='Place_To_Visit.place_id',back_populates='place_to_visit')
+    places_add_by_user = db.relationship('Place', foreign_keys='Place_To_Visit.place_id',back_populates='place_to_visit')
     user_places = db.relationship('User', foreign_keys='Place_To_Visit.user_id', back_populates='places')
 
     def to_dict_place_to_visit(self):
