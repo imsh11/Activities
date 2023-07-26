@@ -19,7 +19,7 @@ class Review(db.Model, UserMixin):
     user_review = db.relationship('User', forigen_keys='Review.user_id', back_populates='review_places', cascade='all, delete')
     place_reviewed = db.relationship('Place', forigen_keys='Reviews.place_id', back_populate='place_for_review', cascade='all, delete')
 
-    def to_dict_rev(self):
+    def to_dict_review(self):
         return {
             'id': self.id,
             'review': self.review,
