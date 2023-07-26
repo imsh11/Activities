@@ -16,6 +16,9 @@ class Review(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
+    user_review = db.relationship('User', forigen_keys='Review.user_id', back_populates='review_places', cascade='all, delete')
+    place_reviewed = db.relationship('Place', forigen_keys='Reviews.place_id', back_populate='place_for_review', cascade='all, delete')
+
     def to_dict_rev(self):
         return {
             'id': self.id,
