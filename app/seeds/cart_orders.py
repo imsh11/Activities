@@ -20,7 +20,7 @@ def seed_cart_orders():
     )
     cart4 = Cart_Order(
         user_id=4,
-        total=40,
+        total=30,
         payment=True
     )
 
@@ -31,7 +31,7 @@ def seed_cart_orders():
     db.session.commit()
 
 
-def undo_users():
+def undo_cart_orders():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.cart_order RESTART IDENTITY CASCADE;")
     else:

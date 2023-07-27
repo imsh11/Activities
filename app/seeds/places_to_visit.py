@@ -25,7 +25,7 @@ def seed_places_to_visit():
     db.session.commit()
 
 
-def undo_users():
+def undo_places_to_visit():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.places_to_visit RESTART IDENTITY CASCADE;")
     else:
