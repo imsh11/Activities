@@ -43,7 +43,7 @@ def seed_reviews():
 
 
 
-def undo_users():
+def undo_reviews():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
     else:
