@@ -18,7 +18,6 @@ class Order_Item(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    user = db.relationship('User', foreign_keys='Order_Item.user_id', back_populates='orders')
     order_item_for_place = db.relationship('Place', foreign_keys='Order_Item.place_id', back_populates='order_place')
     cart_order = db.relationship('Cart_Order', foreign_keys='Order_Item.cart_order_id', back_populates='cart')
 

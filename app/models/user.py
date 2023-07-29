@@ -19,7 +19,6 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     update_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    orders = db.relationship('Order_Item', foreign_keys='Order_Item.user_id', back_populates='user', cascade='all, delete')
     places = db.relationship('Place_To_Visit', foreign_keys='Place_To_Visit.user_id', back_populates='user_places', cascade='all, delete')
     review_places = db.relationship('Review', foreign_keys='Review.user_id', back_populates='user_review', cascade='all, delete')
     cart = db.relationship('Cart_Order', foreign_keys='Cart_Order.user_id', back_populates='user_cart', cascade='all, delete')
