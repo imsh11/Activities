@@ -5,7 +5,6 @@ from sqlalchemy.sql import text
 def seed_order_items():
     order1 = Order_Item(
         place_id=1,
-        user_id=1,
         price=10,
         quantity=1,
         cart_order_id=1,
@@ -13,7 +12,6 @@ def seed_order_items():
     )
     order2 = Order_Item(
         place_id=2,
-        user_id=2,
         price=20,
         quantity=1,
         cart_order_id=2,
@@ -21,7 +19,6 @@ def seed_order_items():
     )
     order3 = Order_Item(
         place_id=3,
-        user_id=3,
         price=30,
         quantity=1,
         cart_order_id=3,
@@ -29,7 +26,6 @@ def seed_order_items():
     )
     order4 = Order_Item(
         place_id=3,
-        user_id=4,
         price=30,
         quantity=1,
         cart_order_id=4,
