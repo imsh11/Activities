@@ -24,18 +24,10 @@ def seed_order_items():
         cart_order_id=3,
         description= 'place 3 user 3 price 30'
     )
-    order4 = Order_Item(
-        place_id=3,
-        price=30,
-        quantity=1,
-        cart_order_id=4,
-        description= 'place 3 user 3 price 30'
-    )
 
     db.session.add(order1)
     db.session.add(order2)
     db.session.add(order3)
-    db.session.add(order4)
     db.session.commit()
 
 
