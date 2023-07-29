@@ -10,7 +10,7 @@ pipenv run flask seed all
 
 For Github help:
 Here are the steps for working on different feature branches.
-We communicate with one another when we are going to merge with dev.
+Branch off of dev and merge with dev before merging to main.
 Steps:
 1. git checkout -b “featurebranch name”
 2. Work on features on your feature branch
