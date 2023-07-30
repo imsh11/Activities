@@ -24,10 +24,34 @@ def seed_places():
         state='New York',
         activity_type='zoo'
     )
+    place1 = Place(
+        name='Natural History Museum',
+        address='321 testing lane',
+        city='Manhattan',
+        state='New York',
+        activity_type='museum'
+    )
+    place2 = Place(
+        name='Splish Splash',
+        address='123 test lane',
+        city='Long Island',
+        state='New York',
+        activity_type='water park'
+    )
+    place3 = Place(
+        name='New York Aquarium',
+        address='602 abbbc lane',
+        city='Brooklyn',
+        state='New York',
+        activity_type='aqurium'
+    )
 
     db.session.add(five_flags)
     db.session.add(dorne_park)
     db.session.add(bronx_zoo)
+    db.session.add(place1)
+    db.session.add(place2)
+    db.session.add(place3)
     db.session.commit()
 
 
