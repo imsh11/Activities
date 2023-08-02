@@ -9,17 +9,20 @@ place_routes = Blueprint('place', __name__)
 @place_routes.route('/allPlaces')
 def allPlaces():
 
-    # places = Place.query.all()
-    places = Review.query.join(Place).all()
-    # places = db.session.query(Place).join(Review).all()
-    # print(dir(places[0]), places[0].name, places[0].order_place[0], 'testing----')
-    # print(dir(places[0].order_place[0]), '------------dir')
-    print(places, '-----------places')
-    print(places[0], '-------review')
-    for place in places:
-        print(place.to_dict_review(), '------place')
-        test = Place.query.get(place.place_id)
-        print(test.to_dict_place())
+    places = Place.query.all()
+    print(places, places[0].name, places[0].order_place[0], 'testing----')
+    # print(dir(places), '------------dir')
 
-    return {'Places': [place.to_dict_review() for place in places]}
-    # return 'hello'
+    return {'Places': [place.to_dict_place() for place in places]}
+
+
+@place_routes.route('/<int:id>')
+def placeDetail(id):
+    selected = Place.query.get(id)
+
+    print(id, selected, '-------------seleID')
+
+    if not selected:
+        return ({ 'Error': 'Place does not exist'}), 404
+
+    return selected.to_dict_place()
