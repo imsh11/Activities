@@ -20,9 +20,17 @@ def allPlaces():
 def placeDetail(id):
     selected = Place.query.get(id)
 
-    print(id, selected, '-------------seleID')
+    print(id, selected, dir(selected), '-------------seleID')
+    # print(selected.place_for_review, '---------review')
 
     if not selected:
         return ({ 'Error': 'Place does not exist'}), 404
 
-    return selected.to_dict_place()
+    selectedReviews = selected.place_for_review
+    selectedOrderItems = selected.order_place
+    print(selectedReviews, selectedOrderItems, '----------review')
+
+    return {'Place': selected.to_dict_place(),
+            'Reviews': [review.to_dict_review() for review in selectedReviews],
+            'OrderItems': [item.to_dict_order_item() for item in selectedOrderItems]
+            }
