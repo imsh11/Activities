@@ -59,3 +59,17 @@ def updatePlaceList(id):
 
     return updated.to_dict_place_to_visit()
 
+@place_to_visit_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def place_to_visitDel(id):
+    """
+    Delete Review by Review.id and loggedIn User must have written the review
+    Query for all reviews by the current user and returns them in a list of Review dictionaries
+    ordered by updated_at
+    """
+    selectedToDelete = Place_To_Visit.query.get(id)
+
+    db.session.delete(selectedToDelete)
+    db.session.commit()
+
+    return selectedToDelete.to_dict_place_to_visit()
