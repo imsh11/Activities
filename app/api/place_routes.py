@@ -15,7 +15,7 @@ def allPlaces():
 
     return {'Places': [place.to_dict_place() for place in places]}
 
-
+# get detail for a place by place id
 @place_routes.route('/<int:id>')
 def placeDetail(id):
     selected = Place.query.get(id)
