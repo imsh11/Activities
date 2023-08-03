@@ -20,11 +20,11 @@ def placesToVisit():
     return {"place_to_visit": [likedPlace.to_dict_place_to_visit() for likedPlace in likedPlaces]}
 
 # add place to the places to visit
-@place_to_visit_routes.route('/<int:id>', methods=['POST'])
+@place_to_visit_routes.route('/place/<int:id>', methods=['POST'])
 @login_required
 def addPlace(id):
     """
-    add place to list
+    add place to list, using place.id
     """
     form = Add_place_to_visit()
     print(form,'-------form')
@@ -41,3 +41,21 @@ def addPlace(id):
 
         return newPlace.to_dict_place_to_visit()
     return ({'Error': 'Please Try Again'}), 404
+
+# update based on the id of the place_to_visit
+@place_to_visit_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def updatePlaceList(id):
+    selectedFromList = Place_To_Visit.query.get(id)
+    print(selectedFromList, '------------selected')
+
+    if not selectedFromList:
+        return ({'Error': 'Could not be found'}), 404
+
+    selectedFromList.status = request.json['status']
+    db.session.commit()
+
+    updated = Place_To_Visit.query.filter(Place_To_Visit.id == id).first()
+
+    return updated.to_dict_place_to_visit()
+
