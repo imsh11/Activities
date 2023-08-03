@@ -24,7 +24,6 @@ class Order_Item(db.Model, UserMixin):
         return {
             'id': self.id,
             'place_id': self.place_id,
-            'user_id': self.user_id,
             'price': self.price,
             'quantity': self.quantity,
             'cart_order_id': self.cart_order_id,

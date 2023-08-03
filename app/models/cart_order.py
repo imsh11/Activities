@@ -15,7 +15,7 @@ class Cart_Order(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    cart = db.relationship('Order_Item', foreign_keys='Order_Item.cart_order_id', back_populates='cart_order', cascade='all, delete')
+    cart = db.relationship('Order_Item', foreign_keys='Order_Item.cart_order_id', back_populates='cart_order', cascade='all, delete-orphan')
     user_cart = db.relationship('User', foreign_keys='Cart_Order.user_id', back_populates='cart')
 
     def to_dict_cart_order(self):
