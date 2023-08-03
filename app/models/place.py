@@ -17,9 +17,9 @@ class Place(db.Model, UserMixin):
     created_at = db.Column(db.String(50), default=datetime.utcnow)
     updated_at = db.Column(db.String(50), default=datetime.utcnow)
 
-    order_place = db.relationship('Order_Item', foreign_keys='Order_Item.place_id', back_populates='order_item_for_place', cascade='all, delete')
-    place_for_review = db.relationship('Review', foreign_keys='Review.place_id', back_populates='place_reviewed', cascade='all, delete')
-    place_to_visit = db.relationship('Place_To_Visit', foreign_keys='Place_To_Visit.place_id', back_populates='places_add_by_user', cascade='all, delete')
+    order_place = db.relationship('Order_Item', foreign_keys='Order_Item.place_id', back_populates='order_item_for_place', cascade='all, delete-orphan')
+    place_for_review = db.relationship('Review', foreign_keys='Review.place_id', back_populates='place_reviewed', cascade='all, delete-orphan')
+    place_to_visit = db.relationship('Place_To_Visit', foreign_keys='Place_To_Visit.place_id', back_populates='places_add_by_user', cascade='all, delete-orphan')
 
     def to_dict_place(self):
         return {

@@ -19,9 +19,9 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     update_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    places = db.relationship('Place_To_Visit', foreign_keys='Place_To_Visit.user_id', back_populates='user_places', cascade='all, delete')
-    review_places = db.relationship('Review', foreign_keys='Review.user_id', back_populates='user_review', cascade='all, delete')
-    cart = db.relationship('Cart_Order', foreign_keys='Cart_Order.user_id', back_populates='user_cart', cascade='all, delete')
+    places = db.relationship('Place_To_Visit', foreign_keys='Place_To_Visit.user_id', back_populates='user_places', cascade='all, delete-orphan')
+    review_places = db.relationship('Review', foreign_keys='Review.user_id', back_populates='user_review', cascade='all, delete-orphan')
+    cart = db.relationship('Cart_Order', foreign_keys='Cart_Order.user_id', back_populates='user_cart', cascade='all, delete-orphan')
 
     @property
     def password(self):
