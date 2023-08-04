@@ -69,6 +69,9 @@ def place_to_visitDel(id):
     """
     selectedToDelete = Place_To_Visit.query.get(id)
 
+    if not selectedToDelete:
+        return ({ 'Error': 'Place does not exist in Your List'}), 404
+
     db.session.delete(selectedToDelete)
     db.session.commit()
 
