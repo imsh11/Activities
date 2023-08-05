@@ -9,6 +9,7 @@ class Order_Item(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     place_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('places.id')), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     cart_order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('cart_order.id')), nullable=False)
@@ -17,6 +18,7 @@ class Order_Item(db.Model, UserMixin):
 
     order_item_for_place = db.relationship('Place', foreign_keys='Order_Item.place_id', back_populates='order_place')
     cart_order = db.relationship('Cart_Order', foreign_keys='Order_Item.cart_order_id', back_populates='cart')
+    user_order = db.relationship('User', foreign_keys='Order_Item.user_id', back_populates='order')
 
     def to_dict_order_item(self):
         return {

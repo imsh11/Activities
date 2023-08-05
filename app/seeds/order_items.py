@@ -4,16 +4,19 @@ from sqlalchemy.sql import text
 
 def seed_order_items():
     order1 = Order_Item(
+        user_id=1,
         place_id=1,
         quantity=1,
         cart_order_id=1,
     )
     order2 = Order_Item(
+        user_id=2,
         place_id=2,
         quantity=1,
         cart_order_id=2,
     )
     order3 = Order_Item(
+        user_id=3,
         place_id=3,
         quantity=1,
         cart_order_id=3,
