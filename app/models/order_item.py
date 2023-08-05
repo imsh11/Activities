@@ -10,10 +10,8 @@ class Order_Item(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     place_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('places.id')), nullable=False)
-    price = db.Column(db.Float, nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     cart_order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('cart_order.id')), nullable=False)
-    description = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -24,10 +22,8 @@ class Order_Item(db.Model, UserMixin):
         return {
             'id': self.id,
             'place_id': self.place_id,
-            'price': self.price,
             'quantity': self.quantity,
             'cart_order_id': self.cart_order_id,
-            'description': self.description,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

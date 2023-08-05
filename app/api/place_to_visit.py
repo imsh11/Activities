@@ -63,9 +63,7 @@ def updatePlaceList(id):
 @login_required
 def place_to_visitDel(id):
     """
-    Delete Review by Review.id and loggedIn User must have written the review
-    Query for all reviews by the current user and returns them in a list of Review dictionaries
-    ordered by updated_at
+    Delete Place by Place.id
     """
     selectedToDelete = Place_To_Visit.query.get(id)
 

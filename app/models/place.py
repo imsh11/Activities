@@ -13,6 +13,8 @@ class Place(db.Model, UserMixin):
     address = db.Column(db.String(50), nullable=False)
     city = db.Column(db.String(50), nullable=False)
     state = db.Column(db.String(50), nullable=False)
+    product = db.Column(db.String(50), nullable=False)
+    price = db.Column(db.Float, nullable=False)
     activity_type = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.String(50), default=datetime.utcnow)
     updated_at = db.Column(db.String(50), default=datetime.utcnow)
@@ -28,6 +30,8 @@ class Place(db.Model, UserMixin):
             'address': self.address,
             'city': self.city,
             'state': self.state,
+            'product': self.product,
+            'price': self.price,
             'activity_type': self.activity_type,
             'created_at': self.created_at,
             'updated_at': self.updated_at

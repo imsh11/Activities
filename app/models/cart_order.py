@@ -10,7 +10,6 @@ class Cart_Order(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    total = db.Column(db.Float, nullable=False)
     payment = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -22,7 +21,6 @@ class Cart_Order(db.Model, UserMixin):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'total': self.total,
             'payment': self.payment,
             'created_at': self.created_at,
             'updated_at': self.updated_at

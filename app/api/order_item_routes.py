@@ -1,10 +1,12 @@
 from flask import Flask, Blueprint, session, request
 from flask_login import login_required
 from app.models.order_item import Order_Item
+from app.models.cart_order import Cart_Order
+from app.forms.order_item_form import Item_Order_Form
 
 order_item_routes = Blueprint('items', __name__)
 
-#get all items based on place
+#get all items based on place id
 @order_item_routes.route('/place/<int:id>')
 def getItemForPlace(id):
     print(id, '-------id')
@@ -14,6 +16,7 @@ def getItemForPlace(id):
 
     return { 'items': [item.to_dict_order_item() for item in items]}
 
+#get all items based on item id
 @order_item_routes.route('/<int:id>')
 def getItemById(id):
     print(id, type(id), '------------id')
@@ -22,3 +25,23 @@ def getItemById(id):
     print(dir(itemsById), '-----itemById')
 
     return { 'Item': itemsById.to_dict_order_item()}
+
+# post
+# @order_item_routes.route('/items')
+
+# add items to cart
+@order_item_routes.route('/<int:id>', methods=['POST'])
+@login_required
+def addToCart(id):
+    checkCart = Cart_Order.query.filter(Cart_Order.user_id == int(session['_user_id']), Cart_Order.payment == False).all()
+
+    print(checkCart, dir(checkCart[0]), '----cart')
+
+    if checkCart:
+        form = Item_Order_Form()
+        print(form)
+
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            addItem = Order_Item
+
