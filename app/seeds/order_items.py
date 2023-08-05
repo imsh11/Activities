@@ -5,24 +5,18 @@ from sqlalchemy.sql import text
 def seed_order_items():
     order1 = Order_Item(
         place_id=1,
-        price=10,
         quantity=1,
         cart_order_id=1,
-        description= 'place 1 user 1 price 10'
     )
     order2 = Order_Item(
         place_id=2,
-        price=20,
         quantity=1,
         cart_order_id=2,
-        description= 'place 2 user 2 price 20'
     )
     order3 = Order_Item(
         place_id=3,
-        price=30,
         quantity=1,
         cart_order_id=3,
-        description= 'place 3 user 3 price 30'
     )
 
     db.session.add(order1)
