@@ -4,19 +4,21 @@ from app.models.order_item import Order_Item
 from app.models.cart_order import Cart_Order
 from app.forms.order_item_form import Item_Order_Form
 
-order_item_routes = Blueprint('items', __name__)
+order_item_routes = Blueprint('order', __name__)
 
-#get all items based on place id
+#get all orders based on place id
 @order_item_routes.route('/place/<int:id>')
 def getItemForPlace(id):
     print(id, '-------id')
     items = Order_Item.query.filter(Order_Item.place_id == id).all()
 
     print(dir(items[0]), items[0].place_id, '----------items')
+    for it in items:
+        print(it.order_item_for_place, dir(it.order_item_for_place), '===looop')
 
-    return { 'items': [item.to_dict_order_item() for item in items]}
+    return { 'Order': [item.to_dict_order_item() for item in items]}
 
-#get all items based on item id
+#get all order based on id
 @order_item_routes.route('/<int:id>')
 def getItemById(id):
     print(id, type(id), '------------id')
@@ -24,7 +26,7 @@ def getItemById(id):
 
     print(dir(itemsById), '-----itemById')
 
-    return { 'Item': itemsById.to_dict_order_item()}
+    return { 'Order': itemsById.to_dict_order_item()}
 
 # post
 # @order_item_routes.route('/items')
