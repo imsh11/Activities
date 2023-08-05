@@ -8,6 +8,8 @@ def seed_places():
         address='123 test lane',
         city='New York City',
         state='New York',
+        product= 'one day ticket',
+        price= 10,
         activity_type='roller coster rides'
     )
     dorne_park = Place(
@@ -15,6 +17,8 @@ def seed_places():
         address='123 test lane',
         city='Jersey City',
         state='New Jersey',
+        product= 'one day ticket',
+        price= 40,
         activity_type='water park'
     )
     bronx_zoo = Place(
@@ -22,6 +26,8 @@ def seed_places():
         address='123 abc lane',
         city='Bronx',
         state='New York',
+        product= 'one day ticket',
+        price= 50,
         activity_type='zoo'
     )
     place1 = Place(
@@ -29,6 +35,8 @@ def seed_places():
         address='321 testing lane',
         city='Manhattan',
         state='New York',
+        product= 'one day ticket',
+        price= 60,
         activity_type='museum'
     )
     place2 = Place(
@@ -36,6 +44,8 @@ def seed_places():
         address='123 test lane',
         city='Long Island',
         state='New York',
+        product= 'one day ticket',
+        price= 60,
         activity_type='water park'
     )
     place3 = Place(
@@ -43,6 +53,8 @@ def seed_places():
         address='602 abbbc lane',
         city='Brooklyn',
         state='New York',
+        product= 'one day ticket',
+        price= 50,
         activity_type='aqurium'
     )
 

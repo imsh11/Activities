@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 804d489c545a
+Revision ID: d9a75cb28258
 Revises: 
-Create Date: 2023-08-03 18:32:49.596848
+Create Date: 2023-08-05 16:19:13.841094
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '804d489c545a'
+revision = 'd9a75cb28258'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,6 +24,8 @@ def upgrade():
     sa.Column('address', sa.String(length=50), nullable=False),
     sa.Column('city', sa.String(length=50), nullable=False),
     sa.Column('state', sa.String(length=50), nullable=False),
+    sa.Column('product', sa.String(length=50), nullable=False),
+    sa.Column('price', sa.Float(), nullable=False),
     sa.Column('activity_type', sa.String(length=50), nullable=False),
     sa.Column('created_at', sa.String(length=50), nullable=True),
     sa.Column('updated_at', sa.String(length=50), nullable=True),
@@ -45,7 +47,6 @@ def upgrade():
     op.create_table('cart_order',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('total', sa.Float(), nullable=False),
     sa.Column('payment', sa.Boolean(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
@@ -78,10 +79,8 @@ def upgrade():
     op.create_table('order_item',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('place_id', sa.Integer(), nullable=False),
-    sa.Column('price', sa.Float(), nullable=False),
     sa.Column('quantity', sa.Integer(), nullable=False),
     sa.Column('cart_order_id', sa.Integer(), nullable=False),
-    sa.Column('description', sa.String(length=50), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['cart_order_id'], ['cart_order.id'], ),
