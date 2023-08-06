@@ -34,7 +34,6 @@ def newCart():
     if not checkCart:
         cartCreated = Cart_Order(
             user_id = int(user['_user_id']),
-            total = 10,
             payment = False
         )
 
