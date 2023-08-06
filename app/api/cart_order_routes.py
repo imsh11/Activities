@@ -14,7 +14,12 @@ def getCartForUser(userId):
     # print(userId, type(userId), '----userId')
 
     userCarts = Cart_Order.query.filter(Cart_Order.user_id == userId).all()
-    print(userCarts, dir(userCarts[0]), '-----cart')
+    # print(userCarts, dir(userCarts[0]), '-----cart')
+    for usercart in userCarts:
+        print(usercart.cart, dir(usercart.cart), '---------cart')
+
+        for item in usercart.cart:
+            print(item, dir(item), '---------item')
 
     return { 'Order History': [userCart.to_dict_cart_order() for userCart in userCarts]}
 
