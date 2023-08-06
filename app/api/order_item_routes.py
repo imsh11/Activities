@@ -33,19 +33,36 @@ def getItemById(id):
 @order_item_routes.route('/place/<int:id>', methods=['POST'])
 @login_required
 def addToCart(id):
-    checkCart = Cart_Order.query.filter(Cart_Order.user_id == int(session['_user_id']), Cart_Order.payment == False).all()
+    checkCart = Cart_Order.query.filter(Cart_Order.user_id == int(session['_user_id']), Cart_Order.payment == False).first()
 
     print(checkCart, session['_user_id'], '----cart Session')
-    # print(dir(checkCart[0]), '----dirCart')
+    print(dir(checkCart), '----dirCart')
     print(id, '-----id')
 
     if checkCart:
         form = Item_Order_Form()
-        print(form)
+        # print(form)
 
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
-            addItem = Order_Item
+            addItemCart = Order_Item(
+                place_id= id,
+                user_id= int(session['_user_id']),
+                quantity= form.data['quantity'],
+                cart_order_id= checkCart.id
+            )
+
+            # print(form.data['quantity'], type(form.data['quantity']), '-------type form')
+
+            db.session.add(addItemCart)
+            db.session.commit()
+
+
+
+            return {
+                'Item': addItemCart.to_dict_order_item()
+            }
+
 
     elif not checkCart:
         createCart = Cart_Order(
@@ -72,5 +89,43 @@ def addToCart(id):
             db.session.add(addItem)
             db.session.commit()
 
-            return addItem.to_dict_order_item()
+            return {
+                'Item': addItem.to_dict_order_item()
+                }
 
+# changing the quantity using order_item id
+@order_item_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def updateQuantity(id):
+    """
+    updating based on order item id
+    restrictions - login required, user must match the user on the item
+
+    suggestions
+    when quantity less than 1 delete
+    strong query, checks for incomplete order through cart
+    """
+
+    orderItem = Order_Item.query.get(id)
+    print(orderItem, dir(orderItem), orderItem.user_id, type(orderItem.user_id),'orderItem')
+
+    if orderItem.user_id != int(session['_user_id']):
+        return ({
+            'Error': 'Not authorized'
+        }), 404
+
+    orderItem.quantity = request.json['quantity']
+
+    if orderItem.quantity < 1 or orderItem.quantity > 10:
+        return {
+            'Error': 'Quantity can not be below 1 or exceed 10'
+        }
+
+
+    db.session.commit()
+
+    updatedOrder = Order_Item.query.get(id)
+
+    return {
+        'Item': updatedOrder.to_dict_order_item()
+    }
