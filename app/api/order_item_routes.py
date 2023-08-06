@@ -129,3 +129,29 @@ def updateQuantity(id):
     return {
         'Item': updatedOrder.to_dict_order_item()
     }
+
+# deleteing order item based on order id
+@order_item_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delByOrderId(id):
+    """
+
+    """
+
+    itemDel = Order_Item.query.get(id)
+
+    print(itemDel, '--------item')
+
+    if itemDel.user_id != int(session['_user_id']):
+        return ({
+            'Error': 'Not authorized'
+        }), 404
+
+    if not itemDel:
+        return {
+            'Error': 'Item does not exist'
+        }
+    else:
+        db.session.delete(itemDel)
+        db.session.commit()
+        return itemDel.to_dict_order_item()
