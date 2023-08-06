@@ -4,8 +4,8 @@ from app.models.cart_order import Cart_Order, db
 
 cartOrder = Blueprint('cart', __name__)
 
-# get a cart based on user id
-@cartOrder.route('/user/<int:userId>')
+# get cart in session based on user id
+@cartOrder.route('/user/current/<int:userId>')
 @login_required
 def getCartForUser(userId):
     """
@@ -13,15 +13,48 @@ def getCartForUser(userId):
     """
     # print(userId, type(userId), '----userId')
 
-    userCarts = Cart_Order.query.filter(Cart_Order.user_id == userId).all()
-    # print(userCarts, dir(userCarts[0]), '-----cart')
+    userCarts = Cart_Order.query.filter(Cart_Order.user_id == userId, Cart_Order.payment == False).all()
+    print(userCarts, dir(userCarts[0]), '-----cart')
+
+    total = 0
+    itemsList = []
+    ItemsInCart = 0
+    place = {}
+
     for usercart in userCarts:
-        print(usercart.cart, dir(usercart.cart), '---------cart')
+        # print(usercart.cart, dir(usercart.cart), '---------cart')
+        print(usercart, '-------------cartUser')
 
         for item in usercart.cart:
-            print(item, dir(item), '---------item')
+            print(item, dir(item), item.order_item_for_place.price, item.order_item_for_place.product, '---------item')
+            print(item.quantity, '-------quantity')
+            # place['Place Name']=  item.order_item_for_place.name
 
-    return { 'Order History': [userCart.to_dict_cart_order() for userCart in userCarts]}
+
+            itemsList.append(item)
+            # itemsList.append(place)
+
+            ItemsInCart += 1
+            total += item.quantity * item.order_item_for_place.price
+
+    print(itemsList, '---------total')
+
+    return { 'Current Order': [userCart.to_dict_cart_order() for userCart in userCarts],
+            'Items': [singleItem.to_dict_order_item() for singleItem in itemsList],
+            'Items in Cart': ItemsInCart,
+            'Total': total
+            }
+
+# get cart order history
+@cartOrder.route('/history/<int:userId>')
+@login_required
+def cartHis(userId):
+    oldCarts = Cart_Order.query.filter(Cart_Order.user_id == userId, Cart_Order.payment == True).all()
+    print(oldCarts, '-----------his')
+
+    return {
+        'Order History': [cart.to_dict_cart_order() for cart in oldCarts]
+    }
 
 # post req in cart
 @cartOrder.route('/new', methods=['POST'])
