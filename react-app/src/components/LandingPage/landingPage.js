@@ -25,13 +25,24 @@ const LandingPg = () => {
     return(
         <>
             <h3>Places</h3>
-            {/* <div>
+            <div>
                 {placeLst.map( plc => (
                     <div>
-                        {console.log(plc)}
+                        {plc.name}
+                        <div>
+                            {plc.address}
+                            <div>
+                                {plc.city}
+                                {plc.state}
+                            </div>
+                        </div>
+                        <div>
+                            {plc.product}
+                            {plc.price}
+                        </div>
                     </div>
                 ))}
-            </div> */}
+            </div>
         </>
     )
 }
