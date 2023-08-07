@@ -40,6 +40,7 @@ const placeReducer = (state = initialState, action) => {
 
             action.payload.Places.forEach( ele => newState[ele.id] = ele)
 
+            // console.log(newState, '----newState')
             return newState
         }
         default:
