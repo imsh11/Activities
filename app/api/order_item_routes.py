@@ -141,16 +141,16 @@ def delByOrderId(id):
     itemDel = Order_Item.query.get(id)
 
     # print(itemDel, '--------item')
+    if not itemDel:
+        return {
+            'Error': 'Item does not exist'
+        }
 
     if itemDel.user_id != int(session['_user_id']):
         return ({
             'Error': 'Not authorized'
         }), 404
 
-    if not itemDel:
-        return {
-            'Error': 'Item does not exist'
-        }
     else:
         db.session.delete(itemDel)
         db.session.commit()
