@@ -84,3 +84,31 @@ def newCart():
         return cartCreated.to_dict_cart_order()
     return ({'Error': 'Something went wrong'}), 404
 
+# to update payment
+@cartOrder.route('/payment', methods=['PUT'])
+@login_required
+def payment():
+    '''
+
+    '''
+    updatePay = Cart_Order.query.filter(Cart_Order.user_id == int(session['_user_id']), Cart_Order.payment == False).first()
+
+    print(updatePay, dir(updatePay), '---------updatePay')
+    # print(type(updatePay.user_id), '----------type')
+    print(updatePay.payment , '---------payment')
+
+    if updatePay.user_id != int(session['_user_id']):
+        return ({
+            'Error': 'User in not authorized'
+        }), 404
+
+    updatePay.payment = True
+
+    db.session.commit()
+
+    updated = Cart_Order.query.get(updatePay.id)
+
+    return {
+        updated.to_dict_cart_order()
+    }
+
