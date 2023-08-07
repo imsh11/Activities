@@ -9,16 +9,29 @@ const LandingPg = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const placeLst = useSelector(state => state)
+    const placeLst = useSelector(state => Object.values(state.places))
     console.log(placeLst, '----state')
 
     useEffect(() => {
         dispatch(getAllPlaces())
     }, [dispatch])
 
+    if (placeLst.length === 0){
+        return(
+            <p>loading...</p>
+        )
+    }
+
     return(
         <>
-            Testing
+            <h3>Places</h3>
+            {/* <div>
+                {placeLst.map( plc => (
+                    <div>
+                        {console.log(plc)}
+                    </div>
+                ))}
+            </div> */}
         </>
     )
 }
