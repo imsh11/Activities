@@ -95,7 +95,12 @@ def payment():
 
     print(updatePay, dir(updatePay), '---------updatePay')
     # print(type(updatePay.user_id), '----------type')
-    print(updatePay.payment , '---------payment')
+    # print(updatePay.payment , '---------payment')
+
+    if not updatePay:
+        return ({
+            'Error': 'Nothing to update'
+        })
 
     if updatePay.user_id != int(session['_user_id']):
         return ({
@@ -107,8 +112,9 @@ def payment():
     db.session.commit()
 
     updated = Cart_Order.query.get(updatePay.id)
+    print(updated, '-----upd')
 
     return {
-        updated.to_dict_cart_order()
+        'updated': updated.to_dict_cart_order()
     }
 
