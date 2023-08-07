@@ -10,7 +10,7 @@ place_routes = Blueprint('place', __name__)
 def allPlaces():
 
     places = Place.query.all()
-    print(places, places[0].name, places[0].order_place[0], 'testing----')
+    # print(places, places[0].name, places[0].order_place[0], 'testing----')
     # print(dir(places), '------------dir')
 
     return {'Places': [place.to_dict_place() for place in places]}
@@ -20,7 +20,7 @@ def allPlaces():
 def placeDetail(id):
     selected = Place.query.get(id)
 
-    print(id, selected, dir(selected), '-------------seleID')
+    # print(id, selected, dir(selected), '-------------seleID')
     # print(selected.place_for_review, '---------review')
 
     if not selected:
@@ -28,7 +28,7 @@ def placeDetail(id):
 
     selectedReviews = selected.place_for_review
     selectedOrderItems = selected.order_place
-    print(selectedReviews, selectedOrderItems, '----------review')
+    # print(selectedReviews, selectedOrderItems, '----------review')
 
     return {'Place': selected.to_dict_place(),
             'Reviews': [review.to_dict_review() for review in selectedReviews],
