@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
     places = db.relationship('Place_To_Visit', foreign_keys='Place_To_Visit.user_id', back_populates='user_places', cascade='all, delete-orphan')
     review_places = db.relationship('Review', foreign_keys='Review.user_id', back_populates='user_review', cascade='all, delete-orphan')
     cart = db.relationship('Cart_Order', foreign_keys='Cart_Order.user_id', back_populates='user_cart', cascade='all, delete-orphan')
+    order = db.relationship('Order_Item', foreign_keys='Order_Item.user_id', back_populates='user_order', cascade='all, delete-orphan')
 
     @property
     def password(self):
@@ -38,5 +39,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'first name': self.firstName,
+            'last name': self.lastName
         }

@@ -5,22 +5,18 @@ from sqlalchemy.sql import text
 def seed_cart_orders():
     cart1 = Cart_Order(
         user_id=1,
-        total=10,
         payment=True
     )
     cart2 = Cart_Order(
         user_id=2,
-        total=20,
         payment=True
     )
     cart3 = Cart_Order(
         user_id=3,
-        total=30,
         payment=True
     )
     cart4 = Cart_Order(
         user_id=4,
-        total=30,
         payment=True
     )
 
