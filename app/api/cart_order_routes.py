@@ -14,7 +14,7 @@ def getCartForUser(userId):
     # print(userId, type(userId), '----userId')
 
     userCarts = Cart_Order.query.filter(Cart_Order.user_id == userId, Cart_Order.payment == False).all()
-    print(userCarts, dir(userCarts[0]), '-----cart')
+    # print(userCarts, dir(userCarts[0]), '-----cart')
 
     total = 0
     itemsList = []
@@ -23,11 +23,11 @@ def getCartForUser(userId):
 
     for usercart in userCarts:
         # print(usercart.cart, dir(usercart.cart), '---------cart')
-        print(usercart, '-------------cartUser')
+        # print(usercart, '-------------cartUser')
 
         for item in usercart.cart:
-            print(item, dir(item), item.order_item_for_place.price, item.order_item_for_place.product, '---------item')
-            print(item.quantity, '-------quantity')
+            # print(item, dir(item), item.order_item_for_place.price, item.order_item_for_place.product, '---------item')
+            # print(item.quantity, '-------quantity')
             # place['Place Name']=  item.order_item_for_place.name
 
 
@@ -37,7 +37,7 @@ def getCartForUser(userId):
             ItemsInCart += 1
             total += item.quantity * item.order_item_for_place.price
 
-    print(itemsList, '---------total')
+    # print(itemsList, '---------total')
 
     return { 'Current Order': [userCart.to_dict_cart_order() for userCart in userCarts],
             'Items': [singleItem.to_dict_order_item() for singleItem in itemsList],
@@ -50,7 +50,7 @@ def getCartForUser(userId):
 @login_required
 def cartHis(userId):
     oldCarts = Cart_Order.query.filter(Cart_Order.user_id == userId, Cart_Order.payment == True).all()
-    print(oldCarts, '-----------his')
+    # print(oldCarts, '-----------his')
 
     return {
         'Order History': [cart.to_dict_cart_order() for cart in oldCarts]
@@ -79,7 +79,7 @@ def newCart():
         db.session.commit()
 
         # print(user, user['_user_id'], type(user['_user_id']), '----------userCart')
-        print(checkCart, cartCreated, '------------cart')
+        # print(checkCart, cartCreated, '------------cart')
 
         return cartCreated.to_dict_cart_order()
     return ({'Error': 'Something went wrong'}), 404
@@ -93,7 +93,7 @@ def payment():
     '''
     updatePay = Cart_Order.query.filter(Cart_Order.user_id == int(session['_user_id']), Cart_Order.payment == False).first()
 
-    print(updatePay, dir(updatePay), '---------updatePay')
+    # print(updatePay, dir(updatePay), '---------updatePay')
     # print(type(updatePay.user_id), '----------type')
     # print(updatePay.payment , '---------payment')
 
@@ -112,7 +112,7 @@ def payment():
     db.session.commit()
 
     updated = Cart_Order.query.get(updatePay.id)
-    print(updated, '-----upd')
+    # print(updated, '-----upd')
 
     return {
         'updated': updated.to_dict_cart_order()

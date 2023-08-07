@@ -9,22 +9,22 @@ order_item_routes = Blueprint('order', __name__)
 #get all orders based on place id
 @order_item_routes.route('/place/<int:id>')
 def getItemForPlace(id):
-    print(id, '-------id')
+    # print(id, '-------id')
     items = Order_Item.query.filter(Order_Item.place_id == id).all()
 
-    print(dir(items[0]), items[0].place_id, '----------items')
-    for it in items:
-        print(it.order_item_for_place, dir(it.order_item_for_place), '===looop')
+    # print(dir(items[0]), items[0].place_id, '----------items')
+    # for it in items:
+        # print(it.order_item_for_place, dir(it.order_item_for_place), '===looop')
 
     return { 'Order': [item.to_dict_order_item() for item in items]}
 
 #get all order based on id
 @order_item_routes.route('/<int:id>')
 def getItemById(id):
-    print(id, type(id), '------------id')
+    # print(id, type(id), '------------id')
     itemsById = Order_Item.query.get(id)
 
-    print(dir(itemsById), '-----itemById')
+    # print(dir(itemsById), '-----itemById')
 
     return { 'Order': itemsById.to_dict_order_item()}
 
@@ -35,9 +35,9 @@ def getItemById(id):
 def addToCart(id):
     checkCart = Cart_Order.query.filter(Cart_Order.user_id == int(session['_user_id']), Cart_Order.payment == False).first()
 
-    print(checkCart, session['_user_id'], '----cart Session')
-    print(dir(checkCart), '----dirCart')
-    print(id, '-----id')
+    # print(checkCart, session['_user_id'], '----cart Session')
+    # print(dir(checkCart), '----dirCart')
+    # print(id, '-----id')
 
     if checkCart:
         form = Item_Order_Form()
@@ -70,7 +70,7 @@ def addToCart(id):
             payment = False
         )
 
-        print(createCart.to_dict_cart_order())
+        # print(createCart.to_dict_cart_order())
         db.session.add(createCart)
         db.session.commit()
 
@@ -85,7 +85,7 @@ def addToCart(id):
                 cart_order_id= createCart.id
             )
 
-            print(addItem, '--------add item')
+            # print(addItem, '--------add item')
             db.session.add(addItem)
             db.session.commit()
 
@@ -107,7 +107,7 @@ def updateQuantity(id):
     """
 
     orderItem = Order_Item.query.get(id)
-    print(orderItem, dir(orderItem), orderItem.user_id, type(orderItem.user_id),'orderItem')
+    # print(orderItem, dir(orderItem), orderItem.user_id, type(orderItem.user_id),'orderItem')
 
     if orderItem.user_id != int(session['_user_id']):
         return ({
@@ -140,7 +140,7 @@ def delByOrderId(id):
 
     itemDel = Order_Item.query.get(id)
 
-    print(itemDel, '--------item')
+    # print(itemDel, '--------item')
 
     if itemDel.user_id != int(session['_user_id']):
         return ({
