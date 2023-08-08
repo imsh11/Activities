@@ -17,7 +17,7 @@ const DetailPg = () => {
         dispatch(getDetailByPlaceId(id))
     }, [dispatch])
 
-    if(Object.values(placeDetail).length === 0){
+    if(Object.values(placeDetail).length === 0 || !placeDetail.Reviews){
         return(
             <p>loading...</p>
         )
