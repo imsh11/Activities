@@ -39,9 +39,9 @@ def getCartForUser(userId):
 
     # print(itemsList, '---------total')
 
-    return { 'Current Order': [userCart.to_dict_cart_order() for userCart in userCarts],
+    return { 'CurrentOrder': [userCart.to_dict_cart_order() for userCart in userCarts],
             'Items': [singleItem.to_dict_order_item() for singleItem in itemsList],
-            'Items in Cart': ItemsInCart,
+            'ItemsInCart': ItemsInCart,
             'Total': total
             }
 
