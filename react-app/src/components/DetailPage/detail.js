@@ -63,12 +63,21 @@ const DetailPg = () => {
                     </div>
                 </div>
                 <div>
-                    {placeDetail.Place.price}
+                    ${placeDetail.Place.price} for Today
                 </div>
             </div>
 
             <div>
                 <div>Reviews</div>
+                <div>
+                    {placeDetail.Reviews.length}
+                    {placeDetail.Reviews.length > 1 ?
+                                <div>reviews</div> :
+                                placeDetail.Reviews.length === 0 ?
+                                    <div>No Reviews Yet</div> :
+                                    <div>review</div>}
+                </div>
+
                 {placeDetail.Reviews.map(review => (
                     <div key={review.id}>
                         {console.log(review)}
