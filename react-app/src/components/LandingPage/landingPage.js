@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom";
 import { getAllPlaces } from "../../store/places";
 
 
@@ -28,6 +28,8 @@ const LandingPg = () => {
             <div>
                 {placeLst.map( plc => (
                     <div>
+                        <NavLink to={`/place/${plc.id}`}>
+                            <div>
                         {plc.name}
                         <div>
                             {plc.address}
@@ -41,6 +43,10 @@ const LandingPg = () => {
                             {plc.price}
                         </div>
                     </div>
+                    </NavLink>
+                    </div>
+
+
                 ))}
             </div>
         </>
