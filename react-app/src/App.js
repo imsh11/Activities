@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import LandingPg from "./components/LandingPage/landingPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import DetailPg from "./components/DetailPage/detail";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <LandingPg />
+          </Route>
+          <Route exact path="/place/:id">
+            <DetailPg />
           </Route>
         </Switch>
       )}
