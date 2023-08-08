@@ -7,6 +7,7 @@ import LandingPg from "./components/LandingPage/landingPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import DetailPg from "./components/DetailPage/detail";
+import CurrCart from "./components/CurrentCart/currentCart";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route exact path="/place/:id">
             <DetailPg />
+          </Route>
+          <Route exact path='/user/cart'>
+            <CurrCart />
           </Route>
         </Switch>
       )}
