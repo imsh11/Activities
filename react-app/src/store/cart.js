@@ -1,9 +1,17 @@
 const USER_CART_IN_SESSION = 'activities/getUserCartInSession'
+const ADD_ITEM_TO_CART = 'activities/addItemToCart'
 
 const cartInSession = (currentCart) => {
     return{
         type: USER_CART_IN_SESSION,
         payload: currentCart
+    }
+}
+
+const addItem = (Item) => {
+    return {
+        type: ADD_ITEM_TO_CART,
+        payload: Item
     }
 }
 
@@ -27,6 +35,28 @@ export const getUserCart = (userId) => async (dispatch) => {
     }
 }
 
+export const addItemtoCartByPlaceId = (payload, id) => async (dispatch) => {
+
+    console.log(id, payload, typeof(id), JSON.stringify(payload),'----------addItem')
+    const response = await fetch(`/api/order/place/${id}`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    console.log(response, '-----------resp')
+
+    if(response.ok){
+        const data = await response.json()
+        console.log(data, '-----------addItem')
+
+        dispatch(addItem(data))
+
+        return data
+    }
+}
+
 
 //state
 const initialState = {}
@@ -37,21 +67,31 @@ const cartReducer = (state = initialState, action) => {
 
             const newState = {}
 
-            console.log(action.payload, action.payload.CurrentOrder[0],'--------action')
+            // console.log(action.payload, action.payload.CurrentOrder[0],'--------action')
 
             // newState['Cart'] = action.payload.CurrentOrder[0]
             let Items = {}
-            let i = 0
             action.payload.Items.forEach( ele => {
-                i++
-                console.log(ele, i, '-------foreach')
-                newState[i] = ele
-                newState[i]['total'] = action.payload.Total
+                // console.log(ele, i, '-------foreach')
+                newState[ele.id] = ele
             })
+            // newState['total'] = action.payload.Total
 
             // newState['Items'] = Items
             // newState['total'] = action.payload.Total
             console.log(newState, Items,'----------new')
+
+            return newState
+        }
+        case ADD_ITEM_TO_CART: {
+            console.log(state, action.payload.Item,'-----------stateADD')
+
+
+            const newState = {...state}
+
+            newState[action.payload.Item.id] = action.payload.Item
+
+            console.log(newState, '-------newADD')
 
             return newState
         }

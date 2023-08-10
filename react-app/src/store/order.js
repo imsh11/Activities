@@ -1,49 +1,49 @@
-const ADD_ITEM_TO_CART = 'activities/addItemToCart'
+// const ADD_ITEM_TO_CART = 'activities/addItemToCart'
 
-const addItem = (Item) => {
-    return {
-        type: ADD_ITEM_TO_CART,
-        payload: Item
-    }
-}
+// const addItem = (Item) => {
+//     return {
+//         type: ADD_ITEM_TO_CART,
+//         payload: Item
+//     }
+// }
 
-export const addItemtoCartByPlaceId = (payload, id) => async (dispatch) => {
+// export const addItemtoCartByPlaceId = (payload, id) => async (dispatch) => {
 
-    console.log(id, payload, typeof(id), JSON.stringify(payload),'----------addItem')
-    const response = await fetch(`/api/order/place/${id}`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-    console.log(response, '-----------resp')
+//     console.log(id, payload, typeof(id), JSON.stringify(payload),'----------addItem')
+//     const response = await fetch(`/api/order/place/${id}`, {
+//         method: "POST",
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(payload)
+//     })
+//     console.log(response, '-----------resp')
 
-    if(response.ok){
-        const data = await response.json()
-        console.log(data, '-----------addItem')
+//     if(response.ok){
+//         const data = await response.json()
+//         console.log(data, '-----------addItem')
 
-        dispatch(addItem(data))
+//         dispatch(addItem(data))
 
-        return data
-    }
-}
+//         return data
+//     }
+// }
 
-const initialState = {}
+// const initialState = {}
 
-const addItemReducer = (state = initialState, action) => {
-    switch(action.type){
-        case ADD_ITEM_TO_CART: {
+// const addItemReducer = (state = initialState, action) => {
+//     switch(action.type){
+//         case ADD_ITEM_TO_CART: {
 
-            const newState = {}
+//             const newState = {}
 
-            console.log(action, '---------additemRed')
+//             console.log(action, '---------additemRed')
 
-            return newState
-        }
-        default:
-            return state
-    }
-}
+//             return newState
+//         }
+//         default:
+//             return state
+//     }
+// }
 
-export default addItemReducer
+// export default addItemReducer
