@@ -16,7 +16,12 @@ const addItem = (Item) => {
     }
 }
 
-const delItem = (del) => {}
+const delItem = (del) => {
+    return {
+        type: DELETE_ITEM_ID,
+        payload: del
+    }
+}
 
 
 //thunk
@@ -81,6 +86,21 @@ export const updateQuantity = (payload, id) => async (dispatch) => {
     }
 }
 
+export const deleteItem = (id) => async (dispatch) => {
+    console.log(id, typeof(id), '-----del')
+
+    const response = await fetch(`/api/order/${id}`, {
+        method: 'DELETE'
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        console.log(data, '--------delDATA')
+
+        dispatch(delItem(data))
+    }
+}
+
 
 //state
 const initialState = {}
@@ -116,6 +136,15 @@ const cartReducer = (state = initialState, action) => {
             newState[action.payload.Item.id] = action.payload.Item
 
             console.log(newState, '-------newADD')
+
+            return newState
+        }
+        case DELETE_ITEM_ID: {
+            console.log(action.payload.id, '-------stateDEL')
+
+            const newState = {...state}
+
+            delete newState[action.payload.id]
 
             return newState
         }
