@@ -110,20 +110,22 @@ const cartReducer = (state = initialState, action) => {
         case USER_CART_IN_SESSION: {
 
             const newState = {}
+            let cartOrder = {}
 
-            // console.log(action.payload, action.payload.CurrentOrder[0],'--------action')
+            console.log(action.payload, action.payload.CurrentOrder[0],'--------action')
 
-            // newState['Cart'] = action.payload.CurrentOrder[0]
+            cartOrder['Cart'] = action.payload.CurrentOrder[0]
+            cartOrder.Cart['Items'] = action.payload.Items
+            cartOrder.Cart['Total'] = action.payload.Total
             let Items = {}
             action.payload.Items.forEach( ele => {
                 // console.log(ele, i, '-------foreach')
-                newState[ele.id] = ele
+                Items[ele.id] = ele
             })
-            // newState['total'] = action.payload.Total
 
-            // newState['Items'] = Items
-            // newState['total'] = action.payload.Total
-            console.log(newState, Items,'----------new')
+            newState['CartOrder'] = cartOrder
+            newState['Items'] = Items
+            console.log(newState, Items, cartOrder,'----------new')
 
             return newState
         }
