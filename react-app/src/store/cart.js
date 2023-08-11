@@ -115,7 +115,7 @@ const cartReducer = (state = initialState, action) => {
             console.log(action.payload, action.payload.CurrentOrder[0],'--------action')
 
             cartOrder['Cart'] = action.payload.CurrentOrder[0]
-            cartOrder.Cart['Items'] = action.payload.Items
+            // cartOrder.Cart['Items'] = action.payload.Items
             cartOrder.Cart['Total'] = action.payload.Total
             let Items = {}
             action.payload.Items.forEach( ele => {
@@ -130,23 +130,35 @@ const cartReducer = (state = initialState, action) => {
             return newState
         }
         case ADD_ITEM_TO_CART: {
-            console.log(state, action.payload.Item,'-----------stateADD')
+            console.log(state, action.payload,'-----------stateADD')
 
 
-            const newState = {...state}
+            const newState = {...state,
+                Items:{...state.Items, [action.payload.Item.id]: action.payload.Item}}
 
-            newState[action.payload.Item.id] = action.payload.Item
+            // newState.CartOrder.Cart.Items.push(action.payload.Item)
+            // newState.Items[action.payload.Item.id] = action.payload.Item
 
             console.log(newState, '-------newADD')
 
             return newState
         }
         case DELETE_ITEM_ID: {
-            console.log(action.payload.id, '-------stateDEL')
 
-            const newState = {...state}
+            // const newState = {...state}
+            console.log(state, '--------delState')
+            // delete state.Items[action.payload.id]
 
-            delete newState[action.payload.id]
+            let ItemArr = Object.values(state.Items)
+            let delItem = ItemArr.filter(it => it.id !== action.payload.id)
+            let Item = {}
+            delItem.forEach(ele => Item[ele.id] = ele)
+
+
+            const newState = {...state,
+                Items: Item}
+            console.log(action.payload.id, newState, ItemArr, delItem,'-------stateDEL')
+
 
             return newState
         }
