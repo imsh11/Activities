@@ -54,9 +54,9 @@ const ItemQuantityForm = ({id}) => {
 
         console.log(add, '-----------addForm')
 
-        // if (add){
-        //     return history.push('/user/cart')
-        // }
+        if (add){
+            return history.push('/user/cart')
+        }
 
     }
 
