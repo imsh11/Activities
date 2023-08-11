@@ -1,5 +1,6 @@
 const USER_CART_IN_SESSION = 'activities/getUserCartInSession'
 const ADD_ITEM_TO_CART = 'activities/addItemToCart'
+const DELETE_ITEM_ID = 'activities/deleteItemId'
 
 const cartInSession = (currentCart) => {
     return{
@@ -14,6 +15,8 @@ const addItem = (Item) => {
         payload: Item
     }
 }
+
+const delItem = (del) => {}
 
 
 //thunk
@@ -53,6 +56,27 @@ export const addItemtoCartByPlaceId = (payload, id) => async (dispatch) => {
 
         dispatch(addItem(data))
 
+        return data
+    }
+}
+
+export const updateQuantity = (payload, id) => async (dispatch) => {
+    console.log(payload, id, '---------payload Id THUNK')
+
+    const response = await fetch(`/api/order/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    console.log(response, '----------resp')
+
+    if(response.ok){
+        const data = await response.json()
+        console.log(data, '------updateRES')
+
+        dispatch(addItem(data))
         return data
     }
 }
