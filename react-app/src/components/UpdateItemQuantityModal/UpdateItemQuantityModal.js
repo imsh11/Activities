@@ -6,11 +6,11 @@ import { updateQuantity } from "../../store/cart";
 
 export default function Update({item}) {
 
-    console.log(item, '-------modal')
+    // console.log(item, '-------modal')
     const dispatch = useDispatch()
 
     const user = useSelector(state => state)
-    console.log(user, item.id, typeof(item.id),'-------modalstate')
+    // console.log(user, item.id, typeof(item.id),'-------modalstate')
 
     const[modal, setModal] = useState(false)
     const[quantity, setQuantity] = useState(item.quantity)
