@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateQuantity } from "../../store/cart";
+import { getUserCart, updateQuantity } from "../../store/cart";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 
 
@@ -8,6 +9,7 @@ export default function Update({item}) {
 
     // console.log(item, '-------modal')
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const user = useSelector(state => state)
     // console.log(user, item.id, typeof(item.id),'-------modalstate')
@@ -45,12 +47,14 @@ export default function Update({item}) {
         }
 
         const updateQnty = await dispatch(updateQuantity(payload, item.id))
+        dispatch(getUserCart(item.user_id))
 
         console.log(updateQnty, '-----------addForm')
 
         // if (updateQnty){
-        //     // return history.push('/user/cart')
-        //     return toggleModal()
+        //     toggleModal()
+        //     return history.push('/user/cart')
+        //     // return toggleModal()
         // }
 
         toggleModal()

@@ -1,12 +1,15 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { deleteItem } from "../../store/cart";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteItem, getUserCart } from "../../store/cart";
 
 
 export default function DeleteItemCart ({id}) {
 
-    console.log(id, typeof(id), '-------delModal')
+    // console.log(id, typeof(id), '-------delModal')
     const dispatch = useDispatch()
+
+    const userId = useSelector(state => state.session.user)
+    // console.log(userId, '-------Del')
 
     const[modal, setModal] = useState(false)
 
@@ -16,6 +19,7 @@ export default function DeleteItemCart ({id}) {
 
     const handleDeleteItem = () => {
         dispatch(deleteItem(id))
+        dispatch(getUserCart(userId.id))
         toggleModal()
     }
 
