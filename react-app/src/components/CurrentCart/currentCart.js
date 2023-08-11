@@ -31,11 +31,11 @@ const CurrCart = () => {
 
     if(!Object.values(cart).length){
         return(
-            <p>loading...</p>
+            <p>Your Cart is Empty</p>
             )
         }
 
-        let cartDetail = Object.values(cart)
+        let cartDetail = Object.values(cart.Items)
         console.log(cartDetail, '-------------cartDetail')
 
     return(
@@ -65,7 +65,7 @@ const CurrCart = () => {
             </div>
             <div>
                 Total: ${cartDetail.length ?
-                <div>{cart.total}</div> :
+                <div>{cart.CartOrder.Cart.Total}</div> :
                 <div>0</div>}
             </div>
         </>
