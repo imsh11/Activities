@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { getDetailByPlaceId } from "../../store/places";
 import ItemQuantityForm from "../ItemQuantityForm/ItemQuantityForm";
+import AddPlace from "../AddPlaceToVisit/AddPlaceToVisit";
 
 const DetailPg = () => {
 
@@ -68,6 +69,9 @@ const DetailPg = () => {
                 </div>
                 <div>
                     <ItemQuantityForm id={placeDetail.Place.id} />
+                </div>
+                <div>
+                    <AddPlace id={placeDetail.Place.id}/>
                 </div>
             </div>
 
