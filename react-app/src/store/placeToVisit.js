@@ -35,7 +35,7 @@ export const getPlaceToVisit = () => async (dispatch) => {
 export const addToPlaceList = (payload, id) => async (dispatch) => {
     console.log(payload, id, '---------ADDLIST')
 
-    const response = await fetch(`/api/placeList/place/${id}`, {
+    const response = await fetch(`/api/placesToVisit/place/${id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -48,6 +48,7 @@ export const addToPlaceList = (payload, id) => async (dispatch) => {
         const data = await response.json()
         console.log(data, '--------ADDList')
 
+        dispatch(addToList(data))
         return data
     }
 }
@@ -71,11 +72,12 @@ const placeListReducer = (state = initialState, action) => {
             return newState
         }
         case ADD_TO_PLACES_TO_VISIT: {
-            console.log(action, action.payload, '----------ADDListSTATE')
+            console.log(state, action, action.payload, '----------ADDListSTATE')
 
             const newState = {
-                ...state
+                ...state, [action.payload.id]: action.payload
             }
+            console.log(newState, '-------------newStateADD')
 
             return newState
         }
