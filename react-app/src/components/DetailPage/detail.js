@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { getDetailByPlaceId } from "../../store/places";
 import ItemQuantityForm from "../ItemQuantityForm/ItemQuantityForm";
 import AddPlace from "../AddPlaceToVisit/AddPlaceToVisit";
+import { getPlaceToVisit } from "../../store/placeToVisit";
 
 const DetailPg = () => {
 
@@ -12,12 +13,14 @@ const DetailPg = () => {
 
     const {id} = useParams()
     const placeDetail = useSelector(state => state.places)
+    const userId = useSelector(state => state.session.user)
     console.log((placeDetail), id, typeof(id),'--------stateID')
     console.log(placeDetail.Reviews, '------------reviews')
 
     useEffect(() => {
         dispatch(getDetailByPlaceId(id))
-    }, [dispatch])
+        dispatch(getPlaceToVisit())
+    }, [dispatch, userId])
 
     if(Object.values(placeDetail).length === 0 || !placeDetail.Reviews){
         return(
