@@ -29,22 +29,22 @@ const UserPlaceList = () => {
         <div>
             <h2>Place I Wish to Visit</h2>
         </div>
-            {/* {Object.values(placeList).length ? <div> Test</div>:
-            <div>Add Places</div>} */}
+            {Object.values(placeList).length ?
         <div>
             {placeList && Object.values(placeList).map(
                 place => (
-                    <>
-                    <div>
-                        Place: {place.place_id}
+                    <div key={place.id}>
+                        <div>
+                            Place: {place.place_id}
+                        </div>
+                        <div>
+                            My Status: {place.status}
+                        </div>
                     </div>
-                    <div>
-                        My Status: {place.status}
-                    </div>
-                    </>
 
                 ))}
-        </div>
+        </div>:
+        <div>You Can Add Places Here You Plan on Visiting</div>}
         </>
     )
 }
