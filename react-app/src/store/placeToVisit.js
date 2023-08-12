@@ -35,6 +35,11 @@ const placeListReducer = (state = initialState, action) => {
             const newState = {}
             console.log(action, action.payload, '--------placeToVisit')
 
+            action.payload.place_to_visit.forEach(ele => {
+                newState[ele.id] = ele
+            })
+            console.log(newState, '---------state')
+
             return newState
         }
         default:
