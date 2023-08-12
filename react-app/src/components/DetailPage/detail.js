@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { getDetailByPlaceId } from "../../store/places";
+import ItemQuantityForm from "../ItemQuantityForm/ItemQuantityForm";
 
 const DetailPg = () => {
 
@@ -63,7 +64,10 @@ const DetailPg = () => {
                     </div>
                 </div>
                 <div>
-                    ${placeDetail.Place.price} for Today
+                        ${placeDetail.Place.price} One day
+                </div>
+                <div>
+                    <ItemQuantityForm id={placeDetail.Place.id} />
                 </div>
             </div>
 
