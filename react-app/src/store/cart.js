@@ -1,6 +1,7 @@
 const USER_CART_IN_SESSION = 'activities/getUserCartInSession'
 const ADD_ITEM_TO_CART = 'activities/addItemToCart'
 const DELETE_ITEM_ID = 'activities/deleteItemId'
+const UPDATE_PAYMENT = 'activities/updatePayment'
 
 const cartInSession = (currentCart) => {
     return{
@@ -20,6 +21,13 @@ const delItem = (del) => {
     return {
         type: DELETE_ITEM_ID,
         payload: del
+    }
+}
+
+const updatePay = (pay) => {
+    return{
+        type: UPDATE_PAYMENT,
+        payload: pay
     }
 }
 
@@ -101,6 +109,24 @@ export const deleteItem = (id) => async (dispatch) => {
     }
 }
 
+export const payment = () => async (dispatch) => {
+
+    const response = await fetch(`/api/cart/payment`, {
+        method: 'PUT',
+        body: null
+    })
+
+    console.log(response, '---------pay')
+
+    if(response.ok){
+        const data = await response.json()
+        console.log(data, '--------payDATA')
+
+        dispatch(updatePay(data))
+        return data
+    }
+}
+
 
 //state
 const initialState = {}
@@ -111,18 +137,31 @@ const cartReducer = (state = initialState, action) => {
 
             const newState = {}
             let cartOrder = {}
+            // let total = {}
 
             console.log(action.payload, action.payload.CurrentOrder[0],'--------action')
 
             cartOrder['Cart'] = action.payload.CurrentOrder[0]
             // cartOrder.Cart['Items'] = action.payload.Items
-            cartOrder.Cart['Total'] = action.payload.Total
+
+            console.log(cartOrder, '---------getCARTORDER')
+
+            // if(cartOrder === undefined){
+            //     return {}
+            // } else {
+
+            // }
+            // cartOrder.Cart['Total'] = action.payload.Total
+
+
+            // cartOrder ? cartOrder.Cart['Total'] = action.payload.Total : {}
             let Items = {}
             action.payload.Items.forEach( ele => {
                 // console.log(ele, i, '-------foreach')
                 Items[ele.id] = ele
             })
 
+            newState['Total'] = {total: action.payload.Total}
             newState['CartOrder'] = cartOrder
             newState['Items'] = Items
             console.log(newState, Items, cartOrder,'----------new')
@@ -159,6 +198,20 @@ const cartReducer = (state = initialState, action) => {
                 Items: Item}
             console.log(action.payload.id, newState, ItemArr, delItem,'-------stateDEL')
 
+
+            return newState
+        }
+        case UPDATE_PAYMENT: {
+
+            console.log(state, action.payload, '--------pay')
+
+            const newState = {CartOrder:{...state.CartOrder.Cart,
+            ['Cart']: action.payload.update}, Items:{...state.Items},
+            Total: {...state.Total}}
+
+            // const newState = {}
+
+            console.log(newState, '----------newStatePAY')
 
             return newState
         }

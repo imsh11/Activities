@@ -45,8 +45,6 @@ const ItemQuantityForm = ({id}) => {
         console.log(quantity, typeof(Number(quantity)), id, typeof(id),'-----------quantity')
 
         const payload = {
-            // place_id: id,
-            // user_id: userId.id,
             quantity: Number(quantity),
         }
 
