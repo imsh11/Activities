@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { getAllPlaces } from "../../store/places";
 import { getPlaceToVisit } from "../../store/placeToVisit";
+import UpdateStatusPlace from "../UpdateStatusPlaceToVisitModal/UpdateStatusModal";
 
 
 const UserPlaceList = () => {
@@ -39,6 +40,9 @@ const UserPlaceList = () => {
                         </div>
                         <div>
                             My Status: {place.status}
+                        </div>
+                        <div>
+                            <UpdateStatusPlace id={place.id} />
                         </div>
                     </div>
 

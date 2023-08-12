@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToPlaceList } from "../../store/placeToVisit";
 
 
-export default function AddPlace ({id}) {
-    console.log(id, '-----------placeIDadd')
+export default function UpdateStatusPlace ({id}){
 
     const dispatch = useDispatch()
 
@@ -16,27 +14,7 @@ export default function AddPlace ({id}) {
         setModal(!modal)
     }
 
-    const handleAdd = async (e) => {
-        e.preventDefault()
-
-        const errors = {}
-        if(status.length < 5 || status.length > 50){
-            errors['status'] = 'Please have alteat 5 or at most 50 words in you status'
-        }
-
-        if(Object.values(errors).length){
-            setValidation(errors)
-            return
-        }
-
-        const payload = {
-            status
-        }
-
-        console.log(status, '------------status')
-        const addToList = await dispatch(addToPlaceList(payload, id))
-
-        console.log(addToList, '------------addTOLIST')
+    const handleUpdatePlaceList = () => {
 
         toggleModal()
     }
@@ -44,21 +22,22 @@ export default function AddPlace ({id}) {
     return(
         <>
             <button onClick={toggleModal}>
-                Add to Your List
+                Update Status
             </button>
 
             {modal && (
                 <div id="modal">
                     <div id="modal-background" onClick={toggleModal}></div>
                     <div id="modal-content" className="modal-container">
-                        <h4>Confirm Place</h4>
+                        <h4>Status</h4>
+                        <p className="deletetext">write between 5 to 50 words</p>
                         <form>
                             <div>
                                 <label>
                                     <input
                                         id="status"
                                         required
-                                        placeholder="write you plan within 50 words"
+                                        placeholder="Your Status"
                                         value={status}
                                         type="text"
                                         onChange={e => setStatus(e.target.value)}
@@ -73,12 +52,12 @@ export default function AddPlace ({id}) {
                                 </label>
                             </div>
                             <div>
-                            <button className="modal-button keep-button" onClick={handleAdd}>
-                                Add
-                            </button>
-                            <button className="modal-button delete-button" onClick={toggleModal}>
+                                <button className="modal-button update-button" onClick={handleUpdatePlaceList}>
+                                Update
+                                </button>
+                                <button className="modal-button cancle-button" onClick={toggleModal}>
                                 Cancle
-                            </button>
+                                </button>
                             </div>
                         </form>
                     </div>
