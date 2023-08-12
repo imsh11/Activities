@@ -1,9 +1,17 @@
 const GET_PLACES_TO_VISIT_FOR_USER = 'activities/getPlacesToVisitForUser'
+const ADD_TO_PLACES_TO_VISIT = 'activities/addToPlacesToVisit'
 
 const userWishList = (wishlist) => {
     return{
         type: GET_PLACES_TO_VISIT_FOR_USER,
         payload: wishlist
+    }
+}
+
+const addToList = (place) => {
+    return{
+        type: ADD_TO_PLACES_TO_VISIT,
+        payload: place
     }
 }
 
@@ -24,6 +32,26 @@ export const getPlaceToVisit = () => async (dispatch) => {
     }
 }
 
+export const addToPlaceList = (payload, id) => async (dispatch) => {
+    console.log(payload, id, '---------ADDLIST')
+
+    const response = await fetch(`/api/placeList/place/${id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    console.log(response, '------------resADD')
+
+    if(response.ok){
+        const data = await response.json()
+        console.log(data, '--------ADDList')
+
+        return data
+    }
+}
+
 
 //state
 const initialState = {}
@@ -39,6 +67,15 @@ const placeListReducer = (state = initialState, action) => {
                 newState[ele.id] = ele
             })
             console.log(newState, '---------state')
+
+            return newState
+        }
+        case ADD_TO_PLACES_TO_VISIT: {
+            console.log(action, action.payload, '----------ADDListSTATE')
+
+            const newState = {
+                ...state
+            }
 
             return newState
         }
