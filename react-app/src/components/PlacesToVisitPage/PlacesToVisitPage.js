@@ -10,16 +10,44 @@ const UserPlaceList = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const user = useSelector(state => state)
-    console.log(user)
+    const user = useSelector(state => state.session.user)
+    const placeList = useSelector(state => state.placesList)
+    console.log(user, placeList,  '---------user')
 
     useEffect(() => {
         dispatch(getPlaceToVisit())
-    }, [dispatch])
+    }, [dispatch, user])
+
+    if(!user){
+        return(
+            <p>Please Sign In</p>
+        )
+    }
 
     return(
         <>
-            Test
+        <div>
+            <h2>Place I Wish to Visit</h2>
+        </div>
+            {/* {Object.values(placeList).length ? <div> Test</div>:
+            <div>Add Places</div>} */}
+        <div>
+            {placeList && Object.values(placeList).map(
+                place => (
+                    <>
+                    <div>
+                        Place: {place.place_id}
+                    </div>
+                    <div>
+                        My Status: {place.status}
+                    </div>
+                    </>
+
+                ))}
+        </div>
         </>
     )
 }
+
+
+export default UserPlaceList
