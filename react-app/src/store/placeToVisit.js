@@ -19,7 +19,7 @@ const addToList = (place) => {
 export const getPlaceToVisit = () => async (dispatch) => {
 
     const response = await fetch(`/api/placesToVisit/placeList`)
-    console.log(response, '---------GET resp')
+    // console.log(response, '---------GET resp')
 
     if(response.ok){
 
@@ -33,7 +33,7 @@ export const getPlaceToVisit = () => async (dispatch) => {
 }
 
 export const addToPlaceList = (payload, id) => async (dispatch) => {
-    console.log(payload, id, '---------ADDLIST')
+    // console.log(payload, id, '---------ADDLIST')
 
     const response = await fetch(`/api/placesToVisit/place/${id}`, {
         method: 'POST',
@@ -42,14 +42,35 @@ export const addToPlaceList = (payload, id) => async (dispatch) => {
         },
         body: JSON.stringify(payload)
     })
-    console.log(response, '------------resADD')
+    // console.log(response, '------------resADD')
 
     if(response.ok){
         const data = await response.json()
-        console.log(data, '--------ADDList')
+        // console.log(data, '--------ADDList')
 
         dispatch(addToList(data))
         return data
+    }
+}
+
+export const updateStatuPlaceList = (payload, id) => async (dispatch) => {
+    console.log(id, payload, '-----------updateSTATUS')
+
+    const response = await fetch(`/api/placesToVisit/place/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    console.log(response, '-----------updateRES')
+
+    if(response.ok){
+        const data = await response.json()
+        console.log(data, '------------UpdateDATA')
+
+        dispatch(addToList(data))
+        return
     }
 }
 
