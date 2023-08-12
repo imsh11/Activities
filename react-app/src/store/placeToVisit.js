@@ -28,7 +28,7 @@ export const getPlaceToVisit = () => async (dispatch) => {
 //state
 const initialState = {}
 
-const placeList = (state = initialState, action) => {
+const placeListReducer = (state = initialState, action) => {
     switch(action.type){
         case GET_PLACES_TO_VISIT_FOR_USER:{
 
@@ -37,5 +37,9 @@ const placeList = (state = initialState, action) => {
 
             return newState
         }
+        default:
+            return state
     }
 }
+
+export default placeListReducer
