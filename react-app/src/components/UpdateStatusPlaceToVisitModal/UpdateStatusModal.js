@@ -1,22 +1,45 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { updateStatusPlaceList } from "../../store/placeToVisit";
 
 
-export default function UpdateStatusPlace ({id}){
+export default function UpdateStatusPlace ({place}){
+    console.log(place, '----------id')
 
     const dispatch = useDispatch()
 
     const[modal, setModal] = useState(false)
-    const[status, setStatus] = useState('')
+    const[status, setStatus] = useState(place.status)
     const[validation, setValidation] = useState('')
 
     const toggleModal = () => {
         setModal(!modal)
     }
 
-    const handleUpdatePlaceList = () => {
+    const handleUpdatePlaceList = async (e) => {
+        e.preventDefault()
+
+        const errors = {}
+        if(status.length < 5 || status.length > 50){
+            errors['status'] = 'Status must have alteat 5 or at most 50 words'
+        }
+
+        if(Object.values(errors).length){
+            setValidation(errors)
+            return
+        }
+
+        const payload = {
+            status
+        }
+
+        console.log(payload, '--------------payload')
+
+        const updateSt = await dispatch(updateStatusPlaceList(payload, place.id))
+        console.log(updateSt, '-----------------updateST')
 
         toggleModal()
+        setValidation('')
     }
 
     return(

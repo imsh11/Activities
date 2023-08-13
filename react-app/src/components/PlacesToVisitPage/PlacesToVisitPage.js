@@ -42,7 +42,7 @@ const UserPlaceList = () => {
                             My Status: {place.status}
                         </div>
                         <div>
-                            <UpdateStatusPlace id={place.id} />
+                            <UpdateStatusPlace place={place} />
                         </div>
                     </div>
 

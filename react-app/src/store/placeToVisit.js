@@ -53,10 +53,10 @@ export const addToPlaceList = (payload, id) => async (dispatch) => {
     }
 }
 
-export const updateStatuPlaceList = (payload, id) => async (dispatch) => {
+export const updateStatusPlaceList = (payload, id) => async (dispatch) => {
     console.log(id, payload, '-----------updateSTATUS')
 
-    const response = await fetch(`/api/placesToVisit/place/${id}`, {
+    const response = await fetch(`/api/placesToVisit/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
