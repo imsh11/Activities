@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteItem, getUserCart } from "../../store/cart";
+import { delPlacePlaceList } from "../../store/placeToVisit";
 
 
-export default function DeleteItemCart ({id}) {
 
-    // console.log(id, typeof(id), '-------delModal')
+export default function DeletePlace ({id}) {
+
+    console.log(id, typeof(id), '-------delModal')
     const dispatch = useDispatch()
 
     const userId = useSelector(state => state.session.user)
@@ -17,28 +18,27 @@ export default function DeleteItemCart ({id}) {
         setModal(!modal)
     }
 
-    const handleDeleteItem = () => {
-        dispatch(deleteItem(id))
-        dispatch(getUserCart(userId.id))
+    const handleRemove = () => {
+        dispatch(delPlacePlaceList(id))
         toggleModal()
     }
 
     return(
         <>
             <button onClick={toggleModal}>
-                Delete Item
+                Remove Place
             </button>
 
             {modal && (
                     <div id="modal">
                         <div id="modal-background" onClick={toggleModal}></div>
                         <div id="modal-content" className="modal-container">
-                            <h3>Confirm Delete</h3>
-                            <p className="deletetext">Are you sure you want to delete this Item?</p>
-                            <button className="modal-button keep-button" onClick={handleDeleteItem}>
-                                Delete Item
+                            <h3>Confirm</h3>
+                            <p className="deletetext">Are you sure you want to remove this Place?</p>
+                            <button className="modal-button remove-button" onClick={handleRemove}>
+                                Remove
                             </button>
-                            <button className="modal-button delete-button"onClick={toggleModal}>
+                            <button className="modal-button cancle-button"onClick={toggleModal}>
                                 Cancel
                             </button>
                         </div>

@@ -8,6 +8,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import DetailPg from "./components/DetailPage/detail";
 import CurrCart from "./components/CurrentCart/currentCart";
+import UserPlaceList from "./components/PlacesToVisitPage/PlacesToVisitPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route exact path='/user/cart'>
             <CurrCart />
+          </Route>
+          <Route exact path='/user/placeList'>
+            <UserPlaceList />
           </Route>
         </Switch>
       )}
