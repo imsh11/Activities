@@ -1,0 +1,10 @@
+.modal-container{
+    border-radius: 5px;
+    width: fit-content;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
