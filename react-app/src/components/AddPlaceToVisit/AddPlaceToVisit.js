@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { addToPlaceList } from "../../store/placeToVisit";
 
 
-export default function AddPlace ({id}) {
-    console.log(id, '-----------placeIDadd')
+export default function AddPlace ({place}) {
+    console.log(place, '-----------placeIDadd')
 
     const dispatch = useDispatch()
 
@@ -34,7 +34,7 @@ export default function AddPlace ({id}) {
         }
 
         console.log(status, '------------status')
-        const addToList = await dispatch(addToPlaceList(payload, id))
+        const addToList = await dispatch(addToPlaceList(payload, place.id))
 
         console.log(addToList, '------------addTOLIST')
 
@@ -53,14 +53,17 @@ export default function AddPlace ({id}) {
                 <div id="modal">
                     <div id="modal-background" onClick={toggleModal}></div>
                     <div id="modal-content" className="modal-container">
-                        <h4>Confirm Place</h4>
+                        <div>
+                            <h4>Confirm Place</h4>
+                            <p>You are adding <b>{place.name}</b> to your Places List</p>
+                        </div>
                         <form>
                             <div>
                                 <label>
                                     <input
                                         id="status"
                                         required
-                                        placeholder="write you plan within 50 words"
+                                        placeholder="write you status within 50 words"
                                         value={status}
                                         type="text"
                                         onChange={e => setStatus(e.target.value)}
