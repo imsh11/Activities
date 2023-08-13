@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom";
 import { getAllPlaces } from "../../store/places";
 import { getPlaceToVisit } from "../../store/placeToVisit";
 import UpdateStatusPlace from "../UpdateStatusPlaceToVisitModal/UpdateStatusModal";
@@ -31,6 +31,9 @@ const UserPlaceList = () => {
         <div>
             <h2>Place I Wish to Visit</h2>
         </div>
+        <div>
+            Hello {user.firstname}!
+        </div>
             {Object.values(placeList).length ?
         <div>
             {placeList && Object.values(placeList).map(
@@ -52,7 +55,8 @@ const UserPlaceList = () => {
 
                 ))}
         </div>:
-        <div>You Can Add Places Here You Plan on Visiting</div>}
+        <div>You Can View Places <NavLink exact to="/">Here </NavLink>
+            And Add Places You Plan on Visiting.</div>}
         </>
     )
 }
