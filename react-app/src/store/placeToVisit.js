@@ -1,5 +1,6 @@
 const GET_PLACES_TO_VISIT_FOR_USER = 'activities/getPlacesToVisitForUser'
 const ADD_TO_PLACES_TO_VISIT = 'activities/addToPlacesToVisit'
+const DELETE_PLACE_FROM_PLACES_TO_VISIT = 'activities/deletePlacesFromPlacesToVisit'
 
 const userWishList = (wishlist) => {
     return{
@@ -12,6 +13,13 @@ const addToList = (place) => {
     return{
         type: ADD_TO_PLACES_TO_VISIT,
         payload: place
+    }
+}
+
+const deletePlaceList = (delPlace) =>{
+    return{
+        type: DELETE_PLACE_FROM_PLACES_TO_VISIT,
+        payload: delPlace
     }
 }
 
@@ -74,6 +82,24 @@ export const updateStatusPlaceList = (payload, id) => async (dispatch) => {
     }
 }
 
+export const delPlacePlaceList = (id) => async (dispatch) => {
+    console.log(id, '-----------id')
+
+    const response = await fetch(`/api/placesToVisit/${id}`, {
+        method: 'DELETE'
+    })
+    console.log(response, '------------responseDEL')
+
+    if(response.ok){
+        const data = await response.json()
+        console.log(data, '-----------dataDEL')
+
+        dispatch(deletePlaceList(data))
+
+        return data
+    }
+}
+
 
 //state
 const initialState = {}
@@ -99,6 +125,15 @@ const placeListReducer = (state = initialState, action) => {
                 ...state, [action.payload.id]: action.payload
             }
             console.log(newState, '-------------newStateADD')
+
+            return newState
+        }
+        case DELETE_PLACE_FROM_PLACES_TO_VISIT: {
+            console.log(state, action.payload, '-----------stateStoreDEL')
+            const newState = {...state}
+
+            // delete
+            console.log(newState, '-----------afterDELstore')
 
             return newState
         }
