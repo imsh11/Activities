@@ -20,7 +20,7 @@ const ItemQuantityForm = ({id}) => {
 
 
     useEffect(() => {
-        dispatch(getUserCart(userId.id))
+        dispatch(getUserCart(userId ? userId.id : userId))
     }, [dispatch])
 
     // if (!Object.values(cartId).length){

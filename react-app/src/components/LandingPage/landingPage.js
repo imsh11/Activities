@@ -27,7 +27,7 @@ const LandingPg = () => {
             <h3>Places</h3>
             <div>
                 {placeLst.map( plc => (
-                    <div>
+                    <div key={plc.id}>
                         <NavLink to={`/place/${plc.id}`}>
                             <div>
                         {plc.name}
