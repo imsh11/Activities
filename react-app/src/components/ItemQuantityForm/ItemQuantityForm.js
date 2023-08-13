@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { addItemtoCartByPlaceId } from "../../store/cart";
 import { getUserCart } from "../../store/cart";
+import "./ItemQuantity.css"
 
 const ItemQuantityForm = ({id}) => {
 
@@ -73,7 +74,7 @@ const ItemQuantityForm = ({id}) => {
                             />
                             {
                                 validation.quantity && (
-                                    <div>
+                                    <div style={{color:'red'}}>
                                         {validation.quantity}
                                     </div>
                                 )
@@ -81,7 +82,7 @@ const ItemQuantityForm = ({id}) => {
                     </label>
                 </div>
                 <div>
-                    <button type="submit">Add to Cart</button>
+                    <button type="submit" className="button1">Add to Cart</button>
                 </div>
             </form>
         </>

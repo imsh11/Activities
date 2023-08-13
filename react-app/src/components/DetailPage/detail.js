@@ -5,6 +5,13 @@ import { getDetailByPlaceId } from "../../store/places";
 import ItemQuantityForm from "../ItemQuantityForm/ItemQuantityForm";
 import AddPlace from "../AddPlaceToVisit/AddPlaceToVisit";
 import { getPlaceToVisit } from "../../store/placeToVisit";
+import waterimg from '../../images/water-park-photo.jpeg'
+import fiveFlags from '../../images/fair-fairground-ferris-wheel-carousel-40547.jpeg'
+import bronxZoo from '../../images/bronx-zoo.png'
+import natural from '../../images/natural-history-museum.jpg'
+import splish from '../../images/water-park-2.jpg'
+import aqua from '../../images/aquarium.jpeg'
+import "./detail.css"
 
 const DetailPg = () => {
 
@@ -44,46 +51,55 @@ const DetailPg = () => {
     })
     console.log(Addedplace, '------------added')
 
+    let Images = [fiveFlags, fiveFlags, waterimg, bronxZoo, natural, splish, aqua]
+
 
     return(
         <>
-            <div>
-                <div>
-                    <h1>{placeDetail.Place.name}</h1>
-                    <h3>{placeDetail.Place.activity_type}</h3>
-                </div>
-                <div>
+        <div className="main-detail-pg">
+            <div className="info-container">
+                <div className="place-detail">
                     <div>
-                        {!AvgStars ? <div>No Reviews</div> :
-                        <div>{AvgStars.toFixed(2)}
-                            <div>
-                                {placeDetail.Reviews.length}
+                        <h1>{placeDetail.Place.name}</h1>
+                        <h3>{placeDetail.Place.activity_type}</h3>
+                    </div>
+                <div className="detail-review-address">
+                    <div className="review">
+                        {!AvgStars ? <div className="In-review">No Reviews <i class="fa-solid fa-star"></i></div> :
+                        <div className="In-review"><i class="fa-solid fa-star"></i> {AvgStars.toFixed(2)}
+                            <div className="no-review">
+                                No. of Reviews: {placeDetail.Reviews.length}
                                 {placeDetail.Reviews.length > 1 ?
                                 <div>reviews</div> : <div>review</div>}
                             </div>
                         </div>}
                     </div>
-                    <div>
+                    <div className="address">
                         <div>
-                            {placeDetail.Place.address}
+                            Street: {placeDetail.Place.address}
                         </div>
                         <div>
-                            {placeDetail.Place.city}
+                            City: {placeDetail.Place.city}
                         </div>
                         <div>
-                            {placeDetail.Place.state}
+                            State: {placeDetail.Place.state}
                         </div>
                     </div>
                 </div>
-                <div>
-                        ${placeDetail.Place.price} One day
                 </div>
+                <div className="detail-image">
+                    <img className="detail-photo" src={Images[placeDetail.Place.id]} alt="parkImg" />
+                </div>
+
+            <div className="price-detail">
                 <div>
+                        Price: ${placeDetail.Place.price} per Ticket
+                </div>
+                <div>No. of Tickets:
                     {userId ? <ItemQuantityForm id={placeDetail.Place.id} /> :
                     <button onClick={() => history.push('/login')}>Add to Cart</button>}
-
                 </div>
-                <div>
+                <div className="detail-placeList">
                     {userId ?
                         <div>
                             {Addedplace.includes(placeDetail.Place.id) ?
@@ -95,34 +111,34 @@ const DetailPg = () => {
                             Add to Your List
                         </button>
                     }
-
-
                 </div>
             </div>
+        </div>
 
-            <div>
-                <div>Reviews</div>
-                <div>
+            <div className="review-detail">
+                <div><h3>Reviews</h3></div>
+                <div className="detail-review-info">
                     {placeDetail.Reviews.length}
                     {placeDetail.Reviews.length > 1 ?
-                                <div>reviews</div> :
+                                'reviews' :
                                 placeDetail.Reviews.length === 0 ?
                                     <div>No Reviews Yet</div> :
-                                    <div>review</div>}
+                                    <div> review</div>}
                 </div>
 
                 {placeDetail.Reviews.map(review => (
-                    <div key={review.id}>
+                    <div key={review.id} className="detail-single-review">
                         {/* {console.log(review)} */}
                         <div>
                             {review.review}
                         </div>
                         <div>
-                            {review.stars}
+                            {review.stars} <i class="fa-solid fa-star"></i>
                         </div>
                     </div>
                 ))}
             </div>
+        </div>
         </>
     )
 }
