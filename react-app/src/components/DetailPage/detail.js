@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
+import { NavLink, useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { getDetailByPlaceId } from "../../store/places";
 import ItemQuantityForm from "../ItemQuantityForm/ItemQuantityForm";
 import AddPlace from "../AddPlaceToVisit/AddPlaceToVisit";
@@ -14,8 +14,9 @@ const DetailPg = () => {
     const {id} = useParams()
     const placeDetail = useSelector(state => state.places)
     const userId = useSelector(state => state.session.user)
+    const placeVisitList = useSelector(state => state.placesList)
     console.log((placeDetail), id, typeof(id),'--------stateID')
-    console.log(placeDetail.Reviews, '------------reviews')
+    console.log(placeDetail.Reviews, placeVisitList, userId, '------------reviews')
 
     useEffect(() => {
         dispatch(getDetailByPlaceId(id))
@@ -35,6 +36,13 @@ const DetailPg = () => {
 
     let AvgStars = Avg/placeDetail.Reviews.length
     console.log(Avg, AvgStars)
+
+    let Addedplace = []
+
+    Object.values(placeVisitList).forEach(ele =>{
+        Addedplace.push(ele.place_id)
+    })
+    console.log(Addedplace, '------------added')
 
 
     return(
@@ -71,10 +79,24 @@ const DetailPg = () => {
                         ${placeDetail.Place.price} One day
                 </div>
                 <div>
-                    <ItemQuantityForm id={placeDetail.Place.id} />
+                    {userId ? <ItemQuantityForm id={placeDetail.Place.id} /> :
+                    <button onClick={() => history.push('/login')}>Add to Cart</button>}
+
                 </div>
                 <div>
-                    <AddPlace id={placeDetail.Place.id}/>
+                    {userId ?
+                        <div>
+                            {Addedplace.includes(placeDetail.Place.id) ?
+                            <div>Place already exists in your
+                            <NavLink exact to="/user/placeList"> List</NavLink> </div> :
+                            <div><AddPlace place={placeDetail.Place}/></div>}
+                        </div> :
+                            <button onClick={() => history.push('/login')}>
+                            Add to Your List
+                        </button>
+                    }
+
+
                 </div>
             </div>
 
@@ -91,7 +113,7 @@ const DetailPg = () => {
 
                 {placeDetail.Reviews.map(review => (
                     <div key={review.id}>
-                        {console.log(review)}
+                        {/* {console.log(review)} */}
                         <div>
                             {review.review}
                         </div>
