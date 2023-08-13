@@ -39,6 +39,7 @@ export default function AddPlace ({id}) {
         console.log(addToList, '------------addTOLIST')
 
         toggleModal()
+        setStatus('')
         setValidation('')
     }
 

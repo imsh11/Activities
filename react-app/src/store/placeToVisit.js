@@ -132,7 +132,7 @@ const placeListReducer = (state = initialState, action) => {
             console.log(state, action.payload, '-----------stateStoreDEL')
             const newState = {...state}
 
-            // delete
+            delete newState[action.payload.id]
             console.log(newState, '-----------afterDELstore')
 
             return newState

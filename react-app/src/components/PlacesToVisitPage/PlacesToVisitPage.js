@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { getAllPlaces } from "../../store/places";
 import { getPlaceToVisit } from "../../store/placeToVisit";
 import UpdateStatusPlace from "../UpdateStatusPlaceToVisitModal/UpdateStatusModal";
+import DeletePlace from "../PlaceDeleteFromPlaceList/PlaceDeleteModal";
 
 
 const UserPlaceList = () => {
@@ -43,6 +44,9 @@ const UserPlaceList = () => {
                         </div>
                         <div>
                             <UpdateStatusPlace place={place} />
+                        </div>
+                        <div>
+                            <DeletePlace id={place.id} />
                         </div>
                     </div>
 
