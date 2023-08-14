@@ -4,6 +4,7 @@
     padding: 10px;
     margin: 5px;
     display: grid;
+    
 
 }
 
@@ -12,9 +13,6 @@
     /* flex-direction: column; */
 }
 
-.landing-image{
-    /* display: flex; */
-}
 
 .landing-photo{
     height: 500px;

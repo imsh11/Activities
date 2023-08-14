@@ -18,7 +18,7 @@ const UpdatePayment = () => {
 
     return(
         <>
-            <button onClick={handle}>
+            <button className="button1 payBtn" onClick={handle}>
                 Payment
             </button>
         </>
