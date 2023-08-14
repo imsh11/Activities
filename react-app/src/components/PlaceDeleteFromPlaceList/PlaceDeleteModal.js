@@ -25,7 +25,7 @@ export default function DeletePlace ({id}) {
 
     return(
         <>
-            <button onClick={toggleModal}>
+            <button className="button1" onClick={toggleModal}>
                 Remove Place
             </button>
 
@@ -35,10 +35,10 @@ export default function DeletePlace ({id}) {
                         <div id="modal-content" className="modal-container">
                             <h3>Confirm</h3>
                             <p className="deletetext">Are you sure you want to remove this Place?</p>
-                            <button className="modal-button remove-button" onClick={handleRemove}>
+                            <button className="modal-button remove-button button1" onClick={handleRemove}>
                                 Remove
                             </button>
-                            <button className="modal-button cancle-button"onClick={toggleModal}>
+                            <button className="modal-button cancle-button button2"onClick={toggleModal}>
                                 Cancel
                             </button>
                         </div>

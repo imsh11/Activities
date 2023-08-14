@@ -6,6 +6,7 @@ import UpdateQuantity from "../UpdateItemQuantity/updateQuantity";
 import Update from "../UpdateItemQuantityModal/UpdateItemQuantityModal";
 import DeleteItemCart from "../ItemDeleteModal/ItemDeleteModal";
 import UpdatePayment from "../UpdatePayment/UpdatePayment";
+import "./currentCart.css"
 
 
 const CurrCart = () => {
@@ -17,7 +18,7 @@ const CurrCart = () => {
     const places = useSelector(state => state.places)
     const cartTotal = useSelector(state => state.cart.Total)
     const userId = useSelector(state => state.session.user)
-    console.log(cart, userId, places, cartTotal,'--------stateCurr')
+    // console.log(cart, userId, places, cartTotal,'--------stateCurr')
 
     useEffect(() =>{
         dispatch(getUserCart(userId ? userId.id : userId))
@@ -37,17 +38,17 @@ const CurrCart = () => {
         }
 
         let cartDetail = Object.values(cart.Items)
-        console.log(cartDetail, '-------------cartDetail')
+        // console.log(cartDetail, '-------------cartDetail')
 
     return(
         <>
             <h3>Cart Items</h3>
-            <div>
+            <div className="test">
                 User: {userId.lastname}, {userId.firstname}
             </div>
             <div>
                 {cartDetail.map( item => (
-                    <div key={item.id}>
+                    <div key={item.id} className="cartList">
                         Place {item.place_id}
                         <div>
                             Qunatity {item.quantity}
@@ -55,23 +56,25 @@ const CurrCart = () => {
                                 Total:$
                             </div>
                         </div>
-                        <div>
-                            <Update item={item}/>
-                        </div>
-                        <div>
-                            <DeleteItemCart id={item.id} />
+                        <div className="cart-Btns">
+                            <div>
+                                <Update item={item}/>
+                            </div>
+                            <div>
+                                <DeleteItemCart id={item.id} />
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
-            <div>
+            <div className="cart-Btns payment">
             {cartDetail.length ? <div><UpdatePayment /></div> :
             <div></div>}
 
-            </div>
-            <div>
-                Total: ${cartDetail.length ?
-                <div>{cartTotal.total}</div> :
+            {/* </div>
+            <div> */}
+                {cartDetail.length ?
+                <div>Total: ${cartTotal.total}</div> :
                 <div>0</div>}
             </div>
         </>

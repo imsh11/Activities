@@ -1,0 +1,35 @@
+.cartList{
+    border: solid black;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.test{
+    background-color: aliceblue;
+}
+
+.cart-Btns{
+    /* background-color: blue; */
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    ". .";
+}
+
+.payment{
+    border: solid black;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5px;
+}
+
+.payBtn{
+    height: 30px;
+    width: 100px;
+}
