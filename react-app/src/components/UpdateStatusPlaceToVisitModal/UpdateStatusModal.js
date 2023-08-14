@@ -44,7 +44,7 @@ export default function UpdateStatusPlace ({place}){
 
     return(
         <>
-            <button onClick={toggleModal}>
+            <button className="button1" onClick={toggleModal}>
                 Update Status
             </button>
 
@@ -58,7 +58,7 @@ export default function UpdateStatusPlace ({place}){
                             <div>
                                 <label>
                                     <input
-                                        id="status"
+                                        id="quantity"
                                         required
                                         placeholder="Your Status"
                                         value={status}
@@ -75,10 +75,10 @@ export default function UpdateStatusPlace ({place}){
                                 </label>
                             </div>
                             <div>
-                                <button className="modal-button update-button" onClick={handleUpdatePlaceList}>
+                                <button className="modal-button update-button button1" onClick={handleUpdatePlaceList}>
                                 Update
                                 </button>
-                                <button className="modal-button cancle-button" onClick={toggleModal}>
+                                <button className="modal-button cancle-button button2" onClick={toggleModal}>
                                 Cancle
                                 </button>
                             </div>

@@ -25,7 +25,7 @@ export default function DeleteItemCart ({id}) {
 
     return(
         <>
-            <button onClick={toggleModal}>
+            <button className="button1" onClick={toggleModal}>
                 Delete Item
             </button>
 
@@ -35,10 +35,10 @@ export default function DeleteItemCart ({id}) {
                         <div id="modal-content" className="modal-container">
                             <h3>Confirm Delete</h3>
                             <p className="deletetext">Are you sure you want to delete this Item?</p>
-                            <button className="modal-button keep-button" onClick={handleDeleteItem}>
+                            <button className="modal-button keep-button button1" onClick={handleDeleteItem}>
                                 Delete Item
                             </button>
-                            <button className="modal-button delete-button"onClick={toggleModal}>
+                            <button className="modal-button delete-button button2"onClick={toggleModal}>
                                 Cancel
                             </button>
                         </div>

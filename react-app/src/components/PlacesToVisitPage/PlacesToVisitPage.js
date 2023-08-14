@@ -5,6 +5,7 @@ import { getAllPlaces } from "../../store/places";
 import { getPlaceToVisit } from "../../store/placeToVisit";
 import UpdateStatusPlace from "../UpdateStatusPlaceToVisitModal/UpdateStatusModal";
 import DeletePlace from "../PlaceDeleteFromPlaceList/PlaceDeleteModal";
+import "./PlacesToVisitPage.css"
 
 
 const UserPlaceList = () => {
@@ -32,13 +33,13 @@ const UserPlaceList = () => {
             <h2>Place I Wish to Visit</h2>
         </div>
         <div>
-            Hello {user.firstname}!
+            <h4>Hello {user.firstname}!</h4>
         </div>
             {Object.values(placeList).length ?
         <div>
             {placeList && Object.values(placeList).map(
                 place => (
-                    <div key={place.id}>
+                    <div key={place.id} className="placeList">
                         <div>
                             Place: {place.place_id}
                         </div>

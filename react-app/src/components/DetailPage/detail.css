@@ -3,13 +3,9 @@
     /* justify-content: center; */
 }
 
-.info-container{
-    /* border: solid red; */
-}
 
-.place-detail{
-    /* border: solid orange; */
-}
+
+
 
 .detail-review-address{
     /* border: solid black; */
@@ -18,11 +14,7 @@
 
 }
 
-.reivew{
-    /* border: solid purple; */
-    /* background-color: purple; */
-    /* display: grid; */
-}
+
 
 .In-review{
     /* background-color: bisque; */
@@ -71,12 +63,10 @@
 }
 
 .detail-photo{
-    max-width: 1500px;
+    max-width: 1000px;
 }
 
-.detail-placeList{
-    /* border: solid salmon; */
-}
+
 
 .detail-review-info{
     /* border: solid salmon; */

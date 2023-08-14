@@ -63,7 +63,7 @@ export default function Update({item}) {
 
     return (
         <>
-            <button className="update-btn" onClick={toggleModal}>
+            <button className="update-btn button1" onClick={toggleModal}>
                 Update Quantity
             </button>
 
@@ -94,8 +94,8 @@ export default function Update({item}) {
                                 </label>
                             </div>
                             <div>
-                                <button className="modal-button keep-button" type="submit">Update</button>
-                                <button className="modal-button cancle-button" onClick={toggleModal}>
+                                <button className="modal-button keep-button button1" type="submit">Update</button>
+                                <button className="modal-button cancle-button button2" onClick={toggleModal}>
                                     Cancel
                                 </button>
                             </div>
