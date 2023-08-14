@@ -1,0 +1,22 @@
+.landing-list{
+    border: solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    display: grid;
+
+}
+
+.landing-info{
+    display: grid;
+    /* flex-direction: column; */
+}
+
+.landing-image{
+    /* display: flex; */
+}
+
+.landing-photo{
+    height: 500px;
+    width: 500px;
+}
