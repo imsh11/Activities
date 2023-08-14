@@ -10,7 +10,7 @@ function Navigation({ isLoaded }){
 	return (
 		<div className='nav-container'>
 			<div className='nav-homeBtn'>
-			<span className="main-page-tooltip">{"Home"}</span>
+			{/* <span className="main-page-tooltip">{"Home"}</span> */}
 				<NavLink exact to="/">
 				<i class="fa-solid fa-house fa-lg" style={{color: "#f2780c"}}></i>
 				</NavLink>
@@ -18,7 +18,7 @@ function Navigation({ isLoaded }){
 			{isLoaded && (
 				<div className='nav-right'>
 					<div className='nav-listBtn'>
-							<span className="main-page-tooltip">{"Place List"}</span>
+							{/* <span className="main-page-tooltip">{"Place List"}</span> */}
 						<button >
 							<NavLink exact to='/user/placeList'>
 							<i class="fa-solid fa-list fa-lg" style={{color: "#f2780c"}}></i>
@@ -26,7 +26,7 @@ function Navigation({ isLoaded }){
 						</button>
 					</div>
 					<div className='nav-cartBtn'>
-					<span className="main-page-tooltip">{"Cart"}</span>
+					{/* <span className="main-page-tooltip">{"Cart"}</span> */}
 						<button className=''>
 							<NavLink exact to='/user/cart'>
 								<i class="fa-solid fa-cart-shopping fa-lg" style={{color: "#f2780c"}}></i>

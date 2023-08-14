@@ -14,6 +14,7 @@ const UpdatePayment = () => {
     const handle = () => {
         dispatch(payment())
         dispatch(getUserCart(user ? user.id : user))
+        return alert("Payment is Complete")
     }
 
     return(
