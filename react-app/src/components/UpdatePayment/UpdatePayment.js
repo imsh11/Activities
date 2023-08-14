@@ -4,12 +4,12 @@ import { getUserCart, payment } from "../../store/cart";
 
 
 const UpdatePayment = () => {
-    console.log('----------updaatePayment')
+    // console.log('----------updaatePayment')
 
     const dispatch = useDispatch()
 
     const user = useSelector(state => state.session.user)
-    console.log(user, '----------paymentUser')
+    // console.log(user, '----------paymentUser')
 
     const handle = () => {
         dispatch(payment())
