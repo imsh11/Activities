@@ -18,7 +18,7 @@ const CurrCart = () => {
     const places = useSelector(state => state.places)
     const cartTotal = useSelector(state => state.cart.Total)
     const userId = useSelector(state => state.session.user)
-    // console.log(cart, userId, places, cartTotal,'--------stateCurr')
+    console.log(cart, userId, places, cartTotal,'--------stateCurr')
 
     useEffect(() =>{
         dispatch(getUserCart(userId ? userId.id : userId))
@@ -38,7 +38,7 @@ const CurrCart = () => {
         }
 
         let cartDetail = Object.values(cart.Items)
-        // console.log(cartDetail, '-------------cartDetail')
+        // console.log(cartDetail, cart.CartOder, '-------------cartDetail')
 
     return(
         <>
@@ -75,7 +75,7 @@ const CurrCart = () => {
             <div> */}
                 {cartDetail.length ?
                 <div>Total: ${cartTotal.total}</div> :
-                <div>0</div>}
+                <div>Total: $0</div>}
             </div>
         </>
 
