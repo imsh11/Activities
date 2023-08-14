@@ -1,0 +1,93 @@
+.main-detail-pg {
+    display: grid;
+    /* justify-content: center; */
+}
+
+.info-container{
+    /* border: solid red; */
+}
+
+.place-detail{
+    /* border: solid orange; */
+}
+
+.detail-review-address{
+    /* border: solid black; */
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.reivew{
+    /* border: solid purple; */
+    /* background-color: purple; */
+    /* display: grid; */
+}
+
+.In-review{
+    /* background-color: bisque; */
+    display: grid;
+    padding-right: 2px;
+    /* justify-content: space-between; */
+}
+
+.no-review{
+    display: flex;
+
+}
+
+.address{
+    /* background-color: gray; */
+    display: grid;
+
+}
+
+.price-detail{
+    margin-top: 20px;
+    border: solid yellow;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    width: 200px;
+    height: 150px;
+    /* align-items: center; */
+    margin: auto;
+    margin-top: 20px;
+
+}
+
+.review-detail{
+    /* background-color: aqua; */
+    display: grid;
+    justify-content: center;
+}
+
+.detail-image{
+    display: flex;
+    justify-content: center;
+
+}
+
+.detail-photo{
+    max-width: 1500px;
+}
+
+.detail-placeList{
+    /* border: solid salmon; */
+}
+
+.detail-review-info{
+    /* border: solid salmon; */
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.detail-single-review{
+    border: solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+}

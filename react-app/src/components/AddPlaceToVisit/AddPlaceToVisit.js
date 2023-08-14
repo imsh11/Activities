@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToPlaceList } from "../../store/placeToVisit";
+import './addPlaceToVisit.css'
 
 
 export default function AddPlace ({place}) {
@@ -45,7 +46,7 @@ export default function AddPlace ({place}) {
 
     return(
         <>
-            <button onClick={toggleModal}>
+            <button className="button1" onClick={toggleModal}>
                 Add to Your List
             </button>
 
@@ -53,7 +54,7 @@ export default function AddPlace ({place}) {
                 <div id="modal">
                     <div id="modal-background" onClick={toggleModal}></div>
                     <div id="modal-content" className="modal-container">
-                        <div>
+                        <div className="addPlaceTo">
                             <h4>Confirm Place</h4>
                             <p>You are adding <b>{place.name}</b> to your Places List</p>
                         </div>
@@ -61,7 +62,7 @@ export default function AddPlace ({place}) {
                             <div>
                                 <label>
                                     <input
-                                        id="status"
+                                        id="quantity"
                                         required
                                         placeholder="write you status within 50 words"
                                         value={status}
@@ -77,11 +78,11 @@ export default function AddPlace ({place}) {
                                         }
                                 </label>
                             </div>
-                            <div>
-                            <button className="modal-button keep-button" onClick={handleAdd}>
+                            <div className="addPlacesButtons">
+                            <button className="modal-button keep-button button1" onClick={handleAdd}>
                                 Add
                             </button>
-                            <button className="modal-button delete-button" onClick={toggleModal}>
+                            <button className="modal-button delete-button button2" onClick={toggleModal}>
                                 Cancle
                             </button>
                             </div>
