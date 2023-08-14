@@ -44,7 +44,10 @@ const CurrCart = () => {
         <>
             <h3>Cart Items</h3>
             <div className="test">
-                User: {userId.lastname}, {userId.firstname}
+                Hello! {userId.lastname}, {userId.firstname}
+            </div>
+            <div>
+                To Checkout Please Click the Payment Button
             </div>
             <div>
                 {cartDetail.map( item => (
@@ -75,7 +78,8 @@ const CurrCart = () => {
             <div> */}
                 {cartDetail.length ?
                 <div>Total: ${cartTotal.total}</div> :
-                <div>Total: $0</div>}
+                <div>Total: $0
+                    <div>Cart is Empty</div></div>}
             </div>
         </>
 

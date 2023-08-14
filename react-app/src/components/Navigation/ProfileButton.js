@@ -41,7 +41,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <i class="fa-solid fa-circle-user fa-lg" style={{color: "#f2780c"}}></i>
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
@@ -54,22 +54,26 @@ function ProfileButton({ user }) {
               </NavLink>
             </li>
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              <button className="button1" onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (
           <>
-            <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
+          <div className="user-logoutBtn">
+            <div className="open-modal-login">
+              <OpenModalButton
+                buttonText="Log In"
+                onItemClick={closeMenu}
+                modalComponent={<LoginFormModal />}
+              />
+            </div>
 
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
+              <OpenModalButton
+                buttonText="Sign Up"
+                onItemClick={closeMenu}
+                modalComponent={<SignupFormModal />}
+              />
+            </div>
           </>
         )}
       </ul>
