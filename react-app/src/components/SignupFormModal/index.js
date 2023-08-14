@@ -100,7 +100,7 @@ function SignupFormModal() {
 						id = "quantity"
 						type="text"
 						value={email}
-						required
+						
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
