@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCart } from "../../store/cart";
 import { getAllPlaces } from "../../store/places";
@@ -14,16 +14,20 @@ const CurrCart = () => {
 
     const dispatch = useDispatch()
 
+    const [isLoaded, setIsLoaded] = useState(false)
+
     const cart = useSelector(state => state.cart)
+    const test  = useSelector(state => state)
     // const cartItemLen = useSelector(state => Object.values(state.cart.Items))
     const places = useSelector(state => state.places)
     const cartTotal = useSelector(state => state.cart.Total)
     const userId = useSelector(state => state.session.user)
-    console.log(cart, userId, places, cartTotal,'--------stateCurr')
+    console.log(cart, userId, places, cartTotal, test,'--------stateCurr')
+    console.log(places, '-------------test')
 
     useEffect(() =>{
         dispatch(getUserCart(userId ? userId.id : userId))
-        dispatch(getAllPlaces())
+        dispatch(getAllPlaces()).then(() => setIsLoaded(true))
     }, [dispatch, userId])
 
     if (!userId){
@@ -38,17 +42,13 @@ const CurrCart = () => {
             )
         }
 
-    if(!Object.values(places).length){
-        return (
-            <p>loading...</p>
-        )
-    }
-
         let cartDetail = Object.values(cart.Items)
         // console.log(cartDetail, cart.CartOder, '-------------cartDetail')
 
     return(
         <>
+        {isLoaded &&(
+        <div className="cart-main-container">
             <h3>Cart Items</h3>
             <div className="test">
                 Hello! {userId.lastname}, {userId.firstname}
@@ -56,6 +56,7 @@ const CurrCart = () => {
             <div>
                 To Checkout Please Click the Payment Button
             </div>
+            {/* {cartDetail.length ? */}
         <div className="columns">
             <div className="item-list">
                 {cartDetail.map( item => (
@@ -66,7 +67,7 @@ const CurrCart = () => {
                         <div>
                             Qunatity {item.quantity}
                             <div>
-                                Total: ${places[item.place_id].price * item.quantity}
+                                {/* Total: ${places[item.place_id].price * item.quantity} */}
                             </div>
                         </div>
                         <div className="cart-Btns">
@@ -80,19 +81,26 @@ const CurrCart = () => {
                     </div>
                 ))}
             </div>
-            <div className="cart-Btns payment">
-            {cartDetail.length ? <div><UpdatePayment /></div> :
-            <div></div>}
-
-                {cartDetail.length ?
+            <div className="payment">
+            {cartDetail.length ?
                 <div>
-                    <div>Cart Total: ${cartTotal.total}</div>
-                    <div>Items({cartDetail.length})</div>
-                </div> :
-                <div>Total: $0
-                    <div>Cart is Empty</div></div>}
+                    <div>
+                        <UpdatePayment />
+                    </div>
+
+                            <div>Cart Total: ${cartTotal.total}</div>
+                            <div>Items({cartDetail.length})</div>
+
+                </div>
+            :
+                        <div>Total: $0
+                        <div>Cart is Empty</div>
+                    {/* </div> */}
+                </div>}
+                </div>
             </div>
         </div>
+        )}
         </>
 
     )

@@ -6,6 +6,10 @@
     margin: 5px;
 }
 
+.cart-main-container{
+    border: solid sandybrown;
+}
+
 .test{
     background-color: aliceblue;
     width: fit-content;
@@ -42,7 +46,9 @@
     width: 100px;
 }
 
-.columns {  display: grid;
+.columns {
+    background-color: bisque;
+    display: grid;
     grid-template-columns: 1.3fr 0.7fr;
     grid-template-rows: 1fr;
     grid-auto-columns: 1fr;
