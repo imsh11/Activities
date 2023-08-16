@@ -97,7 +97,7 @@ const DetailPg = () => {
                 </div>
                 <div>No. of Tickets:
                     {userId ? <ItemQuantityForm id={placeDetail.Place.id} /> :
-                    <button onClick={() => history.push('/login')}>Add to Cart</button>}
+                    <button className="button1" onClick={() => history.push('/login')}>Add to Cart</button>}
                 </div>
                 <div className="detail-placeList">
                     {userId ?
@@ -107,7 +107,7 @@ const DetailPg = () => {
                             <NavLink exact to="/user/placeList"> List</NavLink> </div> :
                             <div><AddPlace place={placeDetail.Place}/></div>}
                         </div> :
-                            <button onClick={() => history.push('/login')}>
+                            <button className="button1" onClick={() => history.push('/login')}>
                             Add to Your List
                         </button>
                     }

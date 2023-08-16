@@ -7,6 +7,7 @@ import Update from "../UpdateItemQuantityModal/UpdateItemQuantityModal";
 import DeleteItemCart from "../ItemDeleteModal/ItemDeleteModal";
 import UpdatePayment from "../UpdatePayment/UpdatePayment";
 import "./currentCart.css"
+import { NavLink } from "react-router-dom/cjs/react-router-dom";
 
 
 const CurrCart = () => {
@@ -27,7 +28,7 @@ const CurrCart = () => {
 
     if (!userId){
         return(
-            <p>Please sign In</p>
+            <p>Please <NavLink exact to='/login'>Sign In</NavLink></p>
             )
     }
 
@@ -36,6 +37,12 @@ const CurrCart = () => {
             <p>Your Cart is Empty</p>
             )
         }
+
+    if(!Object.values(places).length){
+        return (
+            <p>loading...</p>
+        )
+    }
 
         let cartDetail = Object.values(cart.Items)
         // console.log(cartDetail, cart.CartOder, '-------------cartDetail')
@@ -49,21 +56,24 @@ const CurrCart = () => {
             <div>
                 To Checkout Please Click the Payment Button
             </div>
-            <div>
+        <div className="columns">
+            <div className="item-list">
                 {cartDetail.map( item => (
                     <div key={item.id} className="cartList">
-                        Place {item.place_id}
+                        <div>
+                            Tickets For <b>{places[item.place_id].name}</b>
+                        </div>
                         <div>
                             Qunatity {item.quantity}
                             <div>
-                                Total:$
+                                Total: ${places[item.place_id].price * item.quantity}
                             </div>
                         </div>
                         <div className="cart-Btns">
                             <div>
                                 <Update item={item}/>
                             </div>
-                            <div>
+                            <div className="delbtn">
                                 <DeleteItemCart id={item.id} />
                             </div>
                         </div>
@@ -74,13 +84,15 @@ const CurrCart = () => {
             {cartDetail.length ? <div><UpdatePayment /></div> :
             <div></div>}
 
-            {/* </div>
-            <div> */}
                 {cartDetail.length ?
-                <div>Total: ${cartTotal.total}</div> :
+                <div>
+                    <div>Cart Total: ${cartTotal.total}</div>
+                    <div>Items({cartDetail.length})</div>
+                </div> :
                 <div>Total: $0
                     <div>Cart is Empty</div></div>}
             </div>
+        </div>
         </>
 
     )
