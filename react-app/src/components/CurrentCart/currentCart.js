@@ -53,12 +53,12 @@ const CurrCart = () => {
             <div className="cart-main-title">
                 Shopping Cart
             </div>
-            <div className="test">
+            {/* <div className="test">
                 Hello! {userId.lastname}, {userId.firstname}
             </div>
             <div>
                 To Checkout Please Click the Payment Button
-            </div>
+            </div> */}
         {cartDetail.length ?
         <div className="columns">
             <div className="item-list">
@@ -84,16 +84,18 @@ const CurrCart = () => {
                     </div>
                 ))}
             </div>
-            <div className="payment">
-                <div>
-                    <div>
-                        <UpdatePayment />
-                    </div>
+                <div className="payment">
+                    {/* <div> */}
+                        <div className="payBtn">
+                            <UpdatePayment />
+                        </div>
 
-                            <div>Cart Total: ${cartTotal.total}</div>
-                            <div>Items({cartDetail.length})</div>
+                                <div className="payCart">Cart Total: </div>
+                                <div className="payTotal">${cartTotal.total}</div>
+                                <div className="payItem">Items()</div>
+                                <div className="payLength">{cartDetail.length}</div>
 
-                </div>
+                    {/* </div> */}
                 </div>
             </div>
             :
