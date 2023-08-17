@@ -50,14 +50,15 @@ const CurrCart = () => {
         <>
         {isLoaded &&(
         <div className="cart-main-container">
-            <h3>Cart Items</h3>
+            <div className="cart-main-title">
+                Shopping Cart
+            </div>
             <div className="test">
                 Hello! {userId.lastname}, {userId.firstname}
             </div>
             <div>
                 To Checkout Please Click the Payment Button
             </div>
-            {/* {cartDetail.length ? */}
         {cartDetail.length ?
         <div className="columns">
             <div className="item-list">
@@ -84,7 +85,6 @@ const CurrCart = () => {
                 ))}
             </div>
             <div className="payment">
-            {/* {cartDetail.length ? */}
                 <div>
                     <div>
                         <UpdatePayment />

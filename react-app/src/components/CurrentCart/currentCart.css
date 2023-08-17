@@ -87,3 +87,11 @@
     font-weight: 400;
     cursor: pointer;
 }
+
+.cart-main-title {
+    background-color: blue;
+    font-weight: 700;
+    font-size: 50px;
+    
+
+}
