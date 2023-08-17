@@ -47,7 +47,7 @@
 }
 
 .columns {
-    background-color: bisque;
+    /* background-color: bisque; */
     display: grid;
     grid-template-columns: 1.3fr 0.7fr;
     grid-template-rows: 1fr;
@@ -57,3 +57,33 @@
     grid-template-areas:
     ". .";
     }
+
+.empty-cart{
+    /* position: relative; */
+    /* padding-top: ; */
+}
+
+.inner-empty-cart{
+    padding-top: 96px;
+    padding-bottom: 152px;
+}
+
+.empty-cart-text{
+    display: grid;
+    justify-content: space-around;
+}
+
+.empty-cart-button{
+    margin-top: 24px;
+    display: grid;
+    justify-content: space-around;
+}
+
+.start-shopping{
+    background-color: sandybrown;
+    width: 300px;
+    height: 40px;
+    border-radius: 50px;
+    font-weight: 400;
+    cursor: pointer;
+}

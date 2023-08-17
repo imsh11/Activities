@@ -7,12 +7,13 @@ import Update from "../UpdateItemQuantityModal/UpdateItemQuantityModal";
 import DeleteItemCart from "../ItemDeleteModal/ItemDeleteModal";
 import UpdatePayment from "../UpdatePayment/UpdatePayment";
 import "./currentCart.css"
-import { NavLink } from "react-router-dom/cjs/react-router-dom";
+import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom";
 
 
 const CurrCart = () => {
 
     const dispatch = useDispatch()
+    // const history = useHistory()
 
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -57,6 +58,7 @@ const CurrCart = () => {
                 To Checkout Please Click the Payment Button
             </div>
             {/* {cartDetail.length ? */}
+        {cartDetail.length ?
         <div className="columns">
             <div className="item-list">
                 {cartDetail.map( item => (
@@ -67,7 +69,7 @@ const CurrCart = () => {
                         <div>
                             Qunatity {item.quantity}
                             <div>
-                                {/* Total: ${places[item.place_id].price * item.quantity} */}
+                                Total: ${places[item.place_id].price * item.quantity}
                             </div>
                         </div>
                         <div className="cart-Btns">
@@ -82,7 +84,7 @@ const CurrCart = () => {
                 ))}
             </div>
             <div className="payment">
-            {cartDetail.length ?
+            {/* {cartDetail.length ? */}
                 <div>
                     <div>
                         <UpdatePayment />
@@ -92,13 +94,28 @@ const CurrCart = () => {
                             <div>Items({cartDetail.length})</div>
 
                 </div>
-            :
-                        <div>Total: $0
-                        <div>Cart is Empty</div>
-                    {/* </div> */}
-                </div>}
                 </div>
             </div>
+            :
+            <div className="empty-cart">
+                <div className="inner-empty-cart">
+                    <div className="empty-cart-text">
+                        <span>
+                            <span>
+                                You don't have any Items in your cart. Let's get shopping!
+                            </span>
+                        </span>
+                    </div>
+                    <div className="empty-cart-button">
+                        <a href="/">
+                        <button className="start-shopping">
+                            Start shopoing
+                        </button>
+                            </a>
+                    </div>
+                </div>
+            </div>
+            }
         </div>
         )}
         </>
