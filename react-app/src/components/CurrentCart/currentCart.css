@@ -37,13 +37,47 @@
     border-radius: 5px;
     padding: 20px;
     margin: 5px;
+    max-width: 400px;
     margin-left: 30px;
     padding-left: 30px;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 20px 20px;
+    grid-template-areas:
+        "pay pay pay"
+        "cart . total"
+        "item . qty";
 }
 
 .payBtn{
+    grid-area: pay;
     height: 30px;
-    width: 100px;
+    /* max-width: 300px; */
+    /* display: grid; */
+    background-color: aquamarine;
+    margin-left: 30px;
+}
+
+.payCart{
+    grid-area: cart;
+    background-color: aquamarine;
+}
+
+.payTotal{
+    grid-area: total;
+    background-color: aquamarine;
+}
+
+.payItem {
+    grid-area: item;
+    background-color: aquamarine;
+}
+
+.payQty {
+    grid-area: qty;
+    background-color: aquamarine;
 }
 
 .columns {
@@ -97,3 +131,4 @@
     margin-bottom: 10px;
 
 }
+

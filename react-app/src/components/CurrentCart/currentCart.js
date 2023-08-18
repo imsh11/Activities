@@ -92,8 +92,8 @@ const CurrCart = () => {
 
                                 <div className="payCart">Cart Total: </div>
                                 <div className="payTotal">${cartTotal.total}</div>
-                                <div className="payItem">Items()</div>
-                                <div className="payLength">{cartDetail.length}</div>
+                                <div className="payItem">Items:</div>
+                                <div className="payQty">{cartDetail.length}</div>
 
                     {/* </div> */}
                 </div>
