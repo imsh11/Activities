@@ -64,22 +64,22 @@ const CurrCart = () => {
             <div className="item-list">
                 {cartDetail.map( item => (
                     <div key={item.id} className="cartList">
-                        <div>
+                        <div className="main-heading">
                             Tickets For <b>{places[item.place_id].name}</b>
                         </div>
-                        <div>
+                        <div className="qty">
                             Qunatity {item.quantity}
-                            <div>
+                        </div>
+                            <div className="item-total">
                                 Total: ${places[item.place_id].price * item.quantity}
                             </div>
-                        </div>
-                        <div className="cart-Btns">
-                            <div>
+                        {/* <div className="cart-Btns"> */}
+                            <div className="updateBtn">
                                 <Update item={item}/>
                             </div>
                             <div className="delbtn">
                                 <DeleteItemCart id={item.id} />
-                            </div>
+                            {/* </div> */}
                         </div>
                     </div>
                 ))}

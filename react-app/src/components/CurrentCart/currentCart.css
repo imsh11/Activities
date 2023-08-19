@@ -4,6 +4,40 @@
     border-radius: 5px;
     padding: 10px;
     margin: 5px;
+        display: grid;
+        grid-auto-columns: 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 20px 20px;
+        grid-template-areas:
+        "main main main"
+        "qtty update del"
+        "total total total";
+}
+
+.main-heading{
+    grid-area: main;
+    border: solid saddlebrown;
+}
+
+.qty{
+    grid-area: qtty;
+    border: solid seagreen;
+}
+
+.item-total{
+    grid-area: total;
+    border: solid slateblue;
+}
+
+.updateBtn{
+    grid-area: update;
+    background-color: burlywood;
+}
+
+.delbtn{
+    grid-area: del;
+    background-color: aqua;
 }
 
 .cart-main-container{
@@ -26,11 +60,6 @@
     ". del";
 }
 
-.delbtn{
-    grid-area: del;
-    background-color: aqua;
-}
-
 .payment{
     border: solid black;
     border-width: 1px;
@@ -38,6 +67,7 @@
     padding: 20px;
     margin: 5px;
     max-width: 400px;
+    max-height: 100px;
     margin-left: 30px;
     padding-left: 30px;
     display: grid;
@@ -131,4 +161,5 @@
     margin-bottom: 10px;
 
 }
+
 
