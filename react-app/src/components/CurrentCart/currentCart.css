@@ -1,6 +1,6 @@
 .cartList{
-    border: solid black;
-    border-width: 1px;
+    border: solid #e5e5e5;
+    border-width: 1px ;
     border-radius: 5px;
     padding: 10px;
     margin: 5px;
@@ -17,37 +17,58 @@
 
 .main-heading{
     grid-area: main;
-    border: solid saddlebrown;
+    /* border: solid saddlebrown; */
+    display: grid;
+    /* justify-content: space-around; */
+    margin-top: 20px;
+    margin-left: 10px;
+    padding-left: 5rem;
+    font-weight: 700;
+    font-size: 20px;
 }
 
 .qty{
     grid-area: qtty;
-    border: solid seagreen;
+    /* border: solid orange; */
+    display: grid;
+    justify-content: center;
 }
 
 .item-total{
     grid-area: total;
-    border: solid slateblue;
+    /* border: solid slateblue; */
+    display: grid;
+    /* justify-content: space-around; */
+    padding-right: 7%;
+    justify-items: end;
+    font-weight: 700;
+    align-items: center;
 }
 
 .updateBtn{
     grid-area: update;
-    background-color: burlywood;
+    /* background-color: burlywood; */
+    display: grid;
+    /* justify-content: space-around; */
+    justify-items: end;
 }
 
 .delbtn{
     grid-area: del;
-    background-color: aqua;
+    /* background-color: aqua; */
+    display: grid;
+    /* justify-items: end; */
+    justify-items: center;
 }
 
 .cart-main-container{
-    border: solid sandybrown;
+    /* border: solid sandybrown; */
 }
 
-.test{
+/* .test{
     background-color: aliceblue;
     width: fit-content;
-}
+} */
 
 .cart-Btns{
     /* background-color: blue; */
@@ -61,24 +82,27 @@
 }
 
 .payment{
-    border: solid black;
+    border: solid #e5e5e5;
     border-width: 1px;
     border-radius: 5px;
     padding: 20px;
     margin: 5px;
     max-width: 400px;
     max-height: 100px;
+    position: sticky;
+    top: 1rem;
+    /* min-height: fit-content; */
     margin-left: 30px;
     padding-left: 30px;
     display: grid;
     grid-auto-columns: 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 20px 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.9rem 20px;
     grid-template-areas:
-        "pay pay pay"
-        "cart . total"
-        "item . qty";
+        "pay pay"
+        "cart total"
+        "item qty";
 }
 
 .payBtn{
@@ -86,28 +110,32 @@
     height: 30px;
     /* max-width: 300px; */
     /* display: grid; */
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     margin-left: 30px;
 }
 
 .payCart{
     grid-area: cart;
-    background-color: aquamarine;
+    /* background-color: antiquewhite; */
+    padding-left: 50%;
 }
 
 .payTotal{
     grid-area: total;
-    background-color: aquamarine;
+    /* background-color: blueviolet; */
+    padding-left: 45%;
 }
 
 .payItem {
     grid-area: item;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
+    padding-left: 50%;
 }
 
 .payQty {
     grid-area: qty;
-    background-color: aquamarine;
+    /* background-color: lightcoral; */
+    padding-left: 50%;
 }
 
 .columns {

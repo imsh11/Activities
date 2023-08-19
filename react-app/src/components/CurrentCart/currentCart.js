@@ -65,7 +65,9 @@ const CurrCart = () => {
                 {cartDetail.map( item => (
                     <div key={item.id} className="cartList">
                         <div className="main-heading">
-                            Tickets For <b>{places[item.place_id].name}</b>
+                            <a href={`/place/${item.place_id}`}>
+                                Tickets For {places[item.place_id].name}
+                            </a>
                         </div>
                         <div className="qty">
                             Qunatity {item.quantity}
