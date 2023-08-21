@@ -217,19 +217,24 @@
     overflow-x: scroll;
     overflow-y: hidden;
     padding: 20px;
+    /* white-space: nowrap; */
 }
+
+/* .row-card:hover{
+    overflow-x: scroll;
+} */
 
 .row-card ::-webkit-scrollbar{
     display: none;
 }
 
-/* .placeList-selected{
+.placeList-selected{
     max-height: 650px;
-} */
+}
 
-/* .placeList-selected:hover{
+.placeList-selected:hover{
     transform: scale(1.09);
-} */
+}
 
 .placeList-each:hover{
     transform: scale(1.08);
