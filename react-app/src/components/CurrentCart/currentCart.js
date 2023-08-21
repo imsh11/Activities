@@ -8,6 +8,14 @@ import DeleteItemCart from "../ItemDeleteModal/ItemDeleteModal";
 import UpdatePayment from "../UpdatePayment/UpdatePayment";
 import "./currentCart.css"
 import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom";
+import { getPlaceToVisit } from "../../store/placeToVisit";
+import waterimg from '../../images/water-park-photo.jpeg'
+import fiveFlags from '../../images/fair-fairground-ferris-wheel-carousel-40547.jpeg'
+import bronxZoo from '../../images/bronx-zoo.png'
+import natural from '../../images/natural-history-museum.jpg'
+import splish from '../../images/water-park-2.jpg'
+import aqua from '../../images/aquarium.jpeg'
+import funStarts from '../../images/fun-starts-here.jpg'
 
 
 const CurrCart = () => {
@@ -18,18 +26,21 @@ const CurrCart = () => {
     const [isLoaded, setIsLoaded] = useState(false)
 
     const cart = useSelector(state => state.cart)
-    const test  = useSelector(state => state)
+    const placeToVisit  = useSelector(state => state.placesList)
     // const cartItemLen = useSelector(state => Object.values(state.cart.Items))
     const places = useSelector(state => state.places)
     const cartTotal = useSelector(state => state.cart.Total)
     const userId = useSelector(state => state.session.user)
-    console.log(cart, userId, places, cartTotal, test,'--------stateCurr')
-    console.log(places, '-------------test')
+    console.log(cart, userId, places, cartTotal, placeToVisit,'--------stateCurr')
+    console.log(placeToVisit, '-------------test')
 
     useEffect(() =>{
         dispatch(getUserCart(userId ? userId.id : userId))
         dispatch(getAllPlaces()).then(() => setIsLoaded(true))
+        dispatch(getPlaceToVisit())
     }, [dispatch, userId])
+
+    let Images = [fiveFlags, fiveFlags, waterimg, bronxZoo, natural, splish, aqua]
 
     if (!userId){
         return(
@@ -53,12 +64,6 @@ const CurrCart = () => {
             <div className="cart-main-title">
                 Shopping Cart
             </div>
-            {/* <div className="test">
-                Hello! {userId.lastname}, {userId.firstname}
-            </div>
-            <div>
-                To Checkout Please Click the Payment Button
-            </div> */}
         {cartDetail.length ?
         <div className="columns">
             <div className="item-list">
@@ -75,19 +80,16 @@ const CurrCart = () => {
                             <div className="item-total">
                                 Total: ${places[item.place_id].price * item.quantity}
                             </div>
-                        {/* <div className="cart-Btns"> */}
                             <div className="updateBtn">
                                 <Update item={item}/>
                             </div>
                             <div className="delbtn">
                                 <DeleteItemCart id={item.id} />
-                            {/* </div> */}
                         </div>
                     </div>
                 ))}
             </div>
                 <div className="payment">
-                    {/* <div> */}
                         <div className="payBtn">
                             <UpdatePayment />
                         </div>
@@ -117,6 +119,42 @@ const CurrCart = () => {
                         </button>
                             </a>
                     </div>
+                    {Object.values(placeToVisit).length ?
+                    <div className="placeList-main">
+                        <div>
+                            From Your Place List
+                        </div>
+                        <div className="row-card">
+                        {Object.values(placeToVisit).map(place => (
+                            <div key={place.id} className="placeList-each placeList-selected">
+                                {/* {console.log(place, '------------mapPlaceToVisit')} */}
+                                <div>
+                                    <img className="place-img" src={Images[place.place_id]}
+                                    alt={places[place.place_id]} />
+                                </div>
+                                <div>
+                                    {places[place.place_id].name}
+                                </div>
+                                <div>
+                                    Price: ${places[place.place_id].price}
+                                </div>
+                                <div>
+                                    Location {places[place.place_id].address}, {
+                                        places[place.place_id].city}, {
+                                        places[place.place_id].state}
+                                </div>
+                            </div>
+                        ))}
+                        </div>
+                    </div>
+                    :
+                    <div>
+                        Your Place List is empty
+                    </div>
+                    }
+                    {/* <div>
+                        Your Place List is empty
+                    </div> */}
                 </div>
             </div>
             }
