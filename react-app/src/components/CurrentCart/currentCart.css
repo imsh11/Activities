@@ -191,4 +191,46 @@
     padding-bottom: 20px;
 }
 
+.placeList-main{
+    margin-left: 20px;
+    /* color: wheat; */
+}
 
+.placeList-each{
+    background-color: antiquewhite;
+    border: solid sandybrown;
+    width: 100%;
+    object-fit: contain;
+    /* max-height: 100px; */
+    max-height: 400px;
+    margin-right: 10px;
+    transition: tranform 450ms;
+}
+
+.place-img{
+    width: 200px;
+    height: 200px;
+}
+
+.row-card{
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 20px;
+}
+
+.row-card ::-webkit-scrollbar{
+    display: none;
+}
+
+/* .placeList-selected{
+    max-height: 650px;
+} */
+
+/* .placeList-selected:hover{
+    transform: scale(1.09);
+} */
+
+.placeList-each:hover{
+    transform: scale(1.08);
+}
