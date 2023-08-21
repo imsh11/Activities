@@ -126,6 +126,7 @@ const CurrCart = () => {
                         </div>
                         <div className="row-card">
                         {Object.values(placeToVisit).map(place => (
+                            // <a href={`/place/${place.place_id}`}>
                             <div key={place.id} className="placeList-each placeList-selected">
                                 {/* {console.log(place, '------------mapPlaceToVisit')} */}
                                 <div>
@@ -144,6 +145,7 @@ const CurrCart = () => {
                                         places[place.place_id].state}
                                 </div>
                             </div>
+                            // </a>
                         ))}
                         </div>
                     </div>
@@ -152,9 +154,6 @@ const CurrCart = () => {
                         Your Place List is empty
                     </div>
                     }
-                    {/* <div>
-                        Your Place List is empty
-                    </div> */}
                 </div>
             </div>
             }
