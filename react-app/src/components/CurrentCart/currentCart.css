@@ -231,6 +231,7 @@
     max-width: 800px;
     /* background-color: aqua; */
     padding-left: 300px;
+    /* margin-left: 300px; */
     position: relative;
     display: flex;
     align-items: center;
@@ -241,8 +242,9 @@
     /* background-color: blue; */
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    width: 100%;
+    /* justify-content: space-around; */
+    /* padding-left: 500px; */
+    width: fit-content;
     height: 100%;
     overflow-x: scroll;
     white-space: nowrap;
@@ -273,6 +275,8 @@
 .place-name-empty-cart{
     font-weight: 400;
     font-size: 20px;
+    /* width: fit-content; */
+    /* background-color: #f0b52b; */
     /* text-decoration: none; */
     padding-left: 2px;
     padding-bottom: 5px;
