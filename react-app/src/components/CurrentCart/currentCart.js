@@ -136,7 +136,7 @@ const CurrCart = () => {
                         </div>
                         <div className="placeList-inner">
                             <div className="row-card">
-                            <MdChevronLeft className="arrowBtn" onClick={slideLeft} size={60}/>
+                            <MdChevronLeft className="arrowBtn" onClick={slideLeft} size={40}/>
                                 <div id="slider" className="row-inner">
                             {Object.values(placeToVisit).map(place => (
                                 <>
@@ -164,7 +164,7 @@ const CurrCart = () => {
                             ))}
                                 </div>
                                 {/* </div> */}
-                                <MdChevronRight className="arrowBtn" onClick={slideRight} size={60}/>
+                                <MdChevronRight className="arrowBtn" onClick={slideRight} size={40}/>
                             </div>
                         </div>
                     </div>
