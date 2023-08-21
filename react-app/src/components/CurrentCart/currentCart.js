@@ -131,37 +131,33 @@ const CurrCart = () => {
                     </div>
                     {Object.values(placeToVisit).length ?
                     <div className="placeList-main">
-                        <div>
+                        <div className="empty-cart-main-heading">
                             From Your Place List
                         </div>
                         <div className="row-card">
                         <MdChevronLeft className="arrowBtn" onClick={slideLeft} size={40}/>
                             <div id="slider" className="row-inner">
-
-                                {/* <div className="test">
-                                    <MdChevronLeft size={40}/> */}
                         {Object.values(placeToVisit).map(place => (
                             <>
                             <div key={place.id} className="placeList-each placeList-selected">
-
-                                    <a href={`/place/${place.place_id}`}>
                                         {/* {console.log(place, '------------mapPlaceToVisit')} */}
                                         <div>
                                             <img className="place-img" src={Images[place.place_id]}
                                             alt={places[place.place_id]} />
                                         </div>
-                                        <div>
-                                            {places[place.place_id].name}
-                                        </div>
-                                        <div>
+                                        <a href={`/place/${place.place_id}`}>
+                                            <div className="place-name-empty-cart">
+                                                {places[place.place_id].name}
+                                            </div>
+                                        </a>
+                                        <div className="place-price-empty-cart">
                                             Price: ${places[place.place_id].price}
                                         </div>
-                                        <div>
+                                        {/* <div>
                                             Location {places[place.place_id].address}, {
                                                 places[place.place_id].city}, {
                                                 places[place.place_id].state}
-                                        </div>
-                                    </a>
+                                        </div> */}
                             </div>
                         </>
                         ))}
@@ -171,7 +167,7 @@ const CurrCart = () => {
                         </div>
                     </div>
                     :
-                    <div>
+                    <div className="empty-cart-main-heading">
                         Your Place List is empty
                     </div>
                     }
