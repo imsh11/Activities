@@ -134,36 +134,38 @@ const CurrCart = () => {
                         <div className="empty-cart-main-heading">
                             From Your Place List
                         </div>
-                        <div className="row-card">
-                        <MdChevronLeft className="arrowBtn" onClick={slideLeft} size={40}/>
-                            <div id="slider" className="row-inner">
-                        {Object.values(placeToVisit).map(place => (
-                            <>
-                            <div key={place.id} className="placeList-each placeList-selected">
-                                        {/* {console.log(place, '------------mapPlaceToVisit')} */}
-                                        <div>
-                                            <img className="place-img" src={Images[place.place_id]}
-                                            alt={places[place.place_id]} />
-                                        </div>
-                                        <a href={`/place/${place.place_id}`}>
-                                            <div className="place-name-empty-cart">
-                                                {places[place.place_id].name}
+                        <div className="placeList-inner">
+                            <div className="row-card">
+                            <MdChevronLeft className="arrowBtn" onClick={slideLeft} size={60}/>
+                                <div id="slider" className="row-inner">
+                            {Object.values(placeToVisit).map(place => (
+                                <>
+                                <div key={place.id} className="placeList-each placeList-selected">
+                                            {/* {console.log(place, '------------mapPlaceToVisit')} */}
+                                            <div>
+                                                <img className="place-img" src={Images[place.place_id]}
+                                                alt={places[place.place_id]} />
                                             </div>
-                                        </a>
-                                        <div className="place-price-empty-cart">
-                                            Price: ${places[place.place_id].price}
-                                        </div>
-                                        {/* <div>
-                                            Location {places[place.place_id].address}, {
-                                                places[place.place_id].city}, {
-                                                places[place.place_id].state}
-                                        </div> */}
+                                            <a href={`/place/${place.place_id}`}>
+                                                <div className="place-name-empty-cart">
+                                                    {places[place.place_id].name}
+                                                </div>
+                                            </a>
+                                            <div className="place-price-empty-cart">
+                                                Price: ${places[place.place_id].price}
+                                            </div>
+                                            {/* <div>
+                                                Location {places[place.place_id].address}, {
+                                                    places[place.place_id].city}, {
+                                                    places[place.place_id].state}
+                                            </div> */}
+                                </div>
+                            </>
+                            ))}
+                                </div>
+                                {/* </div> */}
+                                <MdChevronRight className="arrowBtn" onClick={slideRight} size={60}/>
                             </div>
-                        </>
-                        ))}
-                            </div>
-                            {/* </div> */}
-                            <MdChevronRight className="arrowBtn" onClick={slideRight} size={40}/>
                         </div>
                     </div>
                     :
