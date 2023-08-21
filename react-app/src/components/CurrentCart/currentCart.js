@@ -15,7 +15,7 @@ import bronxZoo from '../../images/bronx-zoo.png'
 import natural from '../../images/natural-history-museum.jpg'
 import splish from '../../images/water-park-2.jpg'
 import aqua from '../../images/aquarium.jpeg'
-import funStarts from '../../images/fun-starts-here.jpg'
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 
 
 const CurrCart = () => {
@@ -56,6 +56,16 @@ const CurrCart = () => {
 
         let cartDetail = Object.values(cart.Items)
         // console.log(cartDetail, cart.CartOder, '-------------cartDetail')
+
+        const slideLeft = () => {
+            let slider = document.getElementById('slider')
+            slider.scrollLeft = slider.scrollLeft - 100
+        }
+
+        const slideRight = () => {
+            let slider = document.getElementById('slider')
+            slider.scrollLeft = slider.scrollLeft + 100
+        }
 
     return(
         <>
@@ -125,28 +135,39 @@ const CurrCart = () => {
                             From Your Place List
                         </div>
                         <div className="row-card">
+                        <MdChevronLeft className="arrowBtn" onClick={slideLeft} size={40}/>
+                            <div id="slider" className="row-inner">
+
+                                {/* <div className="test">
+                                    <MdChevronLeft size={40}/> */}
                         {Object.values(placeToVisit).map(place => (
-                            // <a href={`/place/${place.place_id}`}>
+                            <>
                             <div key={place.id} className="placeList-each placeList-selected">
-                                {/* {console.log(place, '------------mapPlaceToVisit')} */}
-                                <div>
-                                    <img className="place-img" src={Images[place.place_id]}
-                                    alt={places[place.place_id]} />
-                                </div>
-                                <div>
-                                    {places[place.place_id].name}
-                                </div>
-                                <div>
-                                    Price: ${places[place.place_id].price}
-                                </div>
-                                <div>
-                                    Location {places[place.place_id].address}, {
-                                        places[place.place_id].city}, {
-                                        places[place.place_id].state}
-                                </div>
+
+                                    <a href={`/place/${place.place_id}`}>
+                                        {/* {console.log(place, '------------mapPlaceToVisit')} */}
+                                        <div>
+                                            <img className="place-img" src={Images[place.place_id]}
+                                            alt={places[place.place_id]} />
+                                        </div>
+                                        <div>
+                                            {places[place.place_id].name}
+                                        </div>
+                                        <div>
+                                            Price: ${places[place.place_id].price}
+                                        </div>
+                                        <div>
+                                            Location {places[place.place_id].address}, {
+                                                places[place.place_id].city}, {
+                                                places[place.place_id].state}
+                                        </div>
+                                    </a>
                             </div>
-                            // </a>
+                        </>
                         ))}
+                            </div>
+                            {/* </div> */}
+                            <MdChevronRight className="arrowBtn" onClick={slideRight} size={40}/>
                         </div>
                     </div>
                     :
