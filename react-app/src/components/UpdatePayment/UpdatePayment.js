@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCart, payment } from "../../store/cart";
+import "./UpdatePayment.css"
 
 
 const UpdatePayment = () => {
@@ -19,9 +20,11 @@ const UpdatePayment = () => {
 
     return(
         <>
-            <button className="button1 payBtn" onClick={handle}>
+        <div className="payBtn-container">
+            <button className="button1 payBtn1" onClick={handle}>
                 Payment
             </button>
+        </div>
         </>
     )
 }
