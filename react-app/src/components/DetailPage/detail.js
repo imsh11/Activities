@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { getDetailByPlaceId } from "../../store/places";
@@ -12,22 +12,27 @@ import natural from '../../images/natural-history-museum.jpg'
 import splish from '../../images/water-park-2.jpg'
 import aqua from '../../images/aquarium.jpeg'
 import "./detail.css"
+import { getUserCart } from "../../store/cart";
 
 const DetailPg = () => {
 
     const dispatch = useDispatch()
     const history = useHistory()
 
+    const [isLoaded, setIsLoaded] = useState(false)
+
     const {id} = useParams()
     const placeDetail = useSelector(state => state.places)
     const userId = useSelector(state => state.session.user)
     const placeVisitList = useSelector(state => state.placesList)
-    console.log((placeDetail), id, typeof(id),'--------stateID')
+    const cart = useSelector(state => state.cart)
+    console.log((placeDetail), id, typeof(id), cart,'--------stateID')
     console.log(placeDetail.Reviews, placeVisitList, userId, '------------reviews')
 
     useEffect(() => {
         dispatch(getDetailByPlaceId(id))
         dispatch(getPlaceToVisit())
+        dispatch(getUserCart(userId ? userId.id : userId)).then(() => setIsLoaded(true))
     }, [dispatch, userId])
 
     if(Object.values(placeDetail).length === 0 || !placeDetail.Reviews){
@@ -53,9 +58,25 @@ const DetailPg = () => {
 
     let Images = [fiveFlags, fiveFlags, waterimg, bronxZoo, natural, splish, aqua]
 
+    //checking if place already exists in the cart
+    let placeArr = []
+
+    if(isLoaded){
+        if(Object.values(cart.Items).length){
+        Object.values(cart.Items).map(ele => {
+            placeArr.push(ele.place_id)
+        })
+
+    }
+    }
+
+    console.log(placeArr, '---------placeArr')
+
+
 
     return(
         <>
+        {isLoaded &&
         <div className="main-detail-pg">
             <div className="info-container">
                 <div className="place-detail">
@@ -95,8 +116,18 @@ const DetailPg = () => {
                 <div>
                         Price: ${placeDetail.Place.price} per Ticket
                 </div>
-                <div>No. of Tickets:
-                    {userId ? <ItemQuantityForm id={placeDetail.Place.id} /> :
+                <div>
+                    {userId ? (placeArr.includes(placeDetail.Place.id) ?
+                        <div>
+                            Item already exists in your Cart
+                        </div>
+                    // <ItemQuantityForm id={placeDetail.Place.id} />
+                    :
+                        <div>
+                            No. of Tickets:
+                            <ItemQuantityForm id={placeDetail.Place.id} />
+                        </div>
+                    ) :
                     <button className="button1" onClick={() => history.push('/login')}>Add to Cart</button>}
                 </div>
                 <div className="detail-placeList">
@@ -139,6 +170,7 @@ const DetailPg = () => {
                 ))}
             </div>
         </div>
+        }
         </>
     )
 }
