@@ -1,0 +1,13 @@
+.payBtn1{
+    width: 75%;
+    min-width: fit-content;
+    /* display: grid; */
+    /* align-items: center; */
+    border-radius: 15px;
+}
+
+.payBtn-container{
+    display: grid;
+    justify-items: center;
+    /* border-radius: 15px; */
+}
