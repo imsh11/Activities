@@ -139,7 +139,7 @@ const CurrCart = () => {
                             <MdChevronLeft className="arrowBtn" onClick={slideLeft} size={40}/>
                                 <div id="slider" className="row-inner">
                             {Object.values(placeToVisit).map(place => (
-                                <>
+                                <div key={place.id}>
                                 <div key={place.id} className="placeList-each placeList-selected">
                                             {/* {console.log(place, '------------mapPlaceToVisit')} */}
                                             <div>
@@ -160,7 +160,7 @@ const CurrCart = () => {
                                                     places[place.place_id].state}
                                             </div> */}
                                 </div>
-                            </>
+                            </div>
                             ))}
                                 </div>
                                 {/* </div> */}
