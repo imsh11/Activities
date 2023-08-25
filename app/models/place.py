@@ -15,6 +15,11 @@ class Place(db.Model, UserMixin):
     state = db.Column(db.String(50), nullable=False)
     product = db.Column(db.String(50), nullable=False)
     price = db.Column(db.Float, nullable=False)
+    img1 = db.Column(db.String(), nullable=False)
+    img2 = db.Column(db.String(), nullable=False)
+    img3 = db.Column(db.String(), nullable=False)
+    img4 = db.Column(db.String(), nullable=False)
+    img5 = db.Column(db.String(), nullable=False)
     activity_type = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.String(50), default=datetime.utcnow)
     updated_at = db.Column(db.String(50), default=datetime.utcnow)
@@ -32,6 +37,11 @@ class Place(db.Model, UserMixin):
             'state': self.state,
             'product': self.product,
             'price': self.price,
+            'img1': self.img1,
+            'img2': self.img2,
+            'img3': self.img3,
+            'img4': self.img4,
+            'img5': self.img5,
             'activity_type': self.activity_type,
             'created_at': self.created_at,
             'updated_at': self.updated_at

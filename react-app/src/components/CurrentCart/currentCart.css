@@ -313,5 +313,8 @@ a:hover .place-name-empty-cart{
     font-size: 25px;
     padding-top: 20px;
     margin-top: 50px;
-    /* border: solid #e5e5e5; */
+}
+
+.cart-suggestion-box{
+    background-color: darkorchid;
 }

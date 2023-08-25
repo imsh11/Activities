@@ -57,6 +57,7 @@ const CurrCart = () => {
         let cartDetail = Object.values(cart.Items)
         // console.log(cartDetail, cart.CartOder, '-------------cartDetail')
 
+        //functions for left and right click
         const slideLeft = () => {
             let slider = document.getElementById('slider')
             slider.scrollLeft = slider.scrollLeft - 100
@@ -67,6 +68,11 @@ const CurrCart = () => {
             slider.scrollLeft = slider.scrollLeft + 100
         }
 
+    let activityType = []
+    let placeInCartId = []
+
+    console.log(placeInCartId, '---------placeIN-------')
+
     return(
         <>
         {isLoaded &&(
@@ -75,10 +81,13 @@ const CurrCart = () => {
                 Shopping Cart
             </div>
         {cartDetail.length ?
+        <>
         <div className="columns">
             <div className="item-list">
                 {cartDetail.map( item => (
-                    <div key={item.id} className="cartList">
+                <div key={item.id} className="cartList">
+                        {/* {placeInCartId.push(item.place_id)} */}
+                        {console.log(item, '---------item---------')}
                         <div className="main-heading">
                             <a href={`/place/${item.place_id}`}>
                                 Tickets For {places[item.place_id].name}
@@ -103,15 +112,16 @@ const CurrCart = () => {
                         <div className="payBtn">
                             <UpdatePayment />
                         </div>
-
                                 <div className="payCart">Cart Total: </div>
                                 <div className="payTotal">${cartTotal.total}</div>
                                 <div className="payItem">Items:</div>
                                 <div className="payQty">{cartDetail.length}</div>
-
-                    {/* </div> */}
                 </div>
             </div>
+            <div className="cart-suggestion-box">
+                Suggestions
+            </div>
+            </>
             :
             <div className="empty-cart">
                 <div className="inner-empty-cart">
@@ -140,7 +150,7 @@ const CurrCart = () => {
                                 <div id="slider" className="row-inner">
                             {Object.values(placeToVisit).map(place => (
                                 <div key={place.id}>
-                                <div key={place.id} className="placeList-each placeList-selected">
+                                <div className="placeList-each placeList-selected">
                                             {/* {console.log(place, '------------mapPlaceToVisit')} */}
                                             <div>
                                                 <img className="place-img" src={Images[place.place_id]}
@@ -154,16 +164,10 @@ const CurrCart = () => {
                                             <div className="place-price-empty-cart">
                                                 Price: ${places[place.place_id].price}
                                             </div>
-                                            {/* <div>
-                                                Location {places[place.place_id].address}, {
-                                                    places[place.place_id].city}, {
-                                                    places[place.place_id].state}
-                                            </div> */}
                                 </div>
                             </div>
                             ))}
                                 </div>
-                                {/* </div> */}
                                 <MdChevronRight className="arrowBtn" onClick={slideRight} size={40}/>
                             </div>
                         </div>
