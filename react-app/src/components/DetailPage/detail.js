@@ -64,9 +64,7 @@ const DetailPg = () => {
     //checking if place already exists in the cart
     let placeArr = []
 
-    //if user exsist
-    // userId
-    if(userId){
+    if(Object.values(cart).length){
         if(Object.values(cart.Items).length){
         Object.values(cart.Items).map(ele => {
             placeArr.push(ele.place_id)
@@ -81,7 +79,6 @@ const DetailPg = () => {
 
     return(
         <>
-        {/* {isLoaded && */}
         <div className="main-detail-pg">
             <div className="info-container">
                 <div className="place-detail">
@@ -114,7 +111,8 @@ const DetailPg = () => {
                 </div>
                 </div>
                 <div className="detail-image">
-                    <img className="detail-photo" src={Images[placeDetail.Place.id]} alt="parkImg" />
+                    {/* <img className="detail-photo" src={Images[placeDetail.Place.id]} alt="parkImg" /> */}
+                    <img className="detail-photo" src={placeDetail.Place.img1} alt="parkImg" />
                 </div>
 
             <div className="price-detail">
@@ -175,7 +173,7 @@ const DetailPg = () => {
                 ))}
             </div>
         </div>
-        // }
+
         </>
     )
 }
