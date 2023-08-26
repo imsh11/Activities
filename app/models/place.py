@@ -13,6 +13,7 @@ class Place(db.Model, UserMixin):
     address = db.Column(db.String(50), nullable=False)
     city = db.Column(db.String(50), nullable=False)
     state = db.Column(db.String(50), nullable=False)
+    zipcode = db.Column(db.String(), nullable=False)
     product = db.Column(db.String(50), nullable=False)
     price = db.Column(db.Float, nullable=False)
     img1 = db.Column(db.String(), nullable=False)
@@ -35,6 +36,7 @@ class Place(db.Model, UserMixin):
             'address': self.address,
             'city': self.city,
             'state': self.state,
+            'zipcode': self.zipcode,
             'product': self.product,
             'price': self.price,
             'img1': self.img1,
