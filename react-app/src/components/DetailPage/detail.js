@@ -31,8 +31,11 @@ const DetailPg = () => {
 
     useEffect(() => {
         dispatch(getDetailByPlaceId(id))
-        dispatch(getPlaceToVisit())
-        dispatch(getUserCart(userId ? userId.id : userId)).then(() => setIsLoaded(true))
+        if(userId){
+            dispatch(getPlaceToVisit())
+            dispatch(getUserCart(userId ? userId.id : userId))
+            // .then(() => setIsLoaded(true))
+        }
     }, [dispatch, userId])
 
     if(Object.values(placeDetail).length === 0 || !placeDetail.Reviews){
@@ -61,7 +64,9 @@ const DetailPg = () => {
     //checking if place already exists in the cart
     let placeArr = []
 
-    if(isLoaded){
+    //if user exsist
+    // userId
+    if(userId){
         if(Object.values(cart.Items).length){
         Object.values(cart.Items).map(ele => {
             placeArr.push(ele.place_id)
@@ -76,7 +81,7 @@ const DetailPg = () => {
 
     return(
         <>
-        {isLoaded &&
+        {/* {isLoaded && */}
         <div className="main-detail-pg">
             <div className="info-container">
                 <div className="place-detail">
@@ -170,7 +175,7 @@ const DetailPg = () => {
                 ))}
             </div>
         </div>
-        }
+        // }
         </>
     )
 }
