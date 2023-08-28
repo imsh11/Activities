@@ -55,7 +55,7 @@ const CurrCart = () => {
         }
 
         let cartDetail = Object.values(cart.Items)
-        // console.log(cartDetail, cart.CartOder, '-------------cartDetail')
+        console.log(cartDetail, cart.CartOder, '-------------cartDetail')
 
         //functions for left and right click
         const slideLeft = () => {
@@ -70,8 +70,49 @@ const CurrCart = () => {
 
     let activityType = []
     let placeInCartId = []
+    let suggestedPlaces = []
 
-    console.log(placeInCartId, '---------placeIN-------')
+    //place_id in cart gets pushed to placeInCartId
+    if(cartDetail.length){
+        cartDetail.map( item => {
+            placeInCartId.push(item.place_id)
+        })
+    }
+
+    //activity_type gets added to activityType
+    if(placeInCartId.length && isLoaded){
+        placeInCartId.forEach(place_id => {
+            activityType.push(places[place_id].activity_type)
+        })
+    }
+
+    //search place based on activity_type from activityType and add match
+    //places to suggested places
+    if(activityType.length){
+        for( let i=0; i<activityType.length; i++){
+            // suggestedPlaces.push(activityType[i])
+            Object.values(places).forEach(pla =>{
+                if(activityType[i] === pla.activity_type){
+                    suggestedPlaces.push(pla)
+                }
+            })
+        }
+    }
+
+    //splicing the place that is in cart
+    if(suggestedPlaces.length){
+        placeInCartId.forEach((id, i=0) =>{
+            suggestedPlaces.forEach(place =>{
+                if(place.id === id){
+                    console.log('-----------------ture-----')
+                    suggestedPlaces.splice(i, 1)
+                }
+            })
+            i++
+        })
+    }
+
+    console.log(placeInCartId, activityType, suggestedPlaces, typeof(placeInCartId[0]), '---------placeIN-------')
 
     return(
         <>
