@@ -62,7 +62,7 @@
 }
 
 .cart-main-container{
-    /* border: solid sandybrown; */
+    border: solid sandybrown;
     padding-top: 50px;
 }
 
@@ -256,7 +256,7 @@
     /* width: fit-content; */
     width: 100%;
     height: 100%;
-    overflow-x: scroll;
+    overflow-x: hidden;
     white-space: nowrap;
     scroll-behavior: smooth;
 }
@@ -313,5 +313,14 @@ a:hover .place-name-empty-cart{
     font-size: 25px;
     padding-top: 20px;
     margin-top: 50px;
-    /* border: solid #e5e5e5; */
+}
+
+.cart-suggestion-box{
+    /* background-color: darkorchid; */
+}
+
+.cart-no-suggestions{
+    font-size: 20px;
+    padding-top: 20px;
+    margin-top: 50px;
 }
