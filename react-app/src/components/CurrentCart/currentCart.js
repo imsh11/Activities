@@ -101,10 +101,10 @@ const CurrCart = () => {
 
     //splicing the place that is in cart
     if(suggestedPlaces.length){
-        placeInCartId.forEach((id, i=0) =>{
-            suggestedPlaces.forEach(place =>{
+        suggestedPlaces.forEach((place, i=0) =>{
+            placeInCartId.forEach(id =>{
                 if(place.id === id){
-                    console.log('-----------------ture-----')
+                    console.log(i ,'-----------------ture-----')
                     suggestedPlaces.splice(i, 1)
                 }
             })
@@ -160,7 +160,22 @@ const CurrCart = () => {
                 </div>
             </div>
             <div className="cart-suggestion-box">
-                Suggestions
+                <div className="cart-suggestion-title">
+                    Suggestions
+                </div>
+                <div>
+                    <div>
+                        <div id="">
+                            {suggestedPlaces.map(place => (
+                                <div key={place.id}>
+                                    <div>
+                                        {place.name}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
             </>
             :
@@ -176,7 +191,7 @@ const CurrCart = () => {
                     <div className="empty-cart-button">
                         <a href="/">
                         <button className="start-shopping">
-                            Start shopoing
+                            Start shopping
                         </button>
                             </a>
                     </div>
