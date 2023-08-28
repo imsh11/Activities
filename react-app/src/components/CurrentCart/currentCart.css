@@ -318,3 +318,9 @@ a:hover .place-name-empty-cart{
 .cart-suggestion-box{
     /* background-color: darkorchid; */
 }
+
+.cart-no-suggestions{
+    font-size: 20px;
+    padding-top: 20px;
+    margin-top: 50px;
+}
