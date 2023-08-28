@@ -71,6 +71,7 @@ const CurrCart = () => {
     let activityType = []
     let placeInCartId = []
     let suggestedPlaces = []
+    let final = []
 
     //place_id in cart gets pushed to placeInCartId
     if(cartDetail.length){
@@ -80,9 +81,12 @@ const CurrCart = () => {
     }
 
     //activity_type gets added to activityType
+    //also checking if an activity type already exists
     if(placeInCartId.length && isLoaded){
         placeInCartId.forEach(place_id => {
-            activityType.push(places[place_id].activity_type)
+            if(!activityType.includes(places[place_id].activity_type)){
+                activityType.push(places[place_id].activity_type)
+            }
         })
     }
 
@@ -93,26 +97,41 @@ const CurrCart = () => {
             // suggestedPlaces.push(activityType[i])
             Object.values(places).forEach(pla =>{
                 if(activityType[i] === pla.activity_type){
+                    console.log(pla, suggestedPlaces, '----------place')
                     suggestedPlaces.push(pla)
+                    console.log(suggestedPlaces, '---------after adding')
                 }
             })
         }
     }
-
+    console.log(suggestedPlaces, '------before splice')
     //splicing the place that is in cart
     if(suggestedPlaces.length){
-        suggestedPlaces.forEach((place, i=0) =>{
-            placeInCartId.forEach(id =>{
-                if(place.id === id){
-                    console.log(i ,'-----------------ture-----')
+        // suggestedPlaces.forEach((place, i=0) =>{
+        //     placeInCartId.forEach(id =>{
+        //         console.log(id, place.id,'place.id')
+        //         if(place.id === id){
+        //             console.log(i,id, place.id,'-----------------ture-----')
+        //             // final.push(place)
+        //             suggestedPlaces.splice(i, 1)
+        //         }
+        //     })
+        //     i++
+        // })
+
+        for(let i=0; i<suggestedPlaces.length; i++){
+            console.log(suggestedPlaces[i], '--------iLoop')
+            for(let j=0; j<placeInCartId.length; j++){
+                console.log(placeInCartId[j], '---------jLoop')
+                if(suggestedPlaces[i].id === placeInCartId[j]){
                     suggestedPlaces.splice(i, 1)
                 }
-            })
-            i++
-        })
+            }
+        }
     }
 
-    console.log(placeInCartId, activityType, suggestedPlaces, typeof(placeInCartId[0]), '---------placeIN-------')
+    console.log(placeInCartId, activityType, suggestedPlaces,
+        typeof(placeInCartId[0]), final, '---------placeIN-------')
 
     return(
         <>
@@ -161,9 +180,10 @@ const CurrCart = () => {
             </div>
             <div className="cart-suggestion-box placeList-main">
                 <div className="cart-suggestion-title empty-cart-main-heading">
-                    Suggestions
+                    Similar Places
                 </div>
                 <div className="placeList-inner">
+                {suggestedPlaces.length?
                     <div className="row-card">
                         <MdChevronLeft className="arrowBtn" onClick={slideLeft} size={40}/>
                         <div id="slider" className="row-inner">
@@ -186,6 +206,11 @@ const CurrCart = () => {
                         </div>
                         <MdChevronRight className="arrowBtn" onClick={slideRight} size={40}/>
                     </div>
+                    :
+                    <div className="cart-no-suggestions">
+                        No Suggestions
+                    </div>
+                }
                 </div>
             </div>
             </>
