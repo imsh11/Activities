@@ -31,8 +31,8 @@ const CurrCart = () => {
     const places = useSelector(state => state.places)
     const cartTotal = useSelector(state => state.cart.Total)
     const userId = useSelector(state => state.session.user)
-    console.log(cart, userId, places, cartTotal, placeToVisit,'--------stateCurr')
-    console.log(placeToVisit, '-------------test')
+    // console.log(cart, userId, places, cartTotal, placeToVisit,'--------stateCurr')
+    // console.log(placeToVisit, '-------------test')
 
     useEffect(() =>{
         dispatch(getUserCart(userId ? userId.id : userId))
@@ -55,7 +55,7 @@ const CurrCart = () => {
         }
 
         let cartDetail = Object.values(cart.Items)
-        console.log(cartDetail, cart.CartOder, '-------------cartDetail')
+        // console.log(cartDetail, cart.CartOder, '-------------cartDetail')
 
         //functions for left and right click
         const slideLeft = () => {
@@ -97,14 +97,14 @@ const CurrCart = () => {
             // suggestedPlaces.push(activityType[i])
             Object.values(places).forEach(pla =>{
                 if(activityType[i] === pla.activity_type){
-                    console.log(pla, suggestedPlaces, '----------place')
+                    // console.log(pla, suggestedPlaces, '----------place')
                     suggestedPlaces.push(pla)
-                    console.log(suggestedPlaces, '---------after adding')
+                    // console.log(suggestedPlaces, '---------after adding')
                 }
             })
         }
     }
-    console.log(suggestedPlaces, '------before splice')
+    // console.log(suggestedPlaces, '------before splice')
     //splicing the place that is in cart
     if(suggestedPlaces.length){
         // suggestedPlaces.forEach((place, i=0) =>{
@@ -120,9 +120,9 @@ const CurrCart = () => {
         // })
 
         for(let i=0; i<suggestedPlaces.length; i++){
-            console.log(suggestedPlaces[i], '--------iLoop')
+            // console.log(suggestedPlaces[i], '--------iLoop')
             for(let j=0; j<placeInCartId.length; j++){
-                console.log(placeInCartId[j], '---------jLoop')
+                // console.log(placeInCartId[j], '---------jLoop')
                 if(suggestedPlaces[i].id === placeInCartId[j]){
                     suggestedPlaces.splice(i, 1)
                 }
@@ -130,8 +130,8 @@ const CurrCart = () => {
         }
     }
 
-    console.log(placeInCartId, activityType, suggestedPlaces,
-        typeof(placeInCartId[0]), final, '---------placeIN-------')
+    // console.log(placeInCartId, activityType, suggestedPlaces,
+    //     typeof(placeInCartId[0]), final, '---------placeIN-------')
 
     return(
         <>
@@ -147,7 +147,7 @@ const CurrCart = () => {
                 {cartDetail.map( item => (
                 <div key={item.id} className="cartList">
                         {/* {placeInCartId.push(item.place_id)} */}
-                        {console.log(item, '---------item---------')}
+                        {/* {console.log(item, '---------item---------')} */}
                         <div className="main-heading">
                             <a href={`/place/${item.place_id}`}>
                                 Tickets For {places[item.place_id].name}
@@ -245,7 +245,7 @@ const CurrCart = () => {
                                 <div className="placeList-each placeList-selected">
                                             {/* {console.log(place, '------------mapPlaceToVisit')} */}
                                             <div>
-                                                <img className="place-img" src={Images[place.place_id]}
+                                                <img className="place-img" src={places[place.place_id].img1}
                                                 alt={places[place.place_id]} />
                                             </div>
                                             <a href={`/place/${place.place_id}`}>
