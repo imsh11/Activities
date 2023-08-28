@@ -159,21 +159,32 @@ const CurrCart = () => {
                                 <div className="payQty">{cartDetail.length}</div>
                 </div>
             </div>
-            <div className="cart-suggestion-box">
-                <div className="cart-suggestion-title">
+            <div className="cart-suggestion-box placeList-main">
+                <div className="cart-suggestion-title empty-cart-main-heading">
                     Suggestions
                 </div>
-                <div>
-                    <div>
-                        <div id="">
+                <div className="placeList-inner">
+                    <div className="row-card">
+                        <MdChevronLeft className="arrowBtn" onClick={slideLeft} size={40}/>
+                        <div id="slider" className="row-inner">
                             {suggestedPlaces.map(place => (
-                                <div key={place.id}>
+                                <div key={place.id} className="placeList-each placeList-selected">
                                     <div>
-                                        {place.name}
+                                        <img className="place-img" src={place.img1}
+                                        alt={place.name} />
+                                    </div>
+                                    <div className="place-name-empty-cart">
+                                        <a href={`/place/${place.id}`}>
+                                            {place.name}
+                                        </a>
+                                    </div>
+                                    <div className="place-price-empty-cart">
+                                        Price: ${place.price}
                                     </div>
                                 </div>
                             ))}
                         </div>
+                        <MdChevronRight className="arrowBtn" onClick={slideRight} size={40}/>
                     </div>
                 </div>
             </div>
