@@ -137,35 +137,46 @@ const CurrCart = () => {
         <>
         {isLoaded &&(
         <div className="cart-main-container">
-            <div className="cart-main-title">
-                Shopping Cart
-            </div>
+
         {cartDetail.length ?
         <>
         <div className="columns">
+
             <div className="item-list">
+                <div className="cart-main-title">
+                Shopping Cart
+                </div>
                 {cartDetail.map( item => (
                 <div key={item.id} className="cartList">
                         {/* {placeInCartId.push(item.place_id)} */}
                         {/* {console.log(item, '---------item---------')} */}
-                        <div className="main-heading">
-                            <a href={`/place/${item.place_id}`}>
-                                Tickets For {places[item.place_id].name}
-                            </a>
+                        <div className="cart-item-pic">
+                            <img className="item-place-img" src={places[item.place_id].img1}
+                            alt={places[item.place_id].name} />
                         </div>
-                        <div className="qty">
-                            Qunatity {item.quantity}
-                        </div>
-                            <div className="item-total">
-                                Total: ${places[item.place_id].price * item.quantity}
+                        <div className="cart-item-content">
+                            <div className="main-heading">
+                                <a href={`/place/${item.place_id}`}>
+                                    Tickets For {places[item.place_id].name}
+                                </a>
                             </div>
-                            <div className="updateBtn">
-                                <Update item={item}/>
+
+                                    <div className="item-total">
+                                        Total: ${places[item.place_id].price * item.quantity}
+                                    </div>
+                                <div className="cart-items-buttons">
+                                    <div className="qty">
+                                        Qunatity: {item.quantity}
+                                    </div>
+                                    <div className="updateBtn">
+                                        <Update item={item}/>
+                                    </div>
+                                    <div className="delbtn">
+                                        <DeleteItemCart id={item.id} />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="delbtn">
-                                <DeleteItemCart id={item.id} />
                         </div>
-                    </div>
                 ))}
             </div>
                 <div className="payment">
