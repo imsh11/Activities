@@ -48,10 +48,20 @@
 
 .item-list{
     background-color: white;
+    border-radius: 5px;
     padding-left: 10px;
     padding-right: 20px;
     padding-bottom: 20px;
     margin-left: 20px;
+}
+
+.item-list-end{
+    border-top: solid #e5e5e5;
+    border-width: 1px;
+    padding-top: 15px;
+    display: grid;
+    justify-items: end;
+    font-size: 20px;
 }
 
 .main-heading{
@@ -112,6 +122,7 @@
 
 .payment{
     border: solid #e5e5e5;
+    background-color: white;
     border-width: 1px;
     border-radius: 5px;
     padding: 20px;
@@ -122,6 +133,7 @@
     top: 1rem;
     /* min-height: fit-content; */
     margin-left: 30px;
+    margin-right: 10px;
     padding-left: 30px;
     display: grid;
     grid-auto-columns: 1fr;
@@ -234,21 +246,26 @@
 .placeList-main{
     margin-left: 20px;
     margin-top: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
     border-top: solid #e5e5e5;
     /* color: wheat; */
-    /* background-color: chartreuse; */
+    background-color: white;
     /* display: grid;
     justify-items: center; */
 }
 
 .placeList-inner{
     /* background-color: #f2780c; */
+    padding-top: 20px;
+    padding-bottom: 20px;
     display: grid;
     justify-content: center;
 }
 
 .placeList-each{
     border: solid #e5e5e5;
+    background-color: white;
     border-radius: 10px;
     /* width: 100%; */
     object-fit: contain;
@@ -266,6 +283,13 @@
     margin-bottom: 15px;
 }
 
+.suggestion-img{
+    /* background-color: #f0b52b; */
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
 .row-card{
     max-width: 700px;
     /* background-color: aqua; */
@@ -278,7 +302,8 @@
 }
 
 .row-inner{
-    /* background-color: blue; */
+    background-color: #e5e5e5;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     /* justify-content: space-around; */
@@ -343,6 +368,7 @@ a:hover .place-name-empty-cart{
     font-size: 25px;
     padding-top: 20px;
     margin-top: 50px;
+    margin-left: 40px;
 }
 
 .cart-suggestion-box{

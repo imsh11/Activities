@@ -178,6 +178,9 @@ const CurrCart = () => {
                             </div>
                         </div>
                 ))}
+                <div className="item-list-end">
+                    Subtotal ({cartDetail.length} items): ${cartTotal.total}
+                </div>
             </div>
                 <div className="payment">
                         <div className="payBtn">
@@ -200,7 +203,7 @@ const CurrCart = () => {
                         <div id="slider" className="row-inner">
                             {suggestedPlaces.map(place => (
                                 <div key={place.id} className="placeList-each placeList-selected">
-                                    <div>
+                                    <div className="suggestion-img">
                                         <img className="place-img" src={place.img1}
                                         alt={place.name} />
                                     </div>
