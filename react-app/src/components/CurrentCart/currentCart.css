@@ -197,15 +197,25 @@
 }
 
 .inner-empty-cart{
-    padding-top: 96px;
-    padding-bottom: 152px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.empty-cart-content{
+    background-color: white;
+    border-radius: 5px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .empty-cart-text{
     display: grid;
     justify-content: space-around;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 30px;
+    padding-bottom: 10px;
 }
 
 .empty-cart-button{
@@ -246,9 +256,10 @@
 .placeList-main{
     margin-left: 20px;
     margin-top: 50px;
-    margin-right: 10px;
+    padding-top: 5px;
+    margin-right: 20px;
     border-radius: 5px;
-    border-top: solid #e5e5e5;
+    /* border-top: solid #e5e5e5; */
     /* color: wheat; */
     background-color: white;
     /* display: grid;

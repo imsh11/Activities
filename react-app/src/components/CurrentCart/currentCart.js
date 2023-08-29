@@ -231,19 +231,21 @@ const CurrCart = () => {
             :
             <div className="empty-cart">
                 <div className="inner-empty-cart">
-                    <div className="empty-cart-text">
-                        <span>
+                    <div className="empty-cart-content">
+                        <div className="empty-cart-text">
                             <span>
-                                You don't have any Items in your cart. Let's get shopping!
+                                <span>
+                                    You don't have any Items in your cart. Let's get shopping!
+                                </span>
                             </span>
-                        </span>
-                    </div>
-                    <div className="empty-cart-button">
-                        <a href="/">
-                        <button className="start-shopping">
-                            Start shopping
-                        </button>
-                            </a>
+                        </div>
+                        <div className="empty-cart-button">
+                            <a href="/">
+                            <button className="start-shopping">
+                                Start shopping
+                            </button>
+                                </a>
+                        </div>
                     </div>
                     {Object.values(placeToVisit).length ?
                     <div className="placeList-main">
@@ -258,7 +260,7 @@ const CurrCart = () => {
                                 <div key={place.id}>
                                 <div className="placeList-each placeList-selected">
                                             {/* {console.log(place, '------------mapPlaceToVisit')} */}
-                                            <div>
+                                            <div className="suggestion-img">
                                                 <img className="place-img" src={places[place.place_id].img1}
                                                 alt={places[place.place_id]} />
                                             </div>
