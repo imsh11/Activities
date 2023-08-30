@@ -1,4 +1,10 @@
+html,body {
+    margin:0;
+    padding:0
+}
+
 #root{
+    padding: 5px;
     background-color: #eaeaea;
 }
 
