@@ -160,7 +160,6 @@ const CurrCart = () => {
                                     Tickets For {places[item.place_id].name}
                                 </a>
                             </div>
-
                                     <div className="item-total">
                                         Total: ${places[item.place_id].price * item.quantity}
                                     </div>

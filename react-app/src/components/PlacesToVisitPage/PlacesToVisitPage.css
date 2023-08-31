@@ -1,7 +1,83 @@
+.root{
+    background-color: white;
+}
+
 .placeList{
-    border: solid black;
+    border-top: solid #e5e5e5;
     border-width: 1px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     padding: 10px;
-    margin: 5px;
+    margin: 50px;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 10px;
+    grid-template-areas:
+    "pic detail update";
+}
+
+.placeList-img{
+    grid-area: pic;
+    padding-left: 10px;
+    background-color: navajowhite;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.place-list-name{
+    font-size: 25px;
+    font-weight: 500;
+
+}
+
+.placeList-detail{
+    grid-area: detail;
+    /* background-color: greenyellow; */
+    display: grid;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.place-list-address{
+    font-size: 20px;
+}
+
+.place-list-price{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.placeList-update{
+    grid-area: update;
+    background-color: burlywood;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.status{
+    font-size: 18px;
+    padding: 5px;
+}
+
+.place-list-btn{
+    /* display: flex; */
+
+}
+
+.place-delBtn{
+    margin-top: 15px;
+}
+
+.place-List-img{
+    max-width: 250px;
+}
+
+.place-list-main{
+    border: solid slateblue;
+    background-color: white;
 }
