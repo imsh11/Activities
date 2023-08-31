@@ -35,10 +35,10 @@ const UserPlaceList = () => {
         <>
         {isLoaded && (
         <div className="place-list-main">
-            <div>
+            <div className="place-list-title">
                 <h2>Place I Wish to Visit</h2>
             </div>
-            <div>
+            <div className="place-list-user">
                 <h4>Hello {user.firstname}!</h4>
             </div>
                 {Object.values(placeList).length ?
@@ -66,13 +66,13 @@ const UserPlaceList = () => {
                                 <div className="status">
                                     Status: {place.status}
                                 </div>
-                                <div className="place-list-btn">
+                                {/* <div className="place-list-btn"> */}
                                     <div className="place-updateBtn">
                                         <UpdateStatusPlace place={place} />
                                     </div>
                                     <div className="place-delBtn">
                                         <DeletePlace id={place.id} />
-                                    </div>
+                                    {/* </div> */}
                                 </div>
 
                             </div>
