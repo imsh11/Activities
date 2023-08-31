@@ -36,10 +36,10 @@ const UserPlaceList = () => {
         {isLoaded && (
         <div className="place-list-main">
             <div className="place-list-title">
-                <h2>Place I Wish to Visit</h2>
+                Place I Wish to Visit
             </div>
             <div className="place-list-user">
-                <h4>Hello {user.firstname}!</h4>
+                Hello {user.firstname}!
             </div>
                 {Object.values(placeList).length ?
             <div>
@@ -66,13 +66,13 @@ const UserPlaceList = () => {
                                 <div className="status">
                                     Status: {place.status}
                                 </div>
-                                {/* <div className="place-list-btn"> */}
+
                                     <div className="place-updateBtn">
                                         <UpdateStatusPlace place={place} />
                                     </div>
                                     <div className="place-delBtn">
                                         <DeletePlace id={place.id} />
-                                    {/* </div> */}
+
                                 </div>
 
                             </div>
@@ -80,8 +80,13 @@ const UserPlaceList = () => {
                         </div>
                     ))}
             </div>:
-            <div>You Can View Places <NavLink exact to="/">Here </NavLink>
-                And Add Places You Plan on Visiting.</div>}
+            <>
+                <div className="main-empty">
+                <div className="empty-list">You Can View Places <NavLink exact to="/">Here </NavLink>
+                    And Add Places You Plan on Visiting.</div>
+                </div>
+            </>
+            }
         </div>
         )}
         </>

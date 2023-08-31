@@ -84,17 +84,47 @@
     /* border: solid slateblue; */
     background-color: white;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 20px;
     margin-right: 20px;
 }
 
 .place-list-title{
     /* background-color: blueviolet; */
     padding-right: 10px;
-    margin-right: 10px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    font-size: 30px;
 }
 
 .place-list-user{
     /* background-color: slategray; */
     padding-left: 20px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+.main-empty{
+    /* background-color: brown; */
+    height: 500px;
+    width: 100%;
+    /* opacity: 0.5; */
+    background: rgba(255, 255, 255, 0.073);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("https://m.media-amazon.com/images/G/01/nav2/images/jetset/EmptyState_Space_IdeaLists._CB1533074461_.png");
+    background-position-x: 50%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-list{
+    /* height: 75%;
+    width: 90%; */
+    /* opacity: 1; */
+    font-weight: 900;
+    font-size: 40px;
+    /* opacity: 1.5; */
+    /* color: black; */
+    /* background-image: url("https://m.media-amazon.com/images/G/01/nav2/images/jetset/EmptyState_Space_IdeaLists._CB1533074461_.png"); */
 }
