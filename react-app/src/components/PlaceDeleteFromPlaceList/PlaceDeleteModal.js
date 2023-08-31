@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { delPlacePlaceList } from "../../store/placeToVisit";
+import "./PlaceDelete.css"
 
 
 
@@ -25,7 +26,7 @@ export default function DeletePlace ({id}) {
 
     return(
         <>
-            <button className="button1" onClick={toggleModal}>
+            <button className="button1 delPlace" onClick={toggleModal}>
                 Remove Place
             </button>
 
