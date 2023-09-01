@@ -81,10 +81,11 @@ const UserPlaceList = () => {
                     ))}
             </div>:
             <>
+                <div className="empty-title">Your List is Empty</div>
                 <div className="main-empty">
-                <div className="empty-list">You Can View Places <NavLink exact to="/">Here </NavLink>
-                    And Add Places You Plan on Visiting.</div>
                 </div>
+                <div className="empty-list">You Can View Places&nbsp; <NavLink exact to="/">Here&nbsp;</NavLink> And
+                Add Places You Plan on Visiting.</div>
             </>
             }
         </div>

@@ -108,7 +108,7 @@
     height: 500px;
     width: 100%;
     /* opacity: 0.5; */
-    background: rgba(255, 255, 255, 0.073);
+    /* background: rgba(255, 255, 255, 0.073); */
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url("https://m.media-amazon.com/images/G/01/nav2/images/jetset/EmptyState_Space_IdeaLists._CB1533074461_.png");
@@ -118,13 +118,27 @@
     align-items: center;
 }
 
+.empty-title{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: center;
+
+    font-weight: 900;
+    font-size: 30px;
+}
+
 .empty-list{
     /* height: 75%;
     width: 90%; */
     /* opacity: 1; */
+    width: 100%;
+    display: flex;
+    padding-top: 10px;
+    justify-content: center;
+
     font-weight: 900;
-    font-size: 40px;
-    /* opacity: 1.5; */
-    /* color: black; */
+    font-size: 30px;
+
     /* background-image: url("https://m.media-amazon.com/images/G/01/nav2/images/jetset/EmptyState_Space_IdeaLists._CB1533074461_.png"); */
 }
