@@ -36,7 +36,7 @@ export default function DeleteItemCart ({id}) {
                         <div id="modal-content-del" className="modal-container">
                             <div className="modal-content-inner">
                             <div className="cartDel-first">
-                            <i class="fa-solid fa-triangle-exclamation fa-2xl" style={{color: "#fa0511"}}></i>
+                            <i className="fa-solid fa-triangle-exclamation fa-2xl" style={{color: "#fa0511"}}></i>
                             </div>
                             <div className="cartDel-Second">
                                 <div className="del-main-title">Delete Item</div>

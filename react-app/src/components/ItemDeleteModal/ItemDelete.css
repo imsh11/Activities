@@ -75,6 +75,8 @@
 
 .delete-button:hover{
     background-color: red;
+    transition-delay: 150ms;
+    transition-property: background-color, color;
 }
 
 
