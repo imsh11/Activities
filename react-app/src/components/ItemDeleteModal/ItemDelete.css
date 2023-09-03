@@ -1,0 +1,88 @@
+
+#modal-content-del{
+    position: absolute;
+    background-color:white;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    /* height: 150px; */
+    width: 500px;
+}
+
+.modal-content-inner{
+    /* background-color: goldenrod; */
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 0.3fr 1.7fr;
+    grid-template-rows: 100px;
+    gap: 0px 0px;
+    grid-template-areas:
+    "sym content";
+}
+
+.cartDel-first{
+    grid-area: sym;
+    /* background-color: royalblue; */
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.cartDel-Second{
+    grid-area: content;
+    display: grid;
+    /* justify-items: center; */
+    /* align-items: center; */
+}
+
+.del-main-title{
+    margin-top: 5px;
+    /* background-color: blue; */
+    font-size: 25px;
+    font-weight: 500;
+    display: grid;
+    align-items: end;
+}
+
+.deletetext{
+    font-size: 15px;
+    padding-top: 5px;
+    display: grid;
+}
+
+.cart-delBtn{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    /* margin-top: 10px; */
+    background-color: #e5e5e5;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.delete-button{
+    background-color: #f0b52b;
+    font-weight: bold;
+    /* color: white; */
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.delete-button:hover{
+    background-color: red;
+}
+
+
+.keep-button-del{
+    background-color: #f0b52b;
+    font-weight: bold;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+}
