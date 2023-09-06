@@ -1,7 +1,7 @@
 .profile-dropdown {
   position: absolute;
   z-index: 1;
-  border: 1px solid black;
+  border: 1px solid #f2780c;
   background-color: whitesmoke;
   right: 20px;
   width: fit-content;
@@ -20,6 +20,10 @@
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .nav-listBtn{
@@ -33,6 +37,7 @@
 
 .nav-profile{
   padding-left: 10px;
+  cursor: pointer;
 }
 
 .nav-right{
