@@ -35,36 +35,42 @@ const LandingPg = () => {
     return(
         <>
             <div className="top-img">
-                <img className="landing-top-img" src={funStarts} alt="funImage" />
+                {/* <img className="landing-top-img" src={funStarts} alt="funImage" /> */}
             </div>
             {/* <h3>Places</h3> */}
             <div className="landing-map">
                 {placeLst.map( plc => (
-                <>
+                <div key={plc.id} className="main-content-landing">
                     <div key={plc.id} className="landing-list">
                         <NavLink className='' to={`/place/${plc.id}`}>
-                    <div className="test-landing">
-                        <div className="landing-info">
-                        Name: {plc.name}
-                            <div>
-                            Street: {plc.address}
-                                <div>
-                                    City: {plc.city}
-                                    State: {plc.state}
-                                </div>
-                            </div>
-                            <div>
-                            Ticket Price:
-                            ${plc.price}
-                            </div>
-                        </div>
+                    <div className="main-landing-container">
                         <div className="landing-image">
-                            <img className="landing-photo" src={Images[plc.id]} alt="parkImg" />
+                            <img className="landing-photo" src={plc.img1} alt="parkImg" />
+                        </div>
+                        <div className="landing-info">
+                            <div className="landing-placeName">
+                                {plc.name}
+                            </div>
+                            <div className="landing-rate">
+                            <i class="fa-solid fa-star fa-lg" style={{color: "#f0b52b"}}></i>x.x
+                            </div>
+
+                                <div className="landing-cityState">
+                                    <div className="landing-placeCity">
+                                        {plc.city},&nbsp;
+                                        {plc.state}
+                                    </div>
+                                    {/* <div className="landing-placeState">
+                                    </div> */}
+                                        <div className="landing-price">
+                                            ${plc.price}
+                                        </div>
+                                </div>
                         </div>
                     </div>
                         </NavLink>
                         </div>
-                </>
+                </div>
 
                 ))}
             </div>
