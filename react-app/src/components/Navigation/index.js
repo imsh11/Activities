@@ -10,7 +10,7 @@ function Navigation({ isLoaded }){
 	return (
 		<div className='nav-container'>
 			<div className='nav-homeBtn'>
-			<span className="main-page-tooltip">{"Home"}</span>
+			{/* <span className="main-page-tooltip">{"Home"}</span> */}
 				<NavLink exact to="/">
 				<i class="fa-solid fa-house fa-lg" style={{color: "#f2780c"}}></i>
 				</NavLink>

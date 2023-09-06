@@ -52,9 +52,8 @@ const LandingPg = () => {
                                 {plc.name}
                             </div>
                             <div className="landing-rate">
-                            <i class="fa-solid fa-star fa-lg" style={{color: "#f0b52b"}}></i>x.x
+                            {/* <i class="fa-solid fa-star fa-lg" style={{color: "#f0b52b"}}></i>x.x */}
                             </div>
-
                                 <div className="landing-cityState">
                                     <div className="landing-placeCity">
                                         {plc.city},&nbsp;
@@ -71,7 +70,6 @@ const LandingPg = () => {
                         </NavLink>
                         </div>
                 </div>
-
                 ))}
             </div>
         </>
