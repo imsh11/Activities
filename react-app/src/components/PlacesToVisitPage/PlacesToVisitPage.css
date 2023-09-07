@@ -140,3 +140,32 @@
     font-weight: 900;
     font-size: 30px;
 }
+
+.no-user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.new-user{
+    /* width: 75%; */
+    /* padding: ; */
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: solid #e5e5e5;
+}
+
+.sign-up-btn{
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #f0b52b;
+}
+
+.sign-up-btn:hover{
+    background-color: #f2780c;
+    color: white;
+    transition-delay: 150ms;
+    transition-property: background-color, color;
+}

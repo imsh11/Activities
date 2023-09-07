@@ -6,6 +6,7 @@ import { getPlaceToVisit } from "../../store/placeToVisit";
 import UpdateStatusPlace from "../UpdateStatusPlaceToVisitModal/UpdateStatusModal";
 import DeletePlace from "../PlaceDeleteFromPlaceList/PlaceDeleteModal";
 import "./PlacesToVisitPage.css"
+import LoginFormModal from "../LoginFormModal";
 
 
 const UserPlaceList = () => {
@@ -27,7 +28,20 @@ const UserPlaceList = () => {
 
     if(!user){
         return(
-            <p>Please Sign In</p>
+            <div className="no-user">
+                {/* <p>Please Sign In</p> */}
+                <div className="">
+                    <LoginFormModal />
+                </div>
+                <div className="new-user">
+                    <button className="sign-up-btn"
+                        onClick={() => history.push('/signup')}
+                    >
+                        Create Your Account
+                    </button>
+                </div>
+            </div>
+
         )
     }
 
