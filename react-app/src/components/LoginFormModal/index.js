@@ -33,7 +33,7 @@ function LoginFormModal() {
 
   return (
     <div className="login-main">
-      <form className=".signup" onSubmit={handleSubmit}>
+      <form className="" onSubmit={handleSubmit}>
         {errors.length ?
         <div className="login-error">
           <div style={{color: 'red'}}><b>There was a problem</b></div>
