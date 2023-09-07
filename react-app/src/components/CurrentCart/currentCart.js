@@ -16,6 +16,7 @@ import natural from '../../images/natural-history-museum.jpg'
 import splish from '../../images/water-park-2.jpg'
 import aqua from '../../images/aquarium.jpeg'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
+import LoginFormModal from "../LoginFormModal";
 
 
 const CurrCart = () => {
@@ -44,7 +45,22 @@ const CurrCart = () => {
 
     if (!userId){
         return(
-            <p>Please <NavLink exact to='/login'>Sign In</NavLink></p>
+            <>
+            {/* <p>Please <NavLink exact to='/login'>Sign In</NavLink></p> */}
+            <div className="no-user">
+                <div>
+                    <LoginFormModal />
+                </div>
+                <div className="new-user">
+                    {/* <button className="sign-up-btn"
+                        onClick={() => history.push('/signup')}
+                    >
+                        Create Your Account
+                    </button> */}
+                    <NavLink exact to='/signup'><b>Create a New Account</b></NavLink>
+                </div>
+            </div>
+            </>
             )
     }
 
