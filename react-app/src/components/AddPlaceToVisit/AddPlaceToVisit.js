@@ -51,42 +51,52 @@ export default function AddPlace ({place}) {
             </button>
 
             {modal && (
-                <div id="modal">
+                <div id="modal" className="">
                     <div id="modal-background" onClick={toggleModal}></div>
-                    <div id="modal-content" className="modal-container">
-                        <div className="addPlaceTo">
-                            <h4>Confirm Place</h4>
-                            <p>You are adding <b>{place.name}</b> to your Places List</p>
+                    <div id="modal-content" className="modal-container login-form-content">
+                        {/* <div className="addPlaceTo"> */}
+                            {/* <h4>Confirm Place</h4> */}
+                        {/* </div> */}
+                        <div className="">
+                            <form>
+                            <div className="login-form-content">
+                            <div className="login-main-heading">Adding <b>{place.name}</b> to your List</div>
+                                <div className="">
+                                    <label>
+                                        <div className="login-email-title add-list">Add you Status</div>
+                                        <input
+                                            id="status"
+                                            className="login-email-field"
+                                            required
+                                            placeholder="write you status within 50 words"
+                                            value={status}
+                                            type="text"
+                                            onChange={e => setStatus(e.target.value)}
+                                            />
+                                            {
+                                                validation.status && (
+                                                    <div style={{color: 'red'}}>
+                                                        {validation.status}
+                                                    </div>
+                                                )
+                                            }
+                                    </label>
+                                </div>
+                                    <div className="">
+                                    <div className="login-btn-page add-list">
+                                        <button className="modal-button login-btn" onClick={handleAdd}>
+                                            Add
+                                        </button>
+                                    </div>
+                                    <div className="login-btn-page">
+                                        <button className="modal-button login-btn" onClick={toggleModal}>
+                                            Cancle
+                                        </button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <form>
-                            <div>
-                                <label>
-                                    <input
-                                        id="quantity"
-                                        required
-                                        placeholder="write you status within 50 words"
-                                        value={status}
-                                        type="text"
-                                        onChange={e => setStatus(e.target.value)}
-                                        />
-                                        {
-                                            validation.status && (
-                                                <div style={{color: 'red'}}>
-                                                    {validation.status}
-                                                </div>
-                                            )
-                                        }
-                                </label>
-                            </div>
-                            <div className="addPlacesButtons">
-                            <button className="modal-button keep-button button1" onClick={handleAdd}>
-                                Add
-                            </button>
-                            <button className="modal-button delete-button button2" onClick={toggleModal}>
-                                Cancle
-                            </button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             )}

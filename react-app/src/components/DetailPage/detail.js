@@ -169,7 +169,7 @@ const DetailPg = () => {
                                     'reviews' :
                                     placeDetail.Reviews.length === 0 ?
                                         <div>Reviews Yet</div> :
-                                        <div> review</div>}
+                                        'review'}
                     </div>
 
                     {placeDetail.Reviews.map(review => (
