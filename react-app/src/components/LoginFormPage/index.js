@@ -44,7 +44,7 @@ function LoginFormPage() {
         </div> :
         <div></div>
               }
-        <div>
+        <div className="">
           <div className="login-main-heading">Log In</div>
           <div className="login-email">
             <label>
@@ -64,7 +64,7 @@ function LoginFormPage() {
           <div className="login-email">
             <label>
               <div className="login-email-title">Password</div>
-              <div>
+              <div className="">
                 <input
                   id="password"
                   className="login-email-field"
