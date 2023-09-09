@@ -1,0 +1,23 @@
+.update-update{
+    margin-right: 5px;
+}
+
+.update-main{
+    margin-top: 10px;
+    margin-left: 15px;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.update-des{
+    margin-left: 15px;
+    font-size: 18px;
+}
+
+#quantity{
+    width: 120px;
+}
+
+.update-quantity{
+    margin-left: 15px;
+}

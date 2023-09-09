@@ -1,14 +1,14 @@
 .signup-form{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
     /* gap: 10px; */
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
 }
 
 .signup{
-    width: fit-content;
+    /* width: fit-content;
     padding: 5px;
     border-radius: 20px;
-    /* background-color: aqua; */
+    background-color: aqua; */
 }

@@ -16,6 +16,7 @@ import natural from '../../images/natural-history-museum.jpg'
 import splish from '../../images/water-park-2.jpg'
 import aqua from '../../images/aquarium.jpeg'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
+import LoginFormModal from "../LoginFormModal";
 
 
 const CurrCart = () => {
@@ -44,7 +45,22 @@ const CurrCart = () => {
 
     if (!userId){
         return(
-            <p>Please <NavLink exact to='/login'>Sign In</NavLink></p>
+            <>
+            {/* <p>Please <NavLink exact to='/login'>Sign In</NavLink></p> */}
+            <div className="no-user">
+                <div>
+                    <LoginFormModal />
+                </div>
+                <div className="new-user">
+                    {/* <button className="sign-up-btn"
+                        onClick={() => history.push('/signup')}
+                    >
+                        Create Your Account
+                    </button> */}
+                    <NavLink exact to='/signup'><b>Create a New Account</b></NavLink>
+                </div>
+            </div>
+            </>
             )
     }
 
@@ -137,36 +153,49 @@ const CurrCart = () => {
         <>
         {isLoaded &&(
         <div className="cart-main-container">
-            <div className="cart-main-title">
-                Shopping Cart
-            </div>
+
         {cartDetail.length ?
         <>
         <div className="columns">
+
             <div className="item-list">
+                <div className="cart-main-title">
+                Shopping Cart
+                </div>
                 {cartDetail.map( item => (
                 <div key={item.id} className="cartList">
                         {/* {placeInCartId.push(item.place_id)} */}
                         {/* {console.log(item, '---------item---------')} */}
-                        <div className="main-heading">
-                            <a href={`/place/${item.place_id}`}>
-                                Tickets For {places[item.place_id].name}
-                            </a>
+                        <div className="cart-item-pic">
+                            <img className="item-place-img" src={places[item.place_id].img1}
+                            alt={places[item.place_id].name} />
                         </div>
-                        <div className="qty">
-                            Qunatity {item.quantity}
-                        </div>
-                            <div className="item-total">
-                                Total: ${places[item.place_id].price * item.quantity}
+                        <div className="cart-item-content">
+                            <div className="main-heading">
+                                <a href={`/place/${item.place_id}`}>
+                                    Tickets For {places[item.place_id].name}
+                                </a>
                             </div>
-                            <div className="updateBtn">
-                                <Update item={item}/>
+                                    <div className="item-total">
+                                        Total: ${places[item.place_id].price * item.quantity}
+                                    </div>
+                                <div className="cart-items-buttons">
+                                    <div className="qty">
+                                        Qunatity: {item.quantity}
+                                    </div>
+                                    <div className="updateBtn">
+                                        <Update item={item}/>
+                                    </div>
+                                    <div className="delbtn">
+                                        <DeleteItemCart id={item.id} />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="delbtn">
-                                <DeleteItemCart id={item.id} />
                         </div>
-                    </div>
                 ))}
+                <div className="item-list-end">
+                    Subtotal ({cartDetail.length} items): ${cartTotal.total}
+                </div>
             </div>
                 <div className="payment">
                         <div className="payBtn">
@@ -189,7 +218,7 @@ const CurrCart = () => {
                         <div id="slider" className="row-inner">
                             {suggestedPlaces.map(place => (
                                 <div key={place.id} className="placeList-each placeList-selected">
-                                    <div>
+                                    <div className="suggestion-img">
                                         <img className="place-img" src={place.img1}
                                         alt={place.name} />
                                     </div>
@@ -217,19 +246,21 @@ const CurrCart = () => {
             :
             <div className="empty-cart">
                 <div className="inner-empty-cart">
-                    <div className="empty-cart-text">
-                        <span>
+                    <div className="empty-cart-content">
+                        <div className="empty-cart-text">
                             <span>
-                                You don't have any Items in your cart. Let's get shopping!
+                                <span>
+                                    You don't have any Items in your cart. Let's get shopping!
+                                </span>
                             </span>
-                        </span>
-                    </div>
-                    <div className="empty-cart-button">
-                        <a href="/">
-                        <button className="start-shopping">
-                            Start shopping
-                        </button>
-                            </a>
+                        </div>
+                        <div className="empty-cart-button">
+                            <a href="/">
+                            <button className="start-shopping">
+                                Start shopping
+                            </button>
+                                </a>
+                        </div>
                     </div>
                     {Object.values(placeToVisit).length ?
                     <div className="placeList-main">
@@ -244,7 +275,7 @@ const CurrCart = () => {
                                 <div key={place.id}>
                                 <div className="placeList-each placeList-selected">
                                             {/* {console.log(place, '------------mapPlaceToVisit')} */}
-                                            <div>
+                                            <div className="suggestion-img">
                                                 <img className="place-img" src={places[place.place_id].img1}
                                                 alt={places[place.place_id]} />
                                             </div>

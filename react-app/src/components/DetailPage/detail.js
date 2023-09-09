@@ -82,95 +82,108 @@ const DetailPg = () => {
         <div className="main-detail-pg">
             <div className="info-container">
                 <div className="place-detail">
-                    <div>
-                        <h1>{placeDetail.Place.name}</h1>
-                        <h3>{placeDetail.Place.activity_type}</h3>
-                    </div>
+                        <div className="place-title">{placeDetail.Place.name}</div>
+                </div>
                 <div className="detail-review-address">
                     <div className="review">
-                        {!AvgStars ? <div className="In-review">No Reviews <i class="fa-solid fa-star"></i></div> :
-                        <div className="In-review"><i class="fa-solid fa-star"></i> {AvgStars.toFixed(2)}
-                            <div className="no-review">
-                                No. of Reviews: {placeDetail.Reviews.length}
+                        {!AvgStars ? <div className="rev"><i className="fa-solid fa-star"></i> No Reviews </div> :
+                        <div className="review">
+                            <div className="rev"><i className="fa-solid fa-star"></i> {AvgStars.toFixed(2)}</div>
+                            <div className="review">
+                                <div>&nbsp;{placeDetail.Reviews.length}&nbsp;</div>
                                 {placeDetail.Reviews.length > 1 ?
-                                <div>reviews</div> : <div>review</div>}
+                                <div className="rev">reviews</div> : <div className="rev">review</div>}
                             </div>
                         </div>}
                     </div>
                     <div className="address">
                         <div>
-                            Street: {placeDetail.Place.address}
-                        </div>
+                        &nbsp;{placeDetail.Place.city},
+                        </div> &nbsp;
                         <div>
-                            City: {placeDetail.Place.city}
-                        </div>
-                        <div>
-                            State: {placeDetail.Place.state}
+                            {placeDetail.Place.state}
                         </div>
                     </div>
-                </div>
-                </div>
-                <div className="detail-image">
-                    {/* <img className="detail-photo" src={Images[placeDetail.Place.id]} alt="parkImg" /> */}
-                    <img className="detail-photo" src={placeDetail.Place.img1} alt="parkImg" />
-                </div>
-
-            <div className="price-detail">
-                <div>
-                        Price: ${placeDetail.Place.price} per Ticket
-                </div>
-                <div>
-                    {userId ? (placeArr.includes(placeDetail.Place.id) ?
-                        <div>
-                            Item already exists in your Cart
-                        </div>
-                    // <ItemQuantityForm id={placeDetail.Place.id} />
-                    :
-                        <div>
-                            No. of Tickets:
-                            <ItemQuantityForm id={placeDetail.Place.id} />
-                        </div>
-                    ) :
-                    <button className="button1" onClick={() => history.push('/login')}>Add to Cart</button>}
-                </div>
-                <div className="detail-placeList">
-                    {userId ?
-                        <div>
-                            {Addedplace.includes(placeDetail.Place.id) ?
-                            <div>Place already exists in your
-                            <NavLink exact to="/user/placeList"> List</NavLink> </div> :
-                            <div><AddPlace place={placeDetail.Place}/></div>}
-                        </div> :
-                            <button className="button1" onClick={() => history.push('/login')}>
-                            Add to Your List
-                        </button>
-                    }
+                {/* </div> */}
                 </div>
             </div>
-        </div>
-
-            <div className="review-detail">
-                <div><h3>Reviews</h3></div>
-                <div className="detail-review-info">
-                    {placeDetail.Reviews.length}
-                    {placeDetail.Reviews.length > 1 ?
-                                'reviews' :
-                                placeDetail.Reviews.length === 0 ?
-                                    <div>No Reviews Yet</div> :
-                                    <div> review</div>}
-                </div>
-
-                {placeDetail.Reviews.map(review => (
-                    <div key={review.id} className="detail-single-review">
-                        {/* {console.log(review)} */}
+                <div className="detail-image">
+                    {/* {[placeDetail.Place.img1, placeDetail.Place.img2, placeDetail.Place.img3]} */}
+                    <div className="main-pic">
+                        <img className="detail-photo" src={placeDetail.Place.img1} alt="parkImg" />
+                    </div>
+                    <div className="all-pic">
                         <div>
-                            {review.review}
+                            <img className="detail-photo2" src={placeDetail.Place.img2} alt="parkImg" />
                         </div>
                         <div>
-                            {review.stars} <i class="fa-solid fa-star"></i>
+                            <img className="detail-photo3" src={placeDetail.Place.img3} alt="parkImg" />
+                        </div>
+                        <div className="picEnd">
+                            <img className="detail-photo4" src={placeDetail.Place.img4} alt="parkImg" />
+                        </div>
+                        <div className="picEnd">
+                            <img className="detail-photo5" src={placeDetail.Place.img5} alt="parkImg" />
                         </div>
                     </div>
-                ))}
+                </div>
+            <div className="price-review-container">
+                <div className="price-detail">
+                    <div>
+                            <b>${placeDetail.Place.price} per Ticket</b>
+                    </div>
+                    <div>
+                        {userId ? (placeArr.includes(placeDetail.Place.id) ?
+                            <div>
+                                Item already exists in your Cart
+                            </div>
+                        // <ItemQuantityForm id={placeDetail.Place.id} />
+                        :
+                            <div>
+                                No. of Tickets:
+                                <ItemQuantityForm id={placeDetail.Place.id} />
+                            </div>
+                        ) :
+                        <button className="button1" onClick={() => history.push('/login')}>Add to Cart</button>}
+                    </div>
+                    <div className="detail-placeList">
+                        {userId ?
+                            <div>
+                                {Addedplace.includes(placeDetail.Place.id) ?
+                                <div>Place already exists in your
+                                <NavLink exact to="/user/placeList"> List</NavLink> </div> :
+                                <div><AddPlace place={placeDetail.Place}/></div>}
+                            </div> :
+                                <button className="button1" onClick={() => history.push('/login')}>
+                                Add to Your List
+                            </button>
+                        }
+                    </div>
+                </div>
+
+                <div className="review-detail">
+                    <div><h3>Reviews</h3></div>
+                    <div className="detail-review-info">
+                        {placeDetail.Reviews.length} &nbsp;
+                        {placeDetail.Reviews.length > 1 ?
+                                    'reviews' :
+                                    placeDetail.Reviews.length === 0 ?
+                                        <div>Reviews Yet</div> :
+                                        'review'}
+                    </div>
+
+                    {placeDetail.Reviews.map(review => (
+                        <div key={review.id} className="detail-single-review">
+                            {/* {console.log(review)} */}
+                            <div>
+                                {review.review}
+                            </div>
+                            <div>
+                                {review.stars} <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
 

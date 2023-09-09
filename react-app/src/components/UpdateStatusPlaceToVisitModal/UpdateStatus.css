@@ -1,0 +1,82 @@
+#modal-content-placeList{
+    position: absolute;
+    background-color:white;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    /* height: 150px; */
+    max-width: 500px;
+}
+
+.up-form-content{
+    /* background-color: darkkhaki; */
+    display: grid;
+    margin-left: 15px;
+    border-top: solid #e5e5e5;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+}
+
+.up-field-name{
+    /* background-color: chocolate; */
+}
+
+#updatestatus{
+    border-radius: 5px;
+    height: 30px;
+    width: 250px;
+    /* background-color: blue; */
+    margin-left: 10px;
+}
+
+#updatestatus:hover{
+    /* border-color: #f0b52b; */
+    box-shadow: 0px 0px 2px 2px #f0b52b;
+    transition-delay: 100ms;
+    transition-property: box-shadow;
+}
+
+.placeList-UpDel{
+    /* background-color: bisque; */
+    border-top: solid #e5e5e5;
+    display: flex;
+    justify-content: end;
+    padding-top: 20px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.can-button{
+    background-color: #f0b52b;
+    font-weight: bold;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.up-button{
+    background-color: #f0b52b;
+    font-weight: bold;
+    /* color: white; */
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.up-main-title{
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.up-main-heading{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
