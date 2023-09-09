@@ -1,11 +1,70 @@
-.login-btn{
-    width: 100px;
-    /* background-color: blue; */
+
+.login-main{
+    /* background-color: blueviolet; */
+    border: solid #e5e5e5;
+    padding: 5px;
+    height: fit-content;
+    width: 300px;
+    border-radius: 5px;
 }
 
-.btn-div{
-    display: inline-flex;
-    /* justify-content: space-around; */
-    /* background-color: aqua; */
+.login-form-content{
+    padding-left: 20px;
+}
+
+.login-main-heading{
+    font-size: 30px;
+    padding-bottom: 10px;
+    border-bottom: solid #e5e5e5;
+}
+
+.login-email{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.login-email-title{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.login-email-field{
+    width: 200px;
+    height: 20px;
+    border: 1px solid #b3b3b3;
+    border-radius: 5px;
+}
+
+.login-btn-div{
+    padding-left: 10px;
+}
+
+.login-btn-page{
+    /* background-color: blue; */
+    width: 75%;
+    padding-bottom: 10px;
+}
+
+.login-btn{
+    cursor: pointer;
     width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #f0b52b;
+}
+
+.login-btn:hover{
+    background-color: #f2780c;
+    color: white;
+    transition-delay: 150ms;
+    transition-property: background-color, color;
+}
+
+.login-error{
+    border: 2px solid red;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
 }

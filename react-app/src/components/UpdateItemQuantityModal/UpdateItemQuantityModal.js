@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCart, updateQuantity } from "../../store/cart";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import "./UpdateItemQty.css"
 
 
 
@@ -70,13 +71,14 @@ export default function Update({item}) {
             {modal && (
                 <div id="modal">
                     <div id="modal-background" onClick={toggleModal}></div>
-                    <div id="modal-content" className="modal-container">
-                        <h4>Quantity</h4>
-                        <p>Enter item Qunatity</p>
+                    <div id="modal-content-del" className="modal-container">
+                        <div className="update-main">Update Quantity</div>
+                        <div></div>
+                        {/* <div className="update-des">Enter item Qunatity</div> */}
                         <form onSubmit={handleUpdate}>
-                            <div>
+                            <div className="update-quantity">
                                 <label>
-                                    <input
+                                    Quantity: <input
                                         id="quantity"
                                         required
                                         placeholder="Between 1 to 10"
@@ -93,11 +95,15 @@ export default function Update({item}) {
                                         }
                                 </label>
                             </div>
-                            <div>
-                                <button className="modal-button keep-button button1" type="submit">Update</button>
-                                <button className="modal-button cancle-button button2" onClick={toggleModal}>
-                                    Cancel
-                                </button>
+                            <div className="cart-delBtn">
+                                <div>
+                                    <button className="modal-button delete-button button2 update-cancle" onClick={toggleModal}>
+                                        Cancel
+                                    </button>
+                                </div>
+                                <div>
+                                    <button className="modal-button keep-button-del button1 update-update" type="submit">Update</button>
+                                </div>
                             </div>
                         </form>
                     </div>
