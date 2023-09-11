@@ -7,7 +7,7 @@
     position: absolute;
     /* top: calc(-100%, -50px); */
     transform: translate(-30%, 20%);
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
     color: #f0b52b;
     padding: 5px;
     border-radius: 5px;
