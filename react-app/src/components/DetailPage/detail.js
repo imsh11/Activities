@@ -13,6 +13,7 @@ import splish from '../../images/water-park-2.jpg'
 import aqua from '../../images/aquarium.jpeg'
 import "./detail.css"
 import { getUserCart } from "../../store/cart";
+import ImageSlider from "../imageSlider/ImageSlider";
 
 const DetailPg = () => {
 
@@ -59,8 +60,16 @@ const DetailPg = () => {
     })
     console.log(Addedplace, '------------added')
 
-    let Images = [fiveFlags, fiveFlags, waterimg, bronxZoo, natural, splish, aqua]
-
+    // let Images = [fiveFlags, fiveFlags, waterimg, bronxZoo, natural, splish, aqua]
+    let imgtest = "https://allears.net/wp-content/uploads/2019/04/Six-Flags-Promo.jpeg"
+    let slides = [
+        {url: placeDetail.Place.img1, title: "img1"},
+        {url: placeDetail.Place.img2, title: 'img2'},
+        {url: placeDetail.Place.img3, title: 'img3'},
+        {url: placeDetail.Place.img4, title: 'img4'},
+        {url: placeDetail.Place.img5, title: 'img5'}
+    ]
+    console.log(slides, '------images------------')
     //checking if place already exists in the cart
     let placeArr = []
 
@@ -74,6 +83,12 @@ const DetailPg = () => {
     }
 
     console.log(placeArr, '---------placeArr')
+
+    const containerStyles = {
+        width: "500px",
+        height: "280px",
+        margin: "0 auto",
+    };
 
 
 
@@ -107,9 +122,14 @@ const DetailPg = () => {
                 {/* </div> */}
                 </div>
             </div>
-                <div className="detail-image">
+                {/* <div className="detail-image"> */}
+                {/* <div style={containerStyles}> */}
+                        <div style={containerStyles}>
+                            <ImageSlider slides={slides} />
+                        {/* </div> */}
+
                     {/* {[placeDetail.Place.img1, placeDetail.Place.img2, placeDetail.Place.img3]} */}
-                    <div className="main-pic">
+                    {/* <div className="main-pic">
                         <img className="detail-photo" src={placeDetail.Place.img1} alt="parkImg" />
                     </div>
                     <div className="all-pic">
@@ -125,7 +145,7 @@ const DetailPg = () => {
                         <div className="picEnd">
                             <img className="detail-photo5" src={placeDetail.Place.img5} alt="parkImg" />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             <div className="price-review-container">
                 <div className="price-detail">
