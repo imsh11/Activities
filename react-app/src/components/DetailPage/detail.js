@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { getDetailByPlaceId } from "../../store/places";
@@ -14,6 +14,7 @@ import aqua from '../../images/aquarium.jpeg'
 import "./detail.css"
 import { getUserCart } from "../../store/cart";
 import ImageSlider from "../imageSlider/ImageSlider";
+import { GoogleMap, useJsApiLoader, useLoadScript } from "@react-google-maps/api";
 
 const DetailPg = () => {
 
@@ -21,6 +22,24 @@ const DetailPg = () => {
     const history = useHistory()
 
     const [isLoaded, setIsLoaded] = useState(false)
+
+    // sets center of the map
+    const [currentPosition, setCurrentPosition] = useState({lat:43.11016617798622,lng:-89.48826131670266})
+    const [map, setMap] = useState(null)
+
+    const { isLoadedGoogle } = useLoadScript({
+        // id: 'google-map-script',
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API
+    })
+
+    // const { isLoadedGoogle } = useJsApiLoader({
+    //     id: 'google-map-script',
+    //     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API
+    // })
+
+    const onUnmount = useCallback(function callback(map){
+        setMap(null)
+    }, [])
 
     const {id} = useParams()
     const placeDetail = useSelector(state => state.places)
@@ -70,6 +89,7 @@ const DetailPg = () => {
         {url: placeDetail.Place.img5, title: 'img5'}
     ]
     console.log(slides, '------images------------')
+
     //checking if place already exists in the cart
     let placeArr = []
 
@@ -89,6 +109,11 @@ const DetailPg = () => {
         height: "280px",
         margin: "0 auto",
     };
+
+    const containerStyleGoogle = {
+        width: '800px',
+        height: '800px'
+    }
 
 
 
@@ -206,6 +231,18 @@ const DetailPg = () => {
                 </div>
             </div>
         </div>
+
+        {/* <div className="map_page__container">
+            <div style={{height: '900px', width: '900px'}}>
+                {isLoadedGoogle && <GoogleMap
+                mapContainerStyle={containerStyleGoogle}
+                zoom={8}
+                center={currentPosition}
+                // onUnmount={onUnmount}
+                >
+                </GoogleMap>}
+            </div>
+        </div> */}
 
         </>
     )
