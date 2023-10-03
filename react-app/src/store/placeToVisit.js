@@ -109,12 +109,12 @@ const placeListReducer = (state = initialState, action) => {
         case GET_PLACES_TO_VISIT_FOR_USER:{
 
             const newState = {}
-            console.log(action, action.payload, '--------placeToVisit')
+            // console.log(action, action.payload, '--------placeToVisit')
 
             action.payload.place_to_visit.forEach(ele => {
                 newState[ele.id] = ele
             })
-            console.log(newState, '---------state')
+            // console.log(newState, '---------state')
 
             return newState
         }
