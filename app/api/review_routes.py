@@ -54,7 +54,7 @@ def deleteReview(id):
     if not reviewDel:
         return ({ 'Error': 'Review Does NOT Exist'}), 404
 
-    print(dir(reviewDel), reviewDel.user_id ,session['_user_id'], '----del----')
+    # print(dir(reviewDel), reviewDel.user_id ,session['_user_id'], '----del----')
 
     if reviewDel.user_id != int(session['_user_id']):
         return ({ 'Error': 'Unauthorized'}), 401
@@ -62,4 +62,4 @@ def deleteReview(id):
     db.session.delete(reviewDel)
     db.session.commit()
 
-    return ({ 'Message': 'Review Deleted Successfully'})
+    return reviewDel.to_dict_review()

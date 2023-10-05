@@ -1,6 +1,7 @@
-from flask import Flask, Blueprint, session, request
+from flask import Flask, Blueprint, session, request, jsonify
 from flask_login import login_required
 from app.models.cart_order import Cart_Order, db
+import json
 
 cartOrder = Blueprint('cart', __name__)
 
@@ -46,14 +47,24 @@ def getCartForUser(userId):
             }
 
 # get cart order history
-@cartOrder.route('/history/<int:userId>')
+@cartOrder.route('/history')
 @login_required
-def cartHis(userId):
-    oldCarts = Cart_Order.query.filter(Cart_Order.user_id == userId, Cart_Order.payment == True).all()
-    # print(oldCarts, '-----------his')
+def cartHis():
+    oldCarts = Cart_Order.query.filter(Cart_Order.user_id == int(session['_user_id']), Cart_Order.payment == True).all()
+    order = {}
 
+    for oldcart in oldCarts:
+        order[oldcart.id] = oldcart.to_dict_cart_order()
+        order[oldcart.id]['items'] = [items.to_dict_order_item() for items in oldcart.cart]
+
+        # for items in oldcart.cart:
+        #     order['item']= items.to_dict_order_item()
+
+    # print(oldCarts[2].cart, oldCarts, dir(oldCarts[1].cart[0]), order, '-----------his')
+    # print ([oldCart.to_dict_cart_order() for oldCart in oldCarts])
+    print(oldCarts, '--------order')
     return {
-        'Order History': [cart.to_dict_cart_order() for cart in oldCarts]
+        'OrderHistory': order
     }
 
 # post req in cart
@@ -118,3 +129,20 @@ def payment():
         'updated': updated.to_dict_cart_order()
     }
 
+# delete cart paid order
+@cartOrder.route('/delete/<int:id>', methods=['DELETE'])
+@login_required
+def deleteOldOrder(id):
+    oldOrders = Cart_Order.query.filter(Cart_Order.user_id == int(session['_user_id']), Cart_Order.payment == True, Cart_Order.id == id).first()
+
+    print(oldOrders, '---------del cart')
+
+    if not oldOrders:
+        return({
+            "Error": "Cart Does not exist"
+        }), 404
+
+    db.session.delete(oldOrders)
+    db.session.commit()
+
+    return oldOrders.to_dict_cart_order()

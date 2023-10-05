@@ -10,6 +10,7 @@ import DetailPg from "./components/DetailPage/detail";
 import CurrCart from "./components/CurrentCart/currentCart";
 import UserPlaceList from "./components/PlacesToVisitPage/PlacesToVisitPage";
 import ReviewByUserId from "./components/ReviewUserId/ReviewUserId";
+import OrderHistoryByUserId from "./components/orderHistory/OrderHistory";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route exact path='/user/review'>
             <ReviewByUserId />
+          </Route>
+          <Route exact path='/user/orderHistory'>
+            <OrderHistoryByUserId />
           </Route>
         </Switch>
       )}

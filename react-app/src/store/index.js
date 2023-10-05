@@ -5,13 +5,15 @@ import placeReducer from './places'
 import cartReducer from './cart';
 import placeListReducer from './placeToVisit';
 import reviewReducer from './review';
+import OrderHistoryReducer from './order';
 
 const rootReducer = combineReducers({
   session,
   places: placeReducer,
   cart: cartReducer,
   placesList: placeListReducer,
-  reviews: reviewReducer
+  reviews: reviewReducer,
+  orderHistory: OrderHistoryReducer
 });
 
 
