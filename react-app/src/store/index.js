@@ -4,12 +4,16 @@ import session from './session'
 import placeReducer from './places'
 import cartReducer from './cart';
 import placeListReducer from './placeToVisit';
+import reviewReducer from './review';
+import OrderHistoryReducer from './order';
 
 const rootReducer = combineReducers({
   session,
   places: placeReducer,
   cart: cartReducer,
-  placesList: placeListReducer
+  placesList: placeListReducer,
+  reviews: reviewReducer,
+  orderHistory: OrderHistoryReducer
 });
 
 

@@ -4,31 +4,31 @@ from sqlalchemy.sql import text
 
 def seed_reviews():
     review1 = Review(
-        review='we had a lot of fun rides were great',
+        review='we had a lot of fun, rides were great',
         stars=4,
         place_id=1,
         user_id=1,
     )
     review2 = Review(
-        review='test review for place 1 by user 2',
+        review='it was an awesome hangout with friends',
         stars=5,
         place_id=1,
         user_id=2,
     )
     review3 = Review(
-        review='test review for place 3 by user 1',
+        review='place needs cleaning, the food was not good',
         stars=3,
         place_id=3,
         user_id=1,
     )
     review4 = Review(
-        review='review test for place 2 by user 4',
+        review='i was here with my friends, rides were great',
         stars=5,
         place_id=2,
         user_id=4,
     )
     review5 = Review(
-        review='rrr test for place 1 by user 5',
+        review='it was very crowded, we waited in long lines for every ride',
         stars=2,
         place_id=1,
         user_id=5,

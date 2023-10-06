@@ -1,49 +1,75 @@
-// const ADD_ITEM_TO_CART = 'activities/addItemToCart'
+const ORDER_HIS_USERID = 'activities/getOrderHistoryForUser'
+const DELETE_ORDER_HIS = 'activities/deleteOrderHistory'
 
-// const addItem = (Item) => {
-//     return {
-//         type: ADD_ITEM_TO_CART,
-//         payload: Item
-//     }
-// }
+const getHistory = (orders) => {
+    return{
+        type: ORDER_HIS_USERID,
+        payload: orders
+    }
+}
 
-// export const addItemtoCartByPlaceId = (payload, id) => async (dispatch) => {
+const deleteOrderHis = (delOrder) => {
+    return{
+        type: DELETE_ORDER_HIS,
+        payload: delOrder
+    }
+}
 
-//     console.log(id, payload, typeof(id), JSON.stringify(payload),'----------addItem')
-//     const response = await fetch(`/api/order/place/${id}`, {
-//         method: "POST",
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(payload)
-//     })
-//     console.log(response, '-----------resp')
+export const getOrderHistoryByUserId = () => async (dispatch) => {
 
-//     if(response.ok){
-//         const data = await response.json()
-//         console.log(data, '-----------addItem')
+    const response = await fetch('/api/cart/history')
+    console.log(response, '----orderHis')
 
-//         dispatch(addItem(data))
+    if(response.ok){
+        const data = await response.json()
+        console.log(data, '-------orderDATA')
 
-//         return data
-//     }
-// }
+        dispatch(getHistory(data))
+        return data
+    }
+}
 
-// const initialState = {}
+export const deleteOrderById = (id) => async (dispatch) => {
 
-// const addItemReducer = (state = initialState, action) => {
-//     switch(action.type){
-//         case ADD_ITEM_TO_CART: {
+    const response = await fetch(`/api/cart/delete/${id}`, {
+        method: 'DELETE'
+    })
+    console.log(response, '----delRes')
 
-//             const newState = {}
+    if(response.ok){
+        const data = await response.json()
 
-//             console.log(action, '---------additemRed')
+        dispatch(deleteOrderHis(data))
+        return data
+    }
+}
 
-//             return newState
-//         }
-//         default:
-//             return state
-//     }
-// }
+const initialState = {}
 
-// export default addItemReducer
+const OrderHistoryReducer = (state = initialState, action) => {
+    switch(action.type){
+        case ORDER_HIS_USERID:{
+            let newState = {}
+
+            console.log(action.payload.OrderHistory, '-----state order')
+            // action.payload.OrderHistory.forEach(order => {
+            //     newState[order.id] = order
+            // })
+            newState = {...action.payload.OrderHistory}
+            return newState
+        }
+        case DELETE_ORDER_HIS:{
+            const newState = {...state}
+
+            console.log(action.payload, '------del state')
+
+            delete newState[action.payload.id]
+
+            return newState
+        }
+        default:
+            return state
+    }
+}
+
+export default OrderHistoryReducer
