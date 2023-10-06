@@ -91,7 +91,7 @@ def seed_places():
         img5= 'https://zooinstitutes.com/img/MAPS/1526157800_map.png.pagespeed.ce.50RUHAwBV5.png',
         product= 'one day ticket',
         price= 50,
-        activity_type='aqurium'
+        activity_type='aquarium'
     )
     place4 = Place(
         name= 'The Museum of Modern Art',
