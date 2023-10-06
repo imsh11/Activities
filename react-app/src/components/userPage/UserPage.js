@@ -5,6 +5,7 @@ import UserImg from "../../images/User-Profile-PNG-Image.png"
 import "./UserPage.css"
 import { getAllPlaces } from "../../store/places";
 import DeleteReviewId from "../ReviewDelete/DeleteReview";
+import OrderHistoryByUserId from "../orderHistory/OrderHistory";
 
 const UserInfoPage = () => {
 
@@ -26,11 +27,11 @@ const UserInfoPage = () => {
         <>
         {isLoaded &&(
             <div>
-                <div>
+                <div className="user-main">
                     <div className="imageContainer">
                         <img className="basicUserProfile" src={UserImg} alt="profile" />
                     </div>
-                    <div>
+                    <div className="userDetail">
                         <div>
                             Email: {user.email}
                         </div>
@@ -66,6 +67,9 @@ const UserInfoPage = () => {
                             </div>
                         ))}
                     </div>
+                </div>
+                <div>
+                    <OrderHistoryByUserId />
                 </div>
             </div>
         )}
