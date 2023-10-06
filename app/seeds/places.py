@@ -44,7 +44,7 @@ def seed_places():
         img1='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bronx_Zoo_001.jpg/1280px-Bronx_Zoo_001.jpg',
         img2='https://res.klook.com/image/upload/u_activities:urzpqnblzku48zeapupz,h_1.0,ar_960:460,c_scale,e_blur:10000/c_fill,w_843,h_474/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/urzpqnblzku48zeapupz.webp',
         img3='https://static01.nyt.com/images/2015/06/28/nyregion/28ELEPHANT/28ELEPHANT-superJumbo.jpg?quality=75&auto=webp',
-        img4='https://www.nydailynews.com/resizer/Lg2A4j0v0Dxjauxydd0TjtTMrUI=/1024x0/filters:format(jpg):quality(70)/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/5G7D3OWIVJ2DP2EO6XYBL722UM.jpg',
+        img4='https://cdn.wcs.org/2022/05/23/18gkpot3qy_Julie_Larsen_Maher_1261_California_Sea_Lion_Show_jumping_SLP_BZ_09_13_10.jpg',
         img5='https://cdn.wcs.org/2023/05/18/15/46/54/dace9286-07f5-4e2b-ab49-65345f8cee3c/bz-map-spring-2023-with-budgie.png',
         activity_type='zoo'
     )
@@ -91,7 +91,7 @@ def seed_places():
         img5= 'https://zooinstitutes.com/img/MAPS/1526157800_map.png.pagespeed.ce.50RUHAwBV5.png',
         product= 'one day ticket',
         price= 50,
-        activity_type='aqurium'
+        activity_type='aquarium'
     )
     place4 = Place(
         name= 'The Museum of Modern Art',
