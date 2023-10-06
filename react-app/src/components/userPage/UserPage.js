@@ -4,6 +4,7 @@ import { getReviewsByUserId } from "../../store/review";
 import UserImg from "../../images/User-Profile-PNG-Image.png"
 import "./UserPage.css"
 import { getAllPlaces } from "../../store/places";
+import DeleteReviewId from "../ReviewDelete/DeleteReview";
 
 const UserInfoPage = () => {
 
@@ -58,6 +59,9 @@ const UserInfoPage = () => {
                                 </div>
                                 <div>
                                     Place: {places[review.place_id].name}
+                                </div>
+                                <div>
+                                    <DeleteReviewId id={review.id} />
                                 </div>
                             </div>
                         ))}
