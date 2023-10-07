@@ -56,6 +56,11 @@ function ProfileButton({ user }) {
               </NavLink>
             </li>
             <li>
+              <NavLink exact to="/user/userPage">
+              <div style={{paddingBottom: '3px'}}>My Page</div>
+              </NavLink>
+            </li>
+            <li>
               <button className="button1" onClick={handleLogout}>Log Out</button>
             </li>
           </div>
