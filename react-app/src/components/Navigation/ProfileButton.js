@@ -57,7 +57,7 @@ function ProfileButton({ user }) {
             </li>
             <li>
               <NavLink exact to="/user/userPage">
-              My Page
+              <div style={{paddingBottom: '3px'}}>My Page</div>
               </NavLink>
             </li>
             <li>
