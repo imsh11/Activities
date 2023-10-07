@@ -23,6 +23,12 @@ const UserInfoPage = () => {
         dispatch(getReviewsByUserId()).then(() => setIsLoaded(true))
     }, [dispatch, user])
 
+    if(!Object.values(places).length){
+        return(
+            <div>loading...</div>
+        )
+    }
+
     return(
         <>
         {isLoaded &&(

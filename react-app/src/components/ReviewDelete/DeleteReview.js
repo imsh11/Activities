@@ -26,7 +26,7 @@ const DeleteReviewId = ({id}) => {
 
             {modal && (
                 <div id="modal">
-                    <div id="modal-background" onCanPlay={toggleModal}></div>
+                    <div id="modal-background" onClick={toggleModal}></div>
                     <div id="modal-content-del" className="">
                         <div className="modal-content-inner">
                             <div className="cartDel-first">

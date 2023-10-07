@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOrderHistoryByUserId } from "../../store/order";
 import { getAllPlaces } from "../../store/places";
 import ItemQuantityForm from "../ItemQuantityForm/ItemQuantityForm";
+import CreateReview from "../ReviewCreate/ReviewCreate";
 
 const OrderHistoryByUserId = () => {
 
@@ -37,6 +38,9 @@ const OrderHistoryByUserId = () => {
                                 </div>
                                 <div>
                                     Qty: {item.quantity}
+                                </div>
+                                <div>
+                                    <CreateReview id={item.place_id} />
                                 </div>
                             </div>
                         ))}

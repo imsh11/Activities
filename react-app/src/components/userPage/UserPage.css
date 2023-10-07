@@ -9,7 +9,7 @@
     display: grid;
     grid-auto-columns: 1fr;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1.25fr 1.25fr;
     gap: 10px 10px;
     grid-template-areas:
     "user"
