@@ -92,7 +92,7 @@
 }
 
 .detail-single-review{
-    border: solid black;
+    border-bottom: solid #e5e5e5;
     border-radius: 5px;
     padding: 10px;
     margin: 5px;
