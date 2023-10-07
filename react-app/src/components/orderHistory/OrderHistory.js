@@ -25,7 +25,7 @@ const OrderHistoryByUserId = () => {
         {isLoaded &&(
             <div>
                 <div>
-                    TEsting
+                    Order History
                 </div>
                 <div>
                     {userOrders.map( ele =>(

@@ -34,7 +34,7 @@ const DeleteReviewId = ({id}) => {
                             </div>
                             <div className="cartDel-second">
                                 <div className="del-main-title">Delete Review?</div>
-                                <div className="deletetext">Click Delete to Procede or Cancle to Cancle</div>
+                                <div className="deletetext">Click Delete to Procede or Cancle</div>
                             </div>
                         </div>
                         <div className="cart-delBtn">
