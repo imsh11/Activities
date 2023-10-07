@@ -232,6 +232,11 @@ const DetailPg = () => {
             </div>
         </div>
 
+        <div style={{height: "450", border: '0'}} className="">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3109377.664831483!2d-77.33302095089005!3d40.442033197259235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c164831c62ca1d%3A0x2bd60c6088332f46!2sSix%20Flags%20Great%20Adventure!5e0!3m2!1sen!2sus!4v1696687696727!5m2!1sen!2sus"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
         {/* <div className="map_page__container">
             <div style={{height: '900px', width: '900px'}}>
                 {isLoadedGoogle && <GoogleMap
