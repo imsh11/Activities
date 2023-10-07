@@ -77,7 +77,7 @@ const DetailPg = () => {
     Object.values(placeVisitList).forEach(ele =>{
         Addedplace.push(ele.place_id)
     })
-    console.log(Addedplace, '------------added')
+    // console.log(Addedplace, '------------added')
 
     // let Images = [fiveFlags, fiveFlags, waterimg, bronxZoo, natural, splish, aqua]
     let imgtest = "https://allears.net/wp-content/uploads/2019/04/Six-Flags-Promo.jpeg"
@@ -88,7 +88,7 @@ const DetailPg = () => {
         {url: placeDetail.Place.img4, title: 'img4'},
         {url: placeDetail.Place.img5, title: 'img5'}
     ]
-    console.log(slides, '------images------------')
+    // console.log(slides, '------images------------')
 
     //checking if place already exists in the cart
     let placeArr = []
@@ -102,7 +102,7 @@ const DetailPg = () => {
     }
     }
 
-    console.log(placeArr, '---------placeArr')
+    // console.log(placeArr, '---------placeArr')
 
     const containerStyles = {
         width: "500px",

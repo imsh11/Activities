@@ -1,0 +1,45 @@
+
+.mainContent-orderHis{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.main-orderHis{
+    border-bottom: solid 5px #e5e5e5;
+    padding-bottom: 10px;
+    padding-top: 25px;
+}
+
+.order-date{
+    padding-bottom: 20px;
+    font-size: 19px;
+}
+
+.orderHis-item{
+    grid-area: content;
+    font-size: 18px;
+    padding-bottom: 5px;
+}
+
+.main-order-detail{
+    display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "content rev del";
+}
+
+.add-review{
+    grid-area: rev;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.delete-orderHis{
+    grid-area: del;
+    display: flex;
+    align-items: center;
+}

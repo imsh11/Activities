@@ -1,5 +1,6 @@
 const GET_REVIEW_FOR_USER = 'activities/getReviewForUser'
 const DELETE_REVIEW_ID = 'activities/delReviewByRevId'
+const ADD_REVIEW_BY_PLACE_ID = 'acitivities/addReviewByPlaceId'
 
 const getReviews = (reviews) => {
     return{
@@ -12,6 +13,13 @@ const delReview = (reviewDel) => {
     return{
         type: DELETE_REVIEW_ID,
         payload: reviewDel
+    }
+}
+
+const addReview = (newReview) => {
+    return{
+        type: ADD_REVIEW_BY_PLACE_ID,
+        payload: newReview
     }
 }
 
@@ -44,6 +52,27 @@ export const delReviwByReviewId = (id) => async (dispatch) => {
     }
 }
 
+export const createNewReviewByPlaceId = (content, id) => async (dispatch) => {
+    console.log(content, id, '----------createReview')
+    const response = await fetch(`/api/review/place/${id}`, {
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(content)
+    })
+
+    console.log(response, '--------response')
+
+    if(response.ok){
+        const data = await response.json()
+
+        dispatch(addReview(data))
+
+        return data
+    }
+}
+
 //state
 const initialState = {}
 
@@ -64,6 +93,14 @@ const reviewReducer = (state = initialState, action) => {
             console.log(action.payload, '------DelAction')
 
             delete newState[action.payload.id]
+            return newState
+        }
+        case ADD_REVIEW_BY_PLACE_ID:{
+            const newState = {...state}
+            console.log(action.payload, '--------actionPayl')
+
+            newState[action.payload.id] = action.payload
+
             return newState
         }
         default:
