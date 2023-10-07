@@ -23,7 +23,7 @@ const UserInfoPage = () => {
         dispatch(getReviewsByUserId()).then(() => setIsLoaded(true))
     }, [dispatch, user])
 
-    if(!Object.values(places).length){
+    if(!Object.values(places).length || !userReviews){
         return(
             <div>loading...</div>
         )

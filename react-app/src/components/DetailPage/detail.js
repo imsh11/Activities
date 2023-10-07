@@ -115,6 +115,22 @@ const DetailPg = () => {
         height: '800px'
     }
 
+    const mapEmbeded = [
+        'blank',
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3050.2791829227945!2d-74.44103381520557!3d40.13606449916736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c164831c62ca1d%3A0x2bd60c6088332f46!2sSix%20Flags%20Great%20Adventure!5e0!3m2!1sen!2sus!4v1696688506663!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>,
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.3305332190444!2d-75.53568112423658!3d40.57845894578056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c4309b3e647929%3A0x4ecce74a41b8eb22!2sDorney%20Park%20%26%20Wildwater%20Kingdom!5e0!3m2!1sen!2sus!4v1696688922779!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>,
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3017.9899008224484!2d-73.87929662422349!3d40.85014552914735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f483516ad28b%3A0x56eb41c9795102e!2sBronx%20Zoo!5e0!3m2!1sen!2sus!4v1696689357980!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>,
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.4304702599643!2d-77.02864032431611!3d38.89127034706608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b798ecb5b2c7%3A0xc7edf0c4a86f75af!2sSmithsonian%20National%20Museum%20of%20Natural%20History!5e0!3m2!1sen!2sus!4v1696689653035!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>,
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3014.7602603815058!2d-72.73186102396386!3d40.92100217136285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e86075773c1915%3A0xfd06facaa6f212c6!2sSplish%20Splash%20Water%20Park!5e0!3m2!1sen!2sus!4v1696689756643!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>,
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.5300262046026!2d-73.97850002423687!3d40.57405464604945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c244360f1e1371%3A0x45f54e3a5017dbdc!2sNew%20York%20Aquarium!5e0!3m2!1sen!2sus!4v1696688199630!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>,
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.0267339369752!2d-73.98019652422784!3d40.761436734588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258f97bdb102b%3A0xea9f8fc0b3ffff55!2sThe%20Museum%20of%20Modern%20Art!5e0!3m2!1sen!2sus!4v1696689938765!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>,
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.125201216097!2d-73.9662055242321!3d40.67121024011219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0a449c39c9%3A0xc62355aa46c985fa!2sBrooklyn%20Museum!5e0!3m2!1sen!2sus!4v1696690018633!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>,
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.2080238294093!2d-73.96581892422692!3d40.7794406334846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25896f660c26f%3A0x3b2fa4f4b6c6a1fa!2sThe%20Metropolitan%20Museum%20of%20Art!5e0!3m2!1sen!2sus!4v1696690080169!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>,
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.8728085314974!2d-75.13313987426686!3d39.944234634262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c8f2bf604d05%3A0x1fe706436a408dac!2sAdventure%20Aquarium!5e0!3m2!1sen!2sus!4v1696690157828!5m2!1sen!2sus"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>,
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.273074268819!2d-74.30116612423764!3d40.5576465470511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3b56ac9854fd7%3A0x8fa1883119657367!2sSeaQuest%20Woodbridge!5e0!3m2!1sen!2sus!4v1696690261087!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    ]
+
 
 
     return(
@@ -230,6 +246,19 @@ const DetailPg = () => {
                     ))}
                 </div>
             </div>
+        </div>
+
+        <div className="embdedMap">
+            <div className="title">Info</div>
+            <div style={{fontWeight: 'bold', marginBottom: '5px', marginLeft: '20px'}}>Map</div>
+            <div style={{marginLeft: '20px'}}>
+                {mapEmbeded[placeDetail.Place.id]}
+            </div>
+            <div>
+                {/* <div style={{fontWeight: 'bold', marginBottom: '5px', marginLeft: '20px'}}>Floor Plan</div> */}
+
+            </div>
+
         </div>
 
         {/* <div className="map_page__container">
