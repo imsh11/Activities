@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createNewReviewByPlaceId } from "../../store/review";
+import './reviewCreate.css'
 
 
 const CreateReview = ( {id} ) => {
@@ -53,15 +54,15 @@ const CreateReview = ( {id} ) => {
                 <div id="modal">
                     <div id="modal-background" onClick={toggleModal}></div>
                     <div id="modal-content-del" className="">
-                        <div className="update-main">
+                        <div className="update-main review-modal">
                             Review
                         </div>
                         <div>
                             <form onSubmit={handlePost}>
-                                <div className="update-quantity">
+                                <div className="update-quantity review-input">
                                     <label>
                                         Review: <input
-                                        id="review"
+                                        id="quantity"
                                         required
                                         placeholder="atleast 5 words"
                                         value={review}
@@ -76,10 +77,10 @@ const CreateReview = ( {id} ) => {
                                         }
                                     </label>
                                 </div>
-                                <div className="update-quantity">
+                                <div className="update-quantity review-input">
                                     <label>
                                         Stars: <input
-                                        id="stars"
+                                        id="quantity"
                                         required
                                         placeholder="between 1 to 5"
                                         value={stars}
