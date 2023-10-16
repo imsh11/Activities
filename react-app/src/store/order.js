@@ -51,7 +51,7 @@ const OrderHistoryReducer = (state = initialState, action) => {
         case ORDER_HIS_USERID:{
             let newState = {}
 
-            console.log(action.payload.OrderHistory, '-----state order')
+            // console.log(action.payload.OrderHistory, '-----state order')
             // action.payload.OrderHistory.forEach(order => {
             //     newState[order.id] = order
             // })

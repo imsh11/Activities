@@ -5,6 +5,7 @@ import { getAllPlaces } from "../../store/places";
 import ItemQuantityForm from "../ItemQuantityForm/ItemQuantityForm";
 import CreateReview from "../ReviewCreate/ReviewCreate";
 import './orderHistory.css'
+import DelOrderbyId from "../orderDel/OrderDel";
 
 const OrderHistoryByUserId = () => {
 
@@ -54,9 +55,7 @@ const OrderHistoryByUserId = () => {
                                     <CreateReview id={item.place_id} />
                                 </div>
                                 <div className="delete-orderHis">
-                                    <button className="button1" onClick={() => window.alert('feature coming soon!')}>
-                                        Delete
-                                    </button>
+                                    <DelOrderbyId id={ele.id} />
                                 </div>
                             </div>
                         ))}
