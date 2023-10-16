@@ -16,7 +16,7 @@ const UserInfoPage = () => {
     const user = useSelector(state => state.session.user)
     const userReviews = useSelector(state => Object.values(state.reviews))
     const places = useSelector(state => state.places)
-    console.log(places, '---------state')
+    console.log(places, userReviews,user, '---------state')
 
     useEffect(() => {
         dispatch(getAllPlaces())
@@ -52,28 +52,36 @@ const UserInfoPage = () => {
                 <div className="Reviews">
                     <div className="title">Reviews</div>
                     <div>
-                        {userReviews.map(review => (
-                            <div key={review.id} className="review-content">
-                                <div className="review-img">
-                                    <img className="placeImg" src={places[review.place_id].img1}
-                                    alt="placeImg" />
+                        {userReviews.length?
+                        <div>
+                            {userReviews.map(review => (
+                                <div key={review.id} className="review-content">
+                                    <div className="review-img">
+                                        <img className="placeImg" src={places[review.place_id].img1}
+                                        alt="placeImg" />
+                                    </div>
+                                    <div className="review-container">
+                                        <div className="reviewBody">
+                                            Review: {review.review}
+                                        </div>
+                                        <div className="reviewBody">
+                                            Rating: {review.stars}
+                                        </div>
+                                        <div className="reviewBody">
+                                            Place: {places[review.place_id].name}
+                                        </div>
+                                        <div className="reviewBody">
+                                            <DeleteReviewId id={review.id} />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="review-container">
-                                    <div className="reviewBody">
-                                        Review: {review.review}
-                                    </div>
-                                    <div className="reviewBody">
-                                        Rating: {review.stars}
-                                    </div>
-                                    <div className="reviewBody">
-                                        Place: {places[review.place_id].name}
-                                    </div>
-                                    <div className="reviewBody">
-                                        <DeleteReviewId id={review.id} />
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
+                        :
+                        <div style={{}} className="No-Reviews">
+                            You haven't left any Reviews
+                        </div>
+                        }
                     </div>
                 </div>
                 <div className="History">
