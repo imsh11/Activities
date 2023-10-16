@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { deleteOrderById } from "../../store/order";
 
 
 const DelOrderbyId = ({id}) => {
 
-    console.log(id, '----delOrderId')
+    console.log(id, typeof(id), '----delOrderId')
     const dispatch = useDispatch()
 
     const [modal, setModal] = useState(false)
@@ -14,6 +15,7 @@ const DelOrderbyId = ({id}) => {
     }
 
     const handleOrderDelete = () => {
+        dispatch(deleteOrderById(id))
         toggleModal()
     }
 
