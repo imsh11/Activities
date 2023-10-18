@@ -38,6 +38,9 @@ const OrderHistoryByUserId = () => {
                             <div className="order-date">
                                 Order Date: {ele.updated_at}
                             </div>
+                            <div className="delete-orderHis">
+                                    <DelOrderbyId id={ele.id} />
+                            </div>
                             {ele.items.map(item => (
                             <div key={item.id} className="main-order-detail">
                                 <div className="order-detail-content">
@@ -54,9 +57,7 @@ const OrderHistoryByUserId = () => {
                                 <div className="add-review">
                                     <CreateReview id={item.place_id} />
                                 </div>
-                                <div className="delete-orderHis">
-                                    <DelOrderbyId id={ele.id} />
-                                </div>
+                                
                             </div>
                         ))}
                         </div>
