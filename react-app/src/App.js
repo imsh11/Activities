@@ -12,6 +12,7 @@ import UserPlaceList from "./components/PlacesToVisitPage/PlacesToVisitPage";
 import ReviewByUserId from "./components/ReviewUserId/ReviewUserId";
 import OrderHistoryByUserId from "./components/orderHistory/OrderHistory";
 import UserInfoPage from "./components/userPage/UserPage";
+import PayPg from "./components/paymentPg/payPg";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +52,9 @@ function App() {
           </Route>
           <Route exact path='/user/userPage'>
             <UserInfoPage />
+          </Route>
+          <Route exact path='/user/payment'>
+            <PayPg />
           </Route>
         </Switch>
       )}
