@@ -6,6 +6,7 @@ import "./UserPage.css"
 import { getAllPlaces } from "../../store/places";
 import DeleteReviewId from "../ReviewDelete/DeleteReview";
 import OrderHistoryByUserId from "../orderHistory/OrderHistory";
+import { Redirect } from "react-router-dom/cjs/react-router-dom";
 
 const UserInfoPage = () => {
 
@@ -31,6 +32,8 @@ const UserInfoPage = () => {
 
     return(
         <>
+        {user ? (
+            <>
         {isLoaded &&(
             <div className="user-page">
                 <div className="user-main">
@@ -88,6 +91,10 @@ const UserInfoPage = () => {
                     <OrderHistoryByUserId />
                 </div>
             </div>
+        )}
+        </>
+        ) : (
+            <Redirect to='/' />
         )}
         </>
     )
