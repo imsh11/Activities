@@ -13,9 +13,11 @@ import ReviewByUserId from "./components/ReviewUserId/ReviewUserId";
 import OrderHistoryByUserId from "./components/orderHistory/OrderHistory";
 import UserInfoPage from "./components/userPage/UserPage";
 import PayPg from "./components/paymentPg/payPg";
+import { useLocation } from "react-router-dom/cjs/react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
+  const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
@@ -23,7 +25,7 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {isLoaded && location.pathname !='/user/payment' && <Navigation isLoaded={isLoaded} />}
       {isLoaded && (
         <Switch>
           <Route exact path="/login" >
