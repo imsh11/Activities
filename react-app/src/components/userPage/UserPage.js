@@ -20,8 +20,10 @@ const UserInfoPage = () => {
     console.log(places, userReviews,user, '---------state')
 
     useEffect(() => {
-        dispatch(getAllPlaces())
-        dispatch(getReviewsByUserId()).then(() => setIsLoaded(true))
+        if(user){
+            dispatch(getAllPlaces())
+            dispatch(getReviewsByUserId()).then(() => setIsLoaded(true))
+        }
     }, [dispatch, user])
 
     if(!Object.values(places).length || !userReviews){
