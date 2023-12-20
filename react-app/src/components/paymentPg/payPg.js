@@ -27,6 +27,7 @@ const PayPg = () => {
 
     return (
         <>
+        
         <div>
             <div>
                 CHECKOUT
@@ -144,6 +145,18 @@ const PayPg = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             />
                         </label>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <button>
+                            Place Your Order
+                        </button>
+                    </div>
+                    <div>
+                        <button>
+                            Return to Cart
+                        </button>
                     </div>
                 </div>
             </div>
