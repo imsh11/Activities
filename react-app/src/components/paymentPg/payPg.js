@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCart } from "../../store/cart";
+import { getAllPlaces } from "../../store/places";
 
 const PayPg = () => {
 
@@ -17,17 +18,46 @@ const PayPg = () => {
     // user
     const user = useSelector(state => state.session.user)
     const cart = useSelector(state => state.cart)
-    console.log(user, cart, '-------payment')
+    const places = useSelector(state => state.places)
+    console.log(user, cart, places,'-------payment')
 
     useEffect(() =>{
         if(user){
+            dispatch(getAllPlaces())
             dispatch(getUserCart(user.id)).then(() => setIsLoaded(true))
         }
     }, [dispatch, user])
 
+    //getting keys of places for the cart
+    let plcKeys = []
+    for(let keys in cart.Items){
+        plcKeys.push(keys)
+    }
+    console.log(plcKeys, typeof(plcKeys[0]),'-----keys----')
+
     return (
         <>
-        
+        {isLoaded &&(
+        <div>
+            <div>
+                <div>
+                    {plcKeys.map( plc => (
+                        <div key={plc}>
+                            <div>
+                                {places[plc].name}
+                            </div>
+                            <div>
+                                Tickets: {cart.Items[plc].quantity}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div>
+                Cart Total ${cart.Total.total}
+            </div>
+        </div>
+        )}
         <div>
             <div>
                 CHECKOUT
