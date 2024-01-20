@@ -66,15 +66,14 @@ const OrderHistoryByUserId = () => {
                                     {revPlaces.includes(item.place_id)?
                                     <div>
                                         <button>
-                                            
+                                            Already Reviewed
                                         </button>
                                     </div>
                                     :
                                     <div>
-
+                                        <CreateReview id={item.place_id} />
                                     </div>
                                     }
-                                    <CreateReview id={item.place_id} />
                                 </div>
                                 
                             </div>
