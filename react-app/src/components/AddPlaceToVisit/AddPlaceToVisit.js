@@ -5,7 +5,7 @@ import './addPlaceToVisit.css'
 
 
 export default function AddPlace ({place}) {
-    console.log(place, '-----------placeIDadd')
+    // console.log(place, '-----------placeIDadd')
 
     const dispatch = useDispatch()
 
@@ -34,10 +34,10 @@ export default function AddPlace ({place}) {
             status
         }
 
-        console.log(status, '------------status')
+        // console.log(status, '------------status')
         const addToList = await dispatch(addToPlaceList(payload, place.id))
 
-        console.log(addToList, '------------addTOLIST')
+        // console.log(addToList, '------------addTOLIST')
 
         toggleModal()
         setStatus('')

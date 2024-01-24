@@ -18,7 +18,7 @@ const LandingPg = () => {
     const history = useHistory()
 
     const placeLst = useSelector(state => Object.values(state.places))
-    console.log(placeLst, '----state')
+    // console.log(placeLst, '----state')
 
     useEffect(() => {
         dispatch(getAllPlaces())

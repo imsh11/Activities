@@ -35,14 +35,14 @@ const updatePay = (pay) => {
 //thunk
 export const getUserCart = (userId) => async (dispatch) => {
 
-    console.log(userId, typeof(userId),'-------Thunk')
+    // console.log(userId, typeof(userId),'-------Thunk')
     const response = await fetch(`/api/cart/user/current/${userId}`)
 
-    console.log(response, '----------response')
+    // console.log(response, '----------response')
 
     if(response.ok){
         const data = await response.json()
-        console.log(data, '---------userCart')
+        // console.log(data, '---------userCart')
 
         dispatch(cartInSession(data))
         return data
@@ -53,7 +53,7 @@ export const getUserCart = (userId) => async (dispatch) => {
 
 export const addItemtoCartByPlaceId = (payload, id) => async (dispatch) => {
 
-    console.log(id, payload, typeof(id), JSON.stringify(payload),'----------addItem')
+    // console.log(id, payload, typeof(id), JSON.stringify(payload),'----------addItem')
     const response = await fetch(`/api/order/place/${id}`, {
         method: "POST",
         headers: {
@@ -61,11 +61,11 @@ export const addItemtoCartByPlaceId = (payload, id) => async (dispatch) => {
         },
         body: JSON.stringify(payload)
     })
-    console.log(response, '-----------resp')
+    // console.log(response, '-----------resp')
 
     if(response.ok){
         const data = await response.json()
-        console.log(data, '-----------addItem')
+        // console.log(data, '-----------addItem')
 
         dispatch(addItem(data))
 
@@ -74,7 +74,7 @@ export const addItemtoCartByPlaceId = (payload, id) => async (dispatch) => {
 }
 
 export const updateQuantity = (payload, id) => async (dispatch) => {
-    console.log(payload, id, '---------payload Id THUNK')
+    // console.log(payload, id, '---------payload Id THUNK')
 
     const response = await fetch(`/api/order/${id}`, {
         method: 'PUT',
@@ -83,11 +83,11 @@ export const updateQuantity = (payload, id) => async (dispatch) => {
         },
         body: JSON.stringify(payload)
     })
-    console.log(response, '----------resp')
+    // console.log(response, '----------resp')
 
     if(response.ok){
         const data = await response.json()
-        console.log(data, '------updateRES')
+        // console.log(data, '------updateRES')
 
         dispatch(addItem(data))
         return data
@@ -95,7 +95,7 @@ export const updateQuantity = (payload, id) => async (dispatch) => {
 }
 
 export const deleteItem = (id) => async (dispatch) => {
-    console.log(id, typeof(id), '-----del')
+    // console.log(id, typeof(id), '-----del')
 
     const response = await fetch(`/api/order/${id}`, {
         method: 'DELETE'
@@ -103,7 +103,7 @@ export const deleteItem = (id) => async (dispatch) => {
 
     if(response.ok){
         const data = await response.json()
-        console.log(data, '--------delDATA')
+        // console.log(data, '--------delDATA')
 
         dispatch(delItem(data))
     }
@@ -116,11 +116,11 @@ export const payment = () => async (dispatch) => {
         body: null
     })
 
-    console.log(response, '---------pay')
+    // console.log(response, '---------pay')
 
     if(response.ok){
         const data = await response.json()
-        console.log(data, '--------payDATA')
+        // console.log(data, '--------payDATA')
 
         dispatch(updatePay(data))
         return data
@@ -139,12 +139,12 @@ const cartReducer = (state = initialState, action) => {
             let cartOrder = {}
             // let total = {}
 
-            console.log(action.payload, action.payload.CurrentOrder[0],'--------action')
+            // console.log(action.payload, action.payload.CurrentOrder[0],'--------action')
 
             cartOrder['Cart'] = action.payload.CurrentOrder[0]
             // cartOrder.Cart['Items'] = action.payload.Items
 
-            console.log(cartOrder, '---------getCARTORDER')
+            // console.log(cartOrder, '---------getCARTORDER')
 
             // if(cartOrder === undefined){
             //     return {}
@@ -164,12 +164,12 @@ const cartReducer = (state = initialState, action) => {
             newState['Total'] = {total: action.payload.Total}
             newState['CartOrder'] = cartOrder
             newState['Items'] = Items
-            console.log(newState, Items, cartOrder,'----------new')
+            // console.log(newState, Items, cartOrder,'----------new')
 
             return newState
         }
         case ADD_ITEM_TO_CART: {
-            console.log(state, action.payload,'-----------stateADD')
+            // console.log(state, action.payload,'-----------stateADD')
 
 
             const newState = {...state,
@@ -178,14 +178,14 @@ const cartReducer = (state = initialState, action) => {
             // newState.CartOrder.Cart.Items.push(action.payload.Item)
             // newState.Items[action.payload.Item.id] = action.payload.Item
 
-            console.log(newState, '-------newADD')
+            // console.log(newState, '-------newADD')
 
             return newState
         }
         case DELETE_ITEM_ID: {
 
             // const newState = {...state}
-            console.log(state, '--------delState')
+            // console.log(state, '--------delState')
             // delete state.Items[action.payload.id]
 
             let ItemArr = Object.values(state.Items)
@@ -196,14 +196,14 @@ const cartReducer = (state = initialState, action) => {
 
             const newState = {...state,
                 Items: Item}
-            console.log(action.payload.id, newState, ItemArr, delItem,'-------stateDEL')
+            // console.log(action.payload.id, newState, ItemArr, delItem,'-------stateDEL')
 
 
             return newState
         }
         case UPDATE_PAYMENT: {
 
-            console.log(state, action.payload, '--------pay')
+            // console.log(state, action.payload, '--------pay')
 
             const newState = {CartOrder:{...state.CartOrder.Cart,
             ['Cart']: action.payload.update}, Items:{...state.Items},
@@ -211,7 +211,7 @@ const cartReducer = (state = initialState, action) => {
 
             // const newState = {}
 
-            console.log(newState, '----------newStatePAY')
+            // console.log(newState, '----------newStatePAY')
 
             return newState
         }
