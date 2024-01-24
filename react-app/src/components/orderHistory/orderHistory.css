@@ -39,6 +39,7 @@
 }
 
 .delete-orderHis{
+    padding-bottom: 10px;
     grid-area: del;
     display: flex;
     align-items: center;
