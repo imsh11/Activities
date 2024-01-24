@@ -7,7 +7,7 @@ import "./ItemQuantity.css"
 
 const ItemQuantityForm = ({id}) => {
 
-    console.log(id, typeof(id),'---place id')
+    // console.log(id, typeof(id),'---place id')
 
     const [quantity, setQuantity] = useState('')
     const [validation, setValidation] = useState('')
@@ -17,7 +17,7 @@ const ItemQuantityForm = ({id}) => {
 
     const userId = useSelector(state => state.session.user)
     // const cartId = useSelector(state => state.cart)
-    console.log(userId, typeof(userId), '---------userId')
+    // console.log(userId, typeof(userId), '---------userId')
 
 
     useEffect(() => {
@@ -43,7 +43,7 @@ const ItemQuantityForm = ({id}) => {
             return alert('Please change quantity')
         }
 
-        console.log(quantity, typeof(Number(quantity)), id, typeof(id),'-----------quantity')
+        // console.log(quantity, typeof(Number(quantity)), id, typeof(id),'-----------quantity')
 
         const payload = {
             quantity: Number(quantity),
@@ -51,7 +51,7 @@ const ItemQuantityForm = ({id}) => {
 
         const add = await dispatch(addItemtoCartByPlaceId(payload, id))
 
-        console.log(add, '-----------addForm')
+        // console.log(add, '-----------addForm')
 
         if (add){
             return history.push('/user/cart')

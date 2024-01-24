@@ -15,7 +15,7 @@ const UpdateQuantity = ({}) => {
 
     const user = useSelector(state => state.session.user)
     const item = useSelector(state => state)
-    console.log(user, item)
+    // console.log(user, item)
 
     // useEffect(() => {
     //     dispatch(getUserCart(user.id))

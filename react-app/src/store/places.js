@@ -27,7 +27,7 @@ export const getAllPlaces = () => async (dispatch) => {
 
     if(placeResponse.ok){
         const data = await placeResponse.json()
-        console.log(data, '---data')
+        // console.log(data, '---data')
 
         dispatch(allPlaces(data))
         return data
@@ -38,12 +38,12 @@ export const getDetailByPlaceId = (id) => async(dispatch) => {
 
     const response = await fetch(`/api/place/${id}`)
 
-    console.log(response, '------------resp Detail')
+    // console.log(response, '------------resp Detail')
 
     if(response.ok){
         const data = await response.json()
 
-        console.log(data, '---------------data')
+        // console.log(data, '---------------data')
 
         dispatch(detailByPlaceId(data))
 
@@ -61,7 +61,7 @@ const placeReducer = (state = initialState, action) => {
 
             const newState = {}
 
-            console.log(action.payload, '---------action')
+            // console.log(action.payload, '---------action')
 
             action.payload.Places.forEach( ele => newState[ele.id] = ele)
 
@@ -71,11 +71,11 @@ const placeReducer = (state = initialState, action) => {
         case GET_PLACE_DETAIL: {
             const newState = {}
 
-            console.log(action.payload, '--------payload')
+            // console.log(action.payload, '--------payload')
 
             newState['Place'] = action.payload.Place
             newState['Reviews'] = action.payload.Reviews
-            console.log(newState, '----newState')
+            // console.log(newState, '----newState')
 
             return newState
         }

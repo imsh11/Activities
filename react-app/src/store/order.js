@@ -18,11 +18,11 @@ const deleteOrderHis = (delOrder) => {
 export const getOrderHistoryByUserId = () => async (dispatch) => {
 
     const response = await fetch('/api/cart/history')
-    console.log(response, '----orderHis')
+    // console.log(response, '----orderHis')
 
     if(response.ok){
         const data = await response.json()
-        console.log(data, '-------orderDATA')
+        // console.log(data, '-------orderDATA')
 
         dispatch(getHistory(data))
         return data
@@ -34,7 +34,7 @@ export const deleteOrderById = (id) => async (dispatch) => {
     const response = await fetch(`/api/cart/delete/${id}`, {
         method: 'DELETE'
     })
-    console.log(response, '----delRes')
+    // console.log(response, '----delRes')
 
     if(response.ok){
         const data = await response.json()
@@ -51,7 +51,7 @@ const OrderHistoryReducer = (state = initialState, action) => {
         case ORDER_HIS_USERID:{
             let newState = {}
 
-            console.log(action.payload.OrderHistory, '-----state order')
+            // console.log(action.payload.OrderHistory, '-----state order')
             // action.payload.OrderHistory.forEach(order => {
             //     newState[order.id] = order
             // })
@@ -61,7 +61,7 @@ const OrderHistoryReducer = (state = initialState, action) => {
         case DELETE_ORDER_HIS:{
             const newState = {...state}
 
-            console.log(action.payload, '------del state')
+            // console.log(action.payload, '------del state')
 
             delete newState[action.payload.id]
 

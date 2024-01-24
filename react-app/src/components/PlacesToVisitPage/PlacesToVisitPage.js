@@ -19,7 +19,7 @@ const UserPlaceList = () => {
     const user = useSelector(state => state.session.user)
     const placeList = useSelector(state => state.placesList)
     const places = useSelector(state => state.places)
-    console.log(user, placeList, places, '---------user')
+    // console.log(user, placeList, places, '---------user')
 
     useEffect(() => {
         dispatch(getAllPlaces()).then(() => setIsLoaded(true))

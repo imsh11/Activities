@@ -5,6 +5,7 @@ import { getAllPlaces } from "../../store/places";
 import ItemQuantityForm from "../ItemQuantityForm/ItemQuantityForm";
 import CreateReview from "../ReviewCreate/ReviewCreate";
 import './orderHistory.css'
+import DelOrderbyId from "../orderDel/OrderDel";
 
 const OrderHistoryByUserId = () => {
 
@@ -15,7 +16,9 @@ const OrderHistoryByUserId = () => {
     const userOrders = useSelector(state => Object.values(state.orderHistory))
     const user = useSelector(state => state.session.user)
     const places = useSelector(state => state.places)
-    console.log(userOrders, '-------order compo')
+    const review = useSelector(state => Object.values(state.reviews)) // user reviews
+    // const review = useSelector(state => Object.keys(state.reviews)) // user reviews
+    // console.log(userOrders, review, '-------order compo')
 
     useEffect(() => {
         dispatch(getAllPlaces())
@@ -23,6 +26,12 @@ const OrderHistoryByUserId = () => {
     }, [dispatch, user])
 
     let total;
+
+    // places user have reviewed already
+    let revPlaces = []
+    review.forEach( (obj) => revPlaces.push(obj.place_id))
+
+    // console.log(revPlaces, '--------revPlaces')
 
     return(
         <>
@@ -36,6 +45,9 @@ const OrderHistoryByUserId = () => {
                         <div key={ele.id} style={{}} className="main-orderHis">
                             <div className="order-date">
                                 Order Date: {ele.updated_at}
+                            </div>
+                            <div className="delete-orderHis">
+                                    <DelOrderbyId id={ele.id} />
                             </div>
                             {ele.items.map(item => (
                             <div key={item.id} className="main-order-detail">
@@ -51,13 +63,19 @@ const OrderHistoryByUserId = () => {
                                     </div>
                                 </div>
                                 <div className="add-review">
-                                    <CreateReview id={item.place_id} />
+                                    {revPlaces.includes(item.place_id)?
+                                    <div>
+                                        <button className="button1">
+                                            Already Reviewed
+                                        </button>
+                                    </div>
+                                    :
+                                    <div>
+                                        <CreateReview id={item.place_id} />
+                                    </div>
+                                    }
                                 </div>
-                                <div className="delete-orderHis">
-                                    <button className="button1" onClick={() => window.alert('feature coming soon!')}>
-                                        Delete
-                                    </button>
-                                </div>
+                                
                             </div>
                         ))}
                         </div>

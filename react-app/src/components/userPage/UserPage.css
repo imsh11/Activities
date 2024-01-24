@@ -112,3 +112,10 @@
 .History{
     grid-area: order;
 }
+
+.No-Reviews{
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

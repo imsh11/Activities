@@ -5,7 +5,7 @@ import "./UpdateStatus.css"
 
 
 export default function UpdateStatusPlace ({place}){
-    console.log(place, '----------id')
+    // console.log(place, '----------id')
 
     const dispatch = useDispatch()
 
@@ -34,10 +34,10 @@ export default function UpdateStatusPlace ({place}){
             status
         }
 
-        console.log(payload, '--------------payload')
+        // console.log(payload, '--------------payload')
 
         const updateSt = await dispatch(updateStatusPlaceList(payload, place.id))
-        console.log(updateSt, '-----------------updateST')
+        // console.log(updateSt, '-----------------updateST')
 
         toggleModal()
         setValidation('')
