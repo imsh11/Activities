@@ -19,7 +19,7 @@ const PayPg = () => {
     const user = useSelector(state => state.session.user)
     const cart = useSelector(state => state.cart)
     const places = useSelector(state => state.places)
-    console.log(user, cart, places,'-------payment')
+    // console.log(user, cart, places,'-------payment')
 
     useEffect(() =>{
         if(user){
@@ -33,7 +33,7 @@ const PayPg = () => {
     for(let keys in cart.Items){
         plcKeys.push(keys)
     }
-    console.log(plcKeys, typeof(plcKeys[0]),'-----keys----')
+    // console.log(plcKeys, typeof(plcKeys[0]),'-----keys----')
 
     return (
         <>

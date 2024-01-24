@@ -32,7 +32,7 @@ export const getPlaceToVisit = () => async (dispatch) => {
     if(response.ok){
 
         const data = await response.json()
-        console.log(data, 'placetoVISIT')
+        // console.log(data, 'placetoVISIT')
 
         dispatch(userWishList(data))
 
@@ -62,7 +62,7 @@ export const addToPlaceList = (payload, id) => async (dispatch) => {
 }
 
 export const updateStatusPlaceList = (payload, id) => async (dispatch) => {
-    console.log(id, payload, '-----------updateSTATUS')
+    // console.log(id, payload, '-----------updateSTATUS')
 
     const response = await fetch(`/api/placesToVisit/${id}`, {
         method: 'PUT',
@@ -71,11 +71,11 @@ export const updateStatusPlaceList = (payload, id) => async (dispatch) => {
         },
         body: JSON.stringify(payload)
     })
-    console.log(response, '-----------updateRES')
+    // console.log(response, '-----------updateRES')
 
     if(response.ok){
         const data = await response.json()
-        console.log(data, '------------UpdateDATA')
+        // console.log(data, '------------UpdateDATA')
 
         dispatch(addToList(data))
         return
@@ -83,16 +83,16 @@ export const updateStatusPlaceList = (payload, id) => async (dispatch) => {
 }
 
 export const delPlacePlaceList = (id) => async (dispatch) => {
-    console.log(id, '-----------id')
+    // console.log(id, '-----------id')
 
     const response = await fetch(`/api/placesToVisit/${id}`, {
         method: 'DELETE'
     })
-    console.log(response, '------------responseDEL')
+    // console.log(response, '------------responseDEL')
 
     if(response.ok){
         const data = await response.json()
-        console.log(data, '-----------dataDEL')
+        // console.log(data, '-----------dataDEL')
 
         dispatch(deletePlaceList(data))
 
@@ -119,21 +119,21 @@ const placeListReducer = (state = initialState, action) => {
             return newState
         }
         case ADD_TO_PLACES_TO_VISIT: {
-            console.log(state, action, action.payload, '----------ADDListSTATE')
+            // console.log(state, action, action.payload, '----------ADDListSTATE')
 
             const newState = {
                 ...state, [action.payload.id]: action.payload
             }
-            console.log(newState, '-------------newStateADD')
+            // console.log(newState, '-------------newStateADD')
 
             return newState
         }
         case DELETE_PLACE_FROM_PLACES_TO_VISIT: {
-            console.log(state, action.payload, '-----------stateStoreDEL')
+            // console.log(state, action.payload, '-----------stateStoreDEL')
             const newState = {...state}
 
             delete newState[action.payload.id]
-            console.log(newState, '-----------afterDELstore')
+            // console.log(newState, '-----------afterDELstore')
 
             return newState
         }

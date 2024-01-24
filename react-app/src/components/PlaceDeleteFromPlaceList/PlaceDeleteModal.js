@@ -7,7 +7,7 @@ import "./PlaceDelete.css"
 
 export default function DeletePlace ({id}) {
 
-    console.log(id, typeof(id), '-------delModal')
+    // console.log(id, typeof(id), '-------delModal')
     const dispatch = useDispatch()
 
     const userId = useSelector(state => state.session.user)

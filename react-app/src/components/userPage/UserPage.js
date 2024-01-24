@@ -17,7 +17,7 @@ const UserInfoPage = () => {
     const user = useSelector(state => state.session.user)
     const userReviews = useSelector(state => Object.values(state.reviews))
     const places = useSelector(state => state.places)
-    console.log(places, userReviews,user, '---------state')
+    // console.log(places, userReviews,user, '---------state')
 
     useEffect(() => {
         if(user){

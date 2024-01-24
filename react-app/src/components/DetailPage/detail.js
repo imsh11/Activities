@@ -46,8 +46,8 @@ const DetailPg = () => {
     const userId = useSelector(state => state.session.user)
     const placeVisitList = useSelector(state => state.placesList)
     const cart = useSelector(state => state.cart)
-    console.log((placeDetail), id, typeof(id), cart,'--------stateID')
-    console.log(placeDetail.Reviews, placeVisitList, userId, '------------reviews')
+    // console.log((placeDetail), id, typeof(id), cart,'--------stateID')
+    // console.log(placeDetail.Reviews, placeVisitList, userId, '------------reviews')
 
     useEffect(() => {
         dispatch(getDetailByPlaceId(id))
@@ -70,7 +70,7 @@ const DetailPg = () => {
     })
 
     let AvgStars = Avg/placeDetail.Reviews.length
-    console.log(Avg, AvgStars)
+    // console.log(Avg, AvgStars)
 
     let Addedplace = []
 

@@ -10,7 +10,7 @@ const ReviewByUserId = () => {
 
     const userReviews = useSelector(state => Object.values(state.reviews))
     const user = useSelector(state => state.session.user)
-    console.log(userReviews, '-----review compo')
+    // console.log(userReviews, '-----review compo')
 
     useEffect(() => {
         dispatch(getReviewsByUserId()).then(() => setIsLoaded(true))

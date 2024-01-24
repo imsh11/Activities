@@ -41,7 +41,7 @@ export default function Update({item}) {
             return
         }
 
-        console.log(quantity, typeof(Number(quantity)),'-----------quantity')
+        // console.log(quantity, typeof(Number(quantity)),'-----------quantity')
 
         const payload = {
             quantity: Number(quantity),
@@ -50,7 +50,7 @@ export default function Update({item}) {
         const updateQnty = await dispatch(updateQuantity(payload, item.id))
         dispatch(getUserCart(item.user_id))
 
-        console.log(updateQnty, '-----------addForm')
+        // console.log(updateQnty, '-----------addForm')
 
         // if (updateQnty){
         //     toggleModal()

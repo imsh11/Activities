@@ -5,7 +5,7 @@ import { deleteOrderById } from "../../store/order";
 
 const DelOrderbyId = ({id}) => {
 
-    console.log(id, typeof(id), '----delOrderId')
+    // console.log(id, typeof(id), '----delOrderId')
     const dispatch = useDispatch()
 
     const [modal, setModal] = useState(false)

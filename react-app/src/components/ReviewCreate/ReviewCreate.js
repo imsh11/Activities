@@ -6,7 +6,7 @@ import './reviewCreate.css'
 
 const CreateReview = ( {id} ) => {
 
-    console.log(id, typeof(id), '------id')
+    // console.log(id, typeof(id), '------id')
     const dispatch = useDispatch()
 
     const [modal, setModal] = useState(false)
@@ -37,7 +37,7 @@ const CreateReview = ( {id} ) => {
 
         let newReview = await dispatch(createNewReviewByPlaceId(content, id))
 
-        console.log(newReview, '------new')
+        // console.log(newReview, '------new')
 
         setValidation({})
         toggleModal()
