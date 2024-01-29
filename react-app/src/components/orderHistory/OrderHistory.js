@@ -84,8 +84,8 @@ const OrderHistoryByUserId = () => {
                         ))}
                     </>
                     :
-                    <div>
-                        TEST
+                    <div className="No-Reviews">
+                        Your Order History does not exist
                     </div>
                     }
                 </div>

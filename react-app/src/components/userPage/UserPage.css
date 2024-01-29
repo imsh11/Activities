@@ -62,8 +62,8 @@
     background-color: #e5e5e5;
     border-radius: 10px;
     /* padding-left: 50px; */
-    /* margin-left: 100px; */
-    margin-right: 10px;
+    margin-left: 10%;
+    margin-right: 5%;
     margin-bottom: 20px;
     padding-bottom: 20px;
     padding-top: 20px;
@@ -109,8 +109,8 @@
 }
 
 .tabs-container{
-    max-width: 700px;
-    min-height: 400px;
+    max-width: 80%;
+    min-height: 50%;
     margin: 30px auto;
     display: flex;
     box-shadow: 0 4px 40px -8px rgba(0, 0, 0, 0.2);
