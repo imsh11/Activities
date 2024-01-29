@@ -32,65 +32,104 @@ const UserInfoPage = () => {
         )
     }
 
+    //tabs
+    const tabs = document.querySelectorAll("div.tab")
+    const testTabs = document.getElementsByClassName("tab")
+    // const contents = document.querySelectorAll("tabs-container content")
+    const contents = document.querySelectorAll("div.content")
+    console.log(tabs, contents, testTabs,'----testing')
+
+    const removeActiveClass = () => {
+        tabs.forEach( (t) => {
+            t.classList.remove("active")
+        })
+        
+        contents.forEach( (c) => {
+            c.classList.remove("active")
+        })
+    }
+
+
+    tabs.forEach( (t, i) => {                  //adding active class
+        t.addEventListener("click", () => {
+            removeActiveClass()
+            contents[i].classList.add("active")
+            t.classList.add("active")
+        })
+    })
+
     return(
         <>
         {user ? (
             <>
         {isLoaded &&(
-            <div className="user-page">
-                <div className="user-main">
-                    <div className="imageContainer">
-                        <img className="basicUserProfile" src={UserImg} alt="profile" />
+            <div className="user-page tabs-container">
+                <div className="tabs">
+                    <div className="tab active">
+                        My INFO
                     </div>
-                    <div className="userDetail">
-                        <div className="user-email">
-                            Email: {user.email}
-                        </div>
-                        <div className="user-email">
-                            Name: {user.lastname}, {user.firstname}
-                        </div>
-                        <div className="user-email">
-                            Username: {user.username}
-                        </div>
+                    <div className="tab">
+                        Reviews
+                    </div>
+                    <div className="tab">
+                        Order History
                     </div>
                 </div>
-                <div className="Reviews">
-                    <div className="title">Reviews</div>
-                    <div>
-                        {userReviews.length?
+                <div className="content-container">
+                    <div className="user-main content active">
+                        <div className="imageContainer">
+                            <img className="basicUserProfile" src={UserImg} alt="profile" />
+                        </div>
+                        <div className="userDetail">
+                            <div className="user-email">
+                                Email: {user.email}
+                            </div>
+                            <div className="user-email">
+                                Name: {user.lastname}, {user.firstname}
+                            </div>
+                            <div className="user-email">
+                                Username: {user.username}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="Reviews content">
+                        <div className="title">Reviews</div>
                         <div>
-                            {userReviews.map(review => (
-                                <div key={review.id} className="review-content">
-                                    <div className="review-img">
-                                        <img className="placeImg" src={places[review.place_id].img1}
-                                        alt="placeImg" />
+                            {userReviews.length?
+                            <div>
+                                {userReviews.map(review => (
+                                    <div key={review.id} className="review-content">
+                                        <div className="review-img">
+                                            <img className="placeImg" src={places[review.place_id].img1}
+                                            alt="placeImg" />
+                                        </div>
+                                        <div className="review-container">
+                                            <div className="reviewBody">
+                                                Review: {review.review}
+                                            </div>
+                                            <div className="reviewBody">
+                                                Rating: {review.stars}
+                                            </div>
+                                            <div className="reviewBody">
+                                                Place: {places[review.place_id].name}
+                                            </div>
+                                            <div className="reviewBody">
+                                                <DeleteReviewId id={review.id} />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="review-container">
-                                        <div className="reviewBody">
-                                            Review: {review.review}
-                                        </div>
-                                        <div className="reviewBody">
-                                            Rating: {review.stars}
-                                        </div>
-                                        <div className="reviewBody">
-                                            Place: {places[review.place_id].name}
-                                        </div>
-                                        <div className="reviewBody">
-                                            <DeleteReviewId id={review.id} />
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
+                            :
+                            <div style={{}} className="No-Reviews">
+                                You haven't left any Reviews
+                            </div>
+                            }
                         </div>
-                        :
-                        <div style={{}} className="No-Reviews">
-                            You haven't left any Reviews
-                        </div>
-                        }
                     </div>
-                </div>
-                <div className="History">
-                    <OrderHistoryByUserId />
+                    <div className="History content">
+                        <OrderHistoryByUserId />
+                    </div>
                 </div>
             </div>
         )}

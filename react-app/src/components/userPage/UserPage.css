@@ -5,7 +5,7 @@
     width: 300px;
 }
 
-.user-page {
+/* .user-page {
     display: grid;
     grid-auto-columns: 1fr;
     grid-template-columns: 1fr;
@@ -15,7 +15,7 @@
     "user"
     "reviews"
     "order";
-}
+} */
 
 .user-main{
     grid-area: user;
@@ -118,4 +118,44 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.tabs-container{
+    max-width: 700px;
+    min-height: 400px;
+    margin: 30px auto;
+    display: flex;
+    box-shadow: 0 4px 40px -8px rgba(0, 0, 0, 0.2);
+}
+
+.tabs-container .tabs {
+    width: 300px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.tabs-container .tabs .tab {
+    padding: 24px 32px;
+    background-color: #222;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tabs-container .tabs .tab.active {
+    background: #f6fdff;
+    color: #222;
+}
+
+.tabs-container .content-container {
+    background: #f6fdff;
+}
+
+.tabs-container .content-container .content {
+    display: none;
+}
+
+.tabs-container .content-container .content.active {
+    display: block;
 }
