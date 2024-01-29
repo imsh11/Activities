@@ -109,7 +109,7 @@
 }
 
 .tabs-container{
-    max-width: 900px;
+    max-width: 700px;
     min-height: 400px;
     margin: 30px auto;
     display: flex;
@@ -138,7 +138,7 @@
 
 .tabs-container .content-container {
     background: #f6fdff;
-    /* max-width: 500px; */
+    width: 100%;
 }
 
 .tabs-container .content-container .content {
