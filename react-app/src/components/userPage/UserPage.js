@@ -34,16 +34,15 @@ const UserInfoPage = () => {
 
     //tabs
     const tabs = document.querySelectorAll("div.tab")
-    const testTabs = document.getElementsByClassName("tab")
-    // const contents = document.querySelectorAll("tabs-container content")
+    
     const contents = document.querySelectorAll("div.content")
-    console.log(tabs, contents, testTabs,'----testing')
+    console.log(tabs, contents, '----testing')
 
-    const removeActiveClass = () => {
+    const removeActiveClass = () => {          //removing active class
         tabs.forEach( (t) => {
             t.classList.remove("active")
         })
-        
+
         contents.forEach( (c) => {
             c.classList.remove("active")
         })
