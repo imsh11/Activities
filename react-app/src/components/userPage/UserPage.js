@@ -17,7 +17,7 @@ const UserInfoPage = () => {
     const user = useSelector(state => state.session.user)
     const userReviews = useSelector(state => Object.values(state.reviews))
     const places = useSelector(state => state.places)
-    // console.log(places, userReviews,user, '---------state')
+    console.log(places, userReviews,user, '---------state')
 
     useEffect(() => {
         if(user){
@@ -26,7 +26,7 @@ const UserInfoPage = () => {
         }
     }, [dispatch, user])
 
-    if(!Object.values(places).length || !userReviews){
+    if(!Object.values(places).length || !userReviews.length){
         return(
             <div>loading...</div>
         )
@@ -99,6 +99,7 @@ const UserInfoPage = () => {
                                 {userReviews.map(review => (
                                     <div key={review.id} className="review-content">
                                         <div className="review-img">
+                                            {console.log(review.place_id, places,'testing undef error---------')}
                                             <img className="placeImg" src={places[review.place_id].img1}
                                             alt="placeImg" />
                                         </div>
