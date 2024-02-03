@@ -26,7 +26,7 @@ const UserInfoPage = () => {
         }
     }, [dispatch, user])
 
-    if(!Object.values(places).length || !userReviews.length){
+    if(!Object.values(places).length){
         return(
             <div>loading...</div>
         )
