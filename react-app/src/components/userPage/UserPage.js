@@ -21,8 +21,8 @@ const UserInfoPage = () => {
 
     useEffect(() => {
         if(user){
-            dispatch(getAllPlaces())
-            dispatch(getReviewsByUserId()).then(() => setIsLoaded(true))
+            dispatch(getAllPlaces()).then(() => setIsLoaded(true))
+            dispatch(getReviewsByUserId())
         }
     }, [dispatch, user])
 
