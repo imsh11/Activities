@@ -18,7 +18,7 @@ const OrderHistoryByUserId = () => {
     const places = useSelector(state => state.places)
     const review = useSelector(state => Object.values(state.reviews)) // user reviews
     // const review = useSelector(state => Object.keys(state.reviews)) // user reviews
-    // console.log(userOrders, review, '-------order compo')
+    console.log(userOrders, review, '-------order compo')
 
     useEffect(() => {
         dispatch(getAllPlaces())
@@ -41,45 +41,53 @@ const OrderHistoryByUserId = () => {
                     Order History
                 </div>
                 <div className="mainContent-orderHis">
-                    {userOrders.map( ele =>(
-                        <div key={ele.id} style={{}} className="main-orderHis">
-                            <div className="order-date">
-                                Order Date: {ele.updated_at}
-                            </div>
-                            <div className="delete-orderHis">
-                                    <DelOrderbyId id={ele.id} />
-                            </div>
-                            {ele.items.map(item => (
-                            <div key={item.id} className="main-order-detail">
-                                <div className="order-detail-content">
-                                    <div className="orderHis-item">
-                                        {places[item.place_id].name}
-                                    </div>
-                                    <div className="orderHis-item">
-                                        Qty: {item.quantity}
-                                    </div>
-                                    <div className="orderHis-item" style={{fontWeight: 'bold'}}>
-                                        Price: ${places[item.place_id].price * item.quantity}
-                                    </div>
+                    {userOrders.length ?
+                    <>
+                        {userOrders.map( ele =>(
+                            <div key={ele.id} style={{}} className="main-orderHis">
+                                <div className="order-date">
+                                    Order Date: {ele.updated_at}
                                 </div>
-                                <div className="add-review">
-                                    {revPlaces.includes(item.place_id)?
-                                    <div>
-                                        <button className="button1">
-                                            Already Reviewed
-                                        </button>
-                                    </div>
-                                    :
-                                    <div>
-                                        <CreateReview id={item.place_id} />
-                                    </div>
-                                    }
+                                <div className="delete-orderHis">
+                                        <DelOrderbyId id={ele.id} />
                                 </div>
-                                
+                                {ele.items.map(item => (
+                                <div key={item.id} className="main-order-detail">
+                                    <div className="order-detail-content">
+                                        <div className="orderHis-item">
+                                            {places[item.place_id].name}
+                                        </div>
+                                        <div className="orderHis-item">
+                                            Qty: {item.quantity}
+                                        </div>
+                                        <div className="orderHis-item" style={{fontWeight: 'bold'}}>
+                                            Price: ${places[item.place_id].price * item.quantity}
+                                        </div>
+                                    </div>
+                                    <div className="add-review">
+                                        {revPlaces.includes(item.place_id)?
+                                        <div>
+                                            <button className="button1">
+                                                Already Reviewed
+                                            </button>
+                                        </div>
+                                        :
+                                        <div>
+                                            <CreateReview id={item.place_id} />
+                                        </div>
+                                        }
+                                    </div>
+                                    
+                                </div>
+                            ))}
                             </div>
                         ))}
-                        </div>
-                    ))}
+                    </>
+                    :
+                    <div className="No-Reviews">
+                        Your Order History does not exist
+                    </div>
+                    }
                 </div>
             </div>
         )}
