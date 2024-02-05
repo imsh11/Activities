@@ -1,23 +1,7 @@
 
 
-.basicUserProfile{
-    height: 300px;
-    width: 300px;
-}
 
-.user-page {
-    display: grid;
-    grid-auto-columns: 1fr;
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.5fr 1.25fr 1.25fr;
-    gap: 10px 10px;
-    grid-template-areas:
-    "user"
-    "reviews"
-    "order";
-}
-
-.user-main{
+/* .user-main{
     grid-area: user;
     border-bottom: solid 5px #e5e5e5;
         display: grid;
@@ -27,28 +11,31 @@
         gap: 1px 1px;
         grid-template-areas:
         "pic info";
-}
+} */
 
 .imageContainer{
     grid-area: pic;
-    /* background-color: antiquewhite; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.basicUserProfile {
+    height: 50%;
+    width: 50%;
+}
+
 .userDetail{
     grid-area: info;
-    /* background-color: aquamarine; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
 }
 
 .user-email{
-    font-weight: 700;
+    font-weight: 900;
     font-size: 20px;
     padding-bottom: 10px;
 }
@@ -59,10 +46,9 @@
 }
 
 .Reviews{
-    grid-area: reviews;
+    padding-top: 10px;
     padding-left: 10px;
     padding-bottom: 10px;
-    border-bottom: solid 5px #e5e5e5;
 }
 
 .title{
@@ -76,8 +62,8 @@
     background-color: #e5e5e5;
     border-radius: 10px;
     /* padding-left: 50px; */
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 10%;
+    margin-right: 5%;
     margin-bottom: 20px;
     padding-bottom: 20px;
     padding-top: 20px;
@@ -111,6 +97,8 @@
 
 .History{
     grid-area: order;
+    padding-top: 10px;
+    padding-left: 10px;
 }
 
 .No-Reviews{
@@ -118,4 +106,45 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.tabs-container{
+    max-width: 80%;
+    min-height: 50%;
+    margin: 30px auto;
+    display: flex;
+    box-shadow: 0 4px 40px -8px rgba(0, 0, 0, 0.2);
+}
+
+.tabs-container .tabs {
+    width: 200px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.tabs-container .tabs .tab {
+    padding: 24px 32px;
+    background-color: #222;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tabs-container .tabs .tab.active {
+    background: #f6fdff;
+    color: #222;
+}
+
+.tabs-container .content-container {
+    background: #f6fdff;
+    width: 100%;
+}
+
+.tabs-container .content-container .content {
+    display: none;
+}
+
+.tabs-container .content-container .content.active {
+    display: block;
 }
