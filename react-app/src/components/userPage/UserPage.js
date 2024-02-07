@@ -17,7 +17,7 @@ const UserInfoPage = () => {
     const user = useSelector(state => state.session.user)
     const userReviews = useSelector(state => Object.values(state.reviews))
     const places = useSelector(state => state.places)
-    console.log(places, userReviews,user, '---------state')
+    // console.log(places, userReviews,user, '---------state')
 
     useEffect(() => {
         if(user){
@@ -36,7 +36,7 @@ const UserInfoPage = () => {
     const tabs = document.querySelectorAll("div.tab")
     
     const contents = document.querySelectorAll("div.content")
-    console.log(tabs, contents, '----testing')
+    // console.log(tabs, contents, '----testing')
 
     const removeActiveClass = () => {          //removing active class
         tabs.forEach( (t) => {
@@ -99,7 +99,7 @@ const UserInfoPage = () => {
                                 {userReviews.map(review => (
                                     <div key={review.id} className="review-content">
                                         <div className="review-img">
-                                            {console.log(review.place_id, places,'testing undef error---------')}
+                                            {/* {console.log(review.place_id, places,'testing undef error---------')} */}
                                             <img className="placeImg" src={places[review.place_id].img1}
                                             alt="placeImg" />
                                         </div>
