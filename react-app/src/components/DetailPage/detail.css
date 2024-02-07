@@ -50,6 +50,7 @@
 .price-review-container{
     /* border: solid chartreuse; */
     margin-top: 20px;
+    margin-left: 40px;
     display: grid;
     grid-auto-columns: 1fr;
     grid-template-columns: 1fr 1fr;
@@ -77,9 +78,12 @@
 }
 
 .review-detail{
-    /* margin-top: 20px; */
+    margin-top: 20px;
+    /* margin-left: 40px; */
     grid-area: review;
     /* background-color: aqua; */
+    border-radius: 5px;
+    border: solid #e5e5e5;
     display: grid;
     justify-content: center;
 }
@@ -89,10 +93,12 @@
     /* border: solid salmon; */
     display: flex;
     justify-content: space-around;
+    font-weight: bold;
+
 }
 
 .detail-single-review{
-    border-bottom: solid #e5e5e5;
+    /* border-bottom: solid #e5e5e5; */
     border-radius: 5px;
     padding: 10px;
     margin: 5px;
@@ -172,6 +178,19 @@
 
 .embdedMap{
     margin-left: 100px;
-    /* width: 600px;
-    height: 800px; */
+    margin-top: 10px;
+}
+
+.map-responsive{
+    overflow: hidden;
+    padding-bottom: 45%;
+    position: relative;
+    height: 0;
+}
+
+.map-responsive iframe {
+    border: 0;
+    height: 100%;
+    width: 70%;
+    position: absolute;
 }
