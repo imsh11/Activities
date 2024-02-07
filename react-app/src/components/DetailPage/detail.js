@@ -105,8 +105,8 @@ const DetailPg = () => {
     // console.log(placeArr, '---------placeArr')
 
     const containerStyles = {
-        width: "500px",
-        height: "280px",
+        width: "80%",
+        height: "580px",
         margin: "0 auto",
     };
 

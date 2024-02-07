@@ -77,9 +77,12 @@
 }
 
 .review-detail{
-    /* margin-top: 20px; */
+    margin-top: 20px;
+    margin-left: 20px;
     grid-area: review;
     /* background-color: aqua; */
+    border-radius: 5px;
+    border: solid #e5e5e5;
     display: grid;
     justify-content: center;
 }
@@ -92,7 +95,7 @@
 }
 
 .detail-single-review{
-    border-bottom: solid #e5e5e5;
+    /* border-bottom: solid #e5e5e5; */
     border-radius: 5px;
     padding: 10px;
     margin: 5px;
