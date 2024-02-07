@@ -34,7 +34,9 @@ const ImageSlider= ({slides}) => {
         fontSize: '40px',
         color: '#fff',
         zIndex: 1,
-        cursor: 'pointer'
+        cursor: 'pointer',
+        backgroundColor: 'gray',
+        opacity: '0.75'
     };
 
     const rightArrow = {
@@ -45,7 +47,9 @@ const ImageSlider= ({slides}) => {
         fontSize: '40px',
         color: '#fff',
         zIndex: 1,
-        cursor: 'pointer'
+        cursor: 'pointer',
+        backgroundColor: 'gray',
+        opacity: '0.75'
     };
 
     const dotContainer = {
