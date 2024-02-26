@@ -14,6 +14,7 @@ import OrderHistoryByUserId from "./components/orderHistory/OrderHistory";
 import UserInfoPage from "./components/userPage/UserPage";
 import PayPg from "./components/paymentPg/payPg";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
+import './index.css'
 
 function App() {
   const dispatch = useDispatch();
