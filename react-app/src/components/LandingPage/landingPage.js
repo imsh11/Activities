@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom";
 import { getAllPlaces } from "../../store/places";
+import { getAllReviews } from "../../store/review"
 import waterimg from '../../images/water-park-photo.jpeg'
 import fiveFlags from '../../images/fair-fairground-ferris-wheel-carousel-40547.jpeg'
 import bronxZoo from '../../images/bronx-zoo.png'
@@ -18,10 +19,12 @@ const LandingPg = () => {
     const history = useHistory()
 
     const placeLst = useSelector(state => Object.values(state.places))
-    // console.log(placeLst, '----state')
+    const Reviews = useSelector(state => state)
+    console.log(placeLst, Reviews, '----state')
 
     useEffect(() => {
         dispatch(getAllPlaces())
+        dispatch(getAllReviews())
     }, [dispatch])
 
     if (placeLst.length === 0){

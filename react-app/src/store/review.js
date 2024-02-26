@@ -1,6 +1,7 @@
 const GET_REVIEW_FOR_USER = 'activities/getReviewForUser'
 const DELETE_REVIEW_ID = 'activities/delReviewByRevId'
 const ADD_REVIEW_BY_PLACE_ID = 'acitivities/addReviewByPlaceId'
+const GET_ALL_REVIEWS = 'activities/getAllReviews'
 
 const getReviews = (reviews) => {
     return{
@@ -20,6 +21,13 @@ const addReview = (newReview) => {
     return{
         type: ADD_REVIEW_BY_PLACE_ID,
         payload: newReview
+    }
+}
+
+const allReviews = (getAllRev) => {
+    return{
+        type: GET_ALL_REVIEWS,
+        payload: getAllRev
     }
 }
 
@@ -73,6 +81,20 @@ export const createNewReviewByPlaceId = (content, id) => async (dispatch) => {
     }
 }
 
+export const getAllReviews = () => async (dispatch) => {
+    
+    const response = await fetch('/api/review/allReviews')
+
+    if(response.ok){
+        const data = await response.json()
+        console.log(data, '-----------dataAllRev')
+
+        dispatch(allReviews(data))
+
+        return data;
+    }
+}
+
 //state
 const initialState = {}
 
@@ -100,6 +122,14 @@ const reviewReducer = (state = initialState, action) => {
             // console.log(action.payload, '--------actionPayl')
 
             newState[action.payload.id] = action.payload
+
+            return newState
+        }
+        case GET_ALL_REVIEWS:{
+            const newState = {}
+            console.log(action.payload.allReviews, '----------getAllReviewState')
+
+            action.payload.allReviews.forEach( rev => newState[rev.id] = rev)
 
             return newState
         }

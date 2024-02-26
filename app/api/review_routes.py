@@ -5,6 +5,16 @@ from ..forms.review_form import Review_Form
 
 review_routes = Blueprint('review', __name__)
 
+# get all reviews
+@review_routes.route('/allReviews')
+def allReviews():
+    
+    Reviews = Review.query.all()
+    
+    # print(Reviews, '------all')
+    
+    return { 'allReviews': [review.to_dict_review() for review in Reviews]}
+
 # get all for user logged in review
 @review_routes.route('/userReview')
 @login_required
