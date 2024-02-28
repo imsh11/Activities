@@ -33,6 +33,12 @@ const LandingPg = () => {
         )
     }
 
+    let reviewd_place = []
+
+    Reviews.forEach( rev => {
+        reviewd_place.push(rev.place_id)
+    })
+
     // calculate Avg
     const placeId = (id) => {
         let placeArray = []
@@ -42,6 +48,7 @@ const LandingPg = () => {
         
         Reviews.forEach( ele => {
             // console.log(ele, '----test')
+            
             if(ele.place_id === id) {
 
                 placeArray.push(ele)
@@ -50,11 +57,11 @@ const LandingPg = () => {
             }
         })
         Avg = rate/count
-    console.log(placeArray, Avg, '-----avg')
+    console.log(placeArray, Avg, reviewd_place, '-----avg')
     return Avg.toFixed(1)
     }
 
-    placeId(2)
+    // placeId(2)
 
     let Images = [fiveFlags, fiveFlags, waterimg, bronxZoo, natural, splish, aqua]
 
@@ -78,7 +85,18 @@ const LandingPg = () => {
                                 {plc.name}
                             </div>
                             <div className="landing-rate">
-                            <i class="fa-solid fa-star fa-lg" style={{color: "#f0b52b"}}></i>x.x
+                                
+                                    {reviewd_place.includes(plc.id) ? 
+                                    <div className='landing-rate'>
+                                        
+                                        <i class="fa-solid fa-star fa-lg" style={{color: "#f0b52b"}}></i>{placeId(plc.id)}
+                                    </div>
+                                    :
+                                    <div className= 'landing-rate'>
+                                        No Reviews
+                                    </div>
+                                }
+                                
                             </div>
                                 <div className="landing-cityState">
                                     <div className="landing-placeCity">
