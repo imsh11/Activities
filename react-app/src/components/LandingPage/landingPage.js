@@ -19,7 +19,7 @@ const LandingPg = () => {
     const history = useHistory()
 
     const placeLst = useSelector(state => Object.values(state.places))
-    const Reviews = useSelector(state => state)
+    const Reviews = useSelector(state => Object.values(state.reviews))
     console.log(placeLst, Reviews, '----state')
 
     useEffect(() => {
@@ -32,6 +32,29 @@ const LandingPg = () => {
             <p>loading...</p>
         )
     }
+
+    // calculate Avg
+    const placeId = (id) => {
+        let placeArray = []
+        let Avg = 0
+        let rate = 0
+        let count = 0
+        
+        Reviews.forEach( ele => {
+            // console.log(ele, '----test')
+            if(ele.place_id === id) {
+
+                placeArray.push(ele)
+                rate += ele.stars
+                count ++
+            }
+        })
+        Avg = rate/count
+    console.log(placeArray, Avg, '-----avg')
+    return Avg.toFixed(1)
+    }
+
+    placeId(2)
 
     let Images = [fiveFlags, fiveFlags, waterimg, bronxZoo, natural, splish, aqua]
 
@@ -55,7 +78,7 @@ const LandingPg = () => {
                                 {plc.name}
                             </div>
                             <div className="landing-rate">
-                            {/* <i class="fa-solid fa-star fa-lg" style={{color: "#f0b52b"}}></i>x.x */}
+                            <i class="fa-solid fa-star fa-lg" style={{color: "#f0b52b"}}></i>x.x
                             </div>
                                 <div className="landing-cityState">
                                     <div className="landing-placeCity">
