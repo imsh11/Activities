@@ -26,7 +26,7 @@
     gap: 0px 0px;
     grid-template-areas:
     "name rate"
-    "cityPrice empty";
+    "city price";
 }
 
 .landing-placeName{
@@ -35,11 +35,13 @@
     font-weight: 400;
     font-style: normal;
     font-size: 20px;
+    padding-left: 10px;
 }
 
 .landing-cityState{
-    grid-area: cityPrice;
+    grid-area: city;
     color: black;
+    padding-left: 10px;
 }
 
 .landing-rate{
@@ -47,14 +49,19 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    /* padding-top: 5px; */
-    padding-right: 30px;
+    padding-top: 5px;
+    padding-right: 10px;
+    font-weight: bold;
 }
 
 .landing-price{
+    grid-area: price;
     padding-top: 4px;
     font-weight: 600;
     color: black;
+    display: flex;
+    justify-content: end;
+    padding-right: 10px;
 }
 
 .landing-image{

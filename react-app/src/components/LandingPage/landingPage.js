@@ -85,18 +85,16 @@ const LandingPg = () => {
                                 {plc.name}
                             </div>
                             <div className="landing-rate">
-                                
                                     {reviewd_place.includes(plc.id) ? 
                                     <div className='landing-rate'>
-                                        
-                                        <i class="fa-solid fa-star fa-lg" style={{color: "#f0b52b"}}></i>{placeId(plc.id)}
+                                        <i class="fa-solid fa-star" style={{color: "#f0b52b"}}></i>
+                                        &nbsp;{placeId(plc.id)}
                                     </div>
                                     :
                                     <div className= 'landing-rate'>
                                         No Reviews
                                     </div>
-                                }
-                                
+                                    }
                             </div>
                                 <div className="landing-cityState">
                                     <div className="landing-placeCity">
@@ -105,9 +103,9 @@ const LandingPg = () => {
                                     </div>
                                     {/* <div className="landing-placeState">
                                     </div> */}
-                                        <div className="landing-price">
-                                            ${plc.price}
-                                        </div>
+                                </div>
+                                <div className="landing-price">
+                                    ${plc.price} Daily Pass
                                 </div>
                         </div>
                     </div>
