@@ -25,8 +25,8 @@ function SignupFormPage() {
 
     if(firstName.length < 3 || firstName.length > 10) errors['firstName'] = 'firstName require atleast 3 or less than 10 words'
     if(lastName.length < 3 || lastName.length > 10) errors['lastName'] = 'lastName require atleast 3 or less than 10 words'
-    if(!email.includes('@')) errors['email'] = 'Provide a valid email'
-    if(!(email.endsWith('.com') || email.endsWith('.io') || email.endsWith('.net'))) errors['email'] = 'Provide a valid email'
+    if(!email.includes('@')) errors['email'] = 'Email must include "@"'
+    if(!(email.endsWith('.com') || email.endsWith('.io') || email.endsWith('.net'))) errors['email'] = 'Email must end with ".com", ".io" or ".net"'
     if(password.length < 8) errors['password'] = 'Password must have atleast 8 characters'
 		if(username.length < 3 || username.length > 10) errors['username'] = 'username require atleast 3 or less than 10 words'
 		if(password !== confirmPassword) errors['confirmPassword'] = "Confirm Password field must be the same as the Password field"
