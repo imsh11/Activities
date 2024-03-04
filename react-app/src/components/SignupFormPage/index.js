@@ -130,6 +130,20 @@ function SignupFormPage() {
                 </div>
               )
             }
+            {
+              validation.emailEnd && (
+                <div style={{color: 'red', fontStyle: 'italic'}}>
+                  {validation.emailEnd}
+                </div>
+              )
+            }
+            {
+              validation.validEmail && (
+                <div style={{color: 'red', fontStyle: 'italic'}}>
+                  {validation.validEmail}
+                </div>
+              )
+            }
           </label>
         </div>
         <div className="login-email">
