@@ -168,7 +168,6 @@ const DetailPg = () => {
                         <div style={containerStyles}>
                             <ImageSlider slides={slides} />
                         {/* </div> */}
-
                     {/* {[placeDetail.Place.img1, placeDetail.Place.img2, placeDetail.Place.img3]} */}
                     {/* <div className="main-pic">
                         <img className="detail-photo" src={placeDetail.Place.img1} alt="parkImg" />
@@ -235,7 +234,7 @@ const DetailPg = () => {
 
                     {placeDetail.Reviews.map(review => (
                         <div key={review.id} className="detail-single-review">
-                            {/* {console.log(review)} */}
+                            {console.log(review)}
                             <div>
                                 {review.review}
                             </div>
