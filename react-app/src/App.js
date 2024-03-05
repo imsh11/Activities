@@ -15,13 +15,16 @@ import UserInfoPage from "./components/userPage/UserPage";
 import PayPg from "./components/paymentPg/payPg";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import './index.css'
+import { getAllUsers } from "./store/users";
 
 function App() {
   const dispatch = useDispatch();
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    dispatch(authenticate()).then(() => setIsLoaded(true));
+    dispatch(authenticate())
+    dispatch(getAllUsers())
+    .then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (

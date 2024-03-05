@@ -15,6 +15,7 @@ export const getAllUsers = () => async (dispatch) => {
     if(response.ok){
         const data = await response.json()
         console.log(data, '-----data all users')
+        dispatch(users(data))
     }
 }
 
@@ -26,6 +27,8 @@ export default function Users (state = initialState, action) {
             
             const newState = {}
             console.log(action.payload, '----user all state')
+            action.payload.users.forEach( user => newState[user.id] = user)
+            console.log(newState, '---------newState Users')
 
             return newState
         }
