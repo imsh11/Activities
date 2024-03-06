@@ -46,6 +46,8 @@ const DetailPg = () => {
     const userId = useSelector(state => state.session.user)
     const placeVisitList = useSelector(state => state.placesList)
     const cart = useSelector(state => state.cart)
+    const allUsers = useSelector(state => state.Users)
+    console.log(allUsers, '-----------allUsers state')
     // console.log((placeDetail), id, typeof(id), cart,'--------stateID')
     // console.log(placeDetail.Reviews, placeVisitList, userId, '------------reviews')
 
@@ -105,8 +107,8 @@ const DetailPg = () => {
     // console.log(placeArr, '---------placeArr')
 
     const containerStyles = {
-        width: "80%",
-        height: "580px",
+        width: "90%",
+        height: "700px",
         margin: "0 auto",
     };
 
@@ -231,15 +233,27 @@ const DetailPg = () => {
                                         <div>Reviews Yet</div> :
                                         'review'}
                     </div>
-
                     {placeDetail.Reviews.map(review => (
                         <div key={review.id} className="detail-single-review">
                             {console.log(review)}
                             <div>
+                                <div>
+                                    <span class="material-symbols-outlined">
+                                        account_circle
+                                    </span>
+                                </div>
+                                <div style={{fontWeight: 'bold'}}>
+                                    {allUsers[review.user_id].lastname},&nbsp;
+                                    {allUsers[review.user_id].firstname[0]}
+                                </div>
+                            </div>
+                            <div style={{fontStyle: 'italic'}}>
                                 {review.review}
                             </div>
                             <div>
-                                {review.stars} <i class="fa-solid fa-star"></i>
+                                {/* {review.stars} <i class="fa-solid fa-star"></i> */}
+                                {[...Array(review.stars)].map((ele, i) =>
+                                    (<i class="fa-solid fa-star" style={{color: "#f0b52b"}} key={i}></i>))}
                             </div>
                         </div>
                     ))}
