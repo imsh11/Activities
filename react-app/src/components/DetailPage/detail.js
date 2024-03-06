@@ -263,7 +263,7 @@ const DetailPg = () => {
 
         <div className="embdedMap">
             <div className="title">Info</div>
-            <div style={{fontWeight: 'bold', marginBottom: '5px', marginLeft: '20px', marginTop: '10px'}}>Map</div>
+            <div style={{fontWeight: 'bold', marginBottom: '5px',  marginTop: '10px'}}>Map</div>
             <div style={{margin: '20px'}}>
                 <div className="map-responsive">
                     {mapEmbeded[placeDetail.Place.id]}

@@ -64,6 +64,7 @@
     grid-area: price;
     margin-top: 20px;
     border: solid #e5e5e5;
+    background-color: #e5e5e5;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -74,7 +75,7 @@
     /* align-items: center; */
     margin: auto;
     margin-top: 20px;
-
+    margin-right: 5%;
 }
 
 .review-detail{
@@ -85,12 +86,13 @@
     border-radius: 5px;
     border: solid #e5e5e5;
     display: grid;
-    justify-content: center;
+    /* justify-content: center; */
+    padding-left: 5px;
 }
 
 
 .detail-review-info{
-    border: solid salmon;
+    /* border: solid salmon; */
     display: flex;
     /* justify-content: space-around; */
     font-weight: bold;
@@ -179,7 +181,7 @@
 }
 
 .embdedMap{
-    margin-left: 100px;
+    margin-left: 5%;
     margin-top: 10px;
 }
 
