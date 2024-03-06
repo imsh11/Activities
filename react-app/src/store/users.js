@@ -9,12 +9,12 @@ const users = (allUsers) => {
 
 export const getAllUsers = () => async (dispatch) => {
 
-    console.log('test in getAllUsers')
+    // console.log('test in getAllUsers')
     const response = await fetch('/api/users/')
 
     if(response.ok){
         const data = await response.json()
-        console.log(data, '-----data all users')
+        // console.log(data, '-----data all users')
         dispatch(users(data))
     }
 }
@@ -26,9 +26,9 @@ export default function Users (state = initialState, action) {
         case GET_ALL_USERS: {
             
             const newState = {}
-            console.log(action.payload, '----user all state')
+            // console.log(action.payload, '----user all state')
             action.payload.users.forEach( user => newState[user.id] = user)
-            console.log(newState, '---------newState Users')
+            // console.log(newState, '---------newState Users')
 
             return newState
         }
