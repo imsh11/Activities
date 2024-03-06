@@ -110,6 +110,9 @@ const DetailPg = () => {
         width: "95%",
         height: "700px",
         margin: "0 auto",
+        border: "2px solid",
+        borderColor: '#e5e5e5',
+        borderRadius: '15px',
     };
 
     const containerStyleGoogle = {
