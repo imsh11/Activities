@@ -20,7 +20,7 @@ const LandingPg = () => {
 
     const placeLst = useSelector(state => Object.values(state.places))
     const Reviews = useSelector(state => Object.values(state.reviews))
-    console.log(placeLst, Reviews, '----state')
+    // console.log(placeLst, Reviews, '----state')
 
     useEffect(() => {
         dispatch(getAllPlaces())
@@ -57,7 +57,7 @@ const LandingPg = () => {
             }
         })
         Avg = rate/count
-    console.log(placeArray, Avg, reviewd_place, '-----avg')
+    // console.log(placeArray, Avg, reviewd_place, '-----avg')
     return Avg.toFixed(1)
     }
 
