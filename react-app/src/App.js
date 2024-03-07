@@ -16,6 +16,7 @@ import PayPg from "./components/paymentPg/payPg";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import './index.css'
 import { getAllUsers } from "./store/users";
+import Footer from "./components/Footer/footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="main-app">
       {isLoaded && location.pathname !='/user/payment' && <Navigation isLoaded={isLoaded} />}
       {isLoaded && (
         <Switch>
@@ -64,7 +65,8 @@ function App() {
           </Route>
         </Switch>
       )}
-    </>
+      {isLoaded && <Footer/>}
+    </div>
   );
 }
 
