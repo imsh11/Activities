@@ -30,41 +30,43 @@ function App() {
 
   return (
     <div className="main-app">
-      {isLoaded && location.pathname !='/user/payment' && <Navigation isLoaded={isLoaded} />}
-      {isLoaded && (
-        <Switch>
-          <Route exact path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route exact path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route exact path="/">
-            <LandingPg />
-          </Route>
-          <Route exact path="/place/:id">
-            <DetailPg />
-          </Route>
-          <Route exact path='/user/cart'>
-            <CurrCart />
-          </Route>
-          <Route exact path='/user/placeList'>
-            <UserPlaceList />
-          </Route>
-          <Route exact path='/user/review'>
-            <ReviewByUserId />
-          </Route>
-          <Route exact path='/user/orderHistory'>
-            <OrderHistoryByUserId />
-          </Route>
-          <Route exact path='/user/userPage'>
-            <UserInfoPage />
-          </Route>
-          <Route exact path='/user/payment'>
-            <PayPg />
-          </Route>
-        </Switch>
-      )}
+      <div className="content-app">
+        {isLoaded && location.pathname !='/user/payment' && <Navigation isLoaded={isLoaded} />}
+        {isLoaded && (
+          <Switch>
+            <Route exact path="/login" >
+              <LoginFormPage />
+            </Route>
+            <Route exact path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route exact path="/">
+              <LandingPg />
+            </Route>
+            <Route exact path="/place/:id">
+              <DetailPg />
+            </Route>
+            <Route exact path='/user/cart'>
+              <CurrCart />
+            </Route>
+            <Route exact path='/user/placeList'>
+              <UserPlaceList />
+            </Route>
+            <Route exact path='/user/review'>
+              <ReviewByUserId />
+            </Route>
+            <Route exact path='/user/orderHistory'>
+              <OrderHistoryByUserId />
+            </Route>
+            <Route exact path='/user/userPage'>
+              <UserInfoPage />
+            </Route>
+            <Route exact path='/user/payment'>
+              <PayPg />
+            </Route>
+          </Switch>
+        )}
+      </div>
       {isLoaded && <Footer/>}
     </div>
   );
