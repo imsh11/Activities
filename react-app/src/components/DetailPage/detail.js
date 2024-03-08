@@ -263,20 +263,24 @@ const DetailPg = () => {
                 </div>
             </div>
         </div>
+        <div className="info-container">
+            <div className="embdedMap">
+                <div className="title">Info</div>
+                <div>
+                    <div style={{fontWeight: 'bold', marginBottom: '5px',  marginTop: '10px'}}>Map</div>
+                    <div style={{margin: '0px'}}>
+                        <div className="map-responsive">
+                            {mapEmbeded[placeDetail.Place.id]}
+                        </div>
+                    </div>
+                    <div>
+                        {/* <div style={{fontWeight: 'bold', marginBottom: '5px', marginLeft: '20px'}}>Floor Plan</div> */}
 
-        <div className="embdedMap">
-            <div className="title">Info</div>
-            <div style={{fontWeight: 'bold', marginBottom: '5px',  marginTop: '10px'}}>Map</div>
-            <div style={{margin: '20px'}}>
-                <div className="map-responsive">
-                    {mapEmbeded[placeDetail.Place.id]}
+                    </div>
                 </div>
-            </div>
-            <div>
-                {/* <div style={{fontWeight: 'bold', marginBottom: '5px', marginLeft: '20px'}}>Floor Plan</div> */}
 
             </div>
-
+            <div></div>
         </div>
 
         {/* <div className="map_page__container">
