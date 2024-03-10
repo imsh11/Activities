@@ -15,6 +15,14 @@ import "./detail.css"
 import { getUserCart } from "../../store/cart";
 import ImageSlider from "../imageSlider/ImageSlider";
 import { GoogleMap, useJsApiLoader, useLoadScript } from "@react-google-maps/api";
+import clear from '../../images/clear.png'
+import cloud from '../../images/cloud.png'
+import drizzle from '../../images/drizzle.png'
+import rain from '../../images/rain.png'
+import snow from '../../images/snow.png'
+import wind from '../../images/wind.png'
+import humidity from '../../images/humidity.png'
+
 
 const DetailPg = () => {
 
@@ -47,12 +55,13 @@ const DetailPg = () => {
     const placeVisitList = useSelector(state => state.placesList)
     const cart = useSelector(state => state.cart)
     const allUsers = useSelector(state => state.Users)
-    console.log(allUsers, '-----------allUsers state')
-    // console.log((placeDetail), id, typeof(id), cart,'--------stateID')
+    // console.log(allUsers, '-----------allUsers state')
+    console.log((placeDetail), id, typeof(id), cart,'--------stateID')
     // console.log(placeDetail.Reviews, placeVisitList, userId, '------------reviews')
 
     useEffect(() => {
         dispatch(getDetailByPlaceId(id))
+        // dispatch(weather())
         if(userId){
             dispatch(getPlaceToVisit())
             dispatch(getUserCart(userId ? userId.id : userId))
@@ -135,7 +144,36 @@ const DetailPg = () => {
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.273074268819!2d-74.30116612423764!3d40.5576465470511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3b56ac9854fd7%3A0x8fa1883119657367!2sSeaQuest%20Woodbridge!5e0!3m2!1sen!2sus!4v1696690261087!5m2!1sen!2sus" width='600' height="350" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
     ]
+    
+    let api_key = '652323fe045c0c5af49bb877c432ed8d'
 
+    //weather api
+    const weather = async () => {
+        let cityCode = {
+            NJ: 'New Jersey',
+            NY: 'New York',
+            PA: 'Pennsylvania'
+        }
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityCode[placeDetail.Place.state]}&units=Imperial&appid=${api_key}`
+
+        console.log(cityCode[placeDetail.Place.state], 'testing -------==')
+        let response = await fetch(url);
+        let data = await response.json()
+
+        console.log(data, 'data response')
+
+        const humidity = document.getElementsByClassName('weather-humidity')
+        const wind = document.getElementsByClassName('weather-wind')
+        const temp = document.getElementsByClassName('weather-temp')
+        const location = document.getElementsByClassName('weather-location')
+
+        console.log(humidity[0].innerHTML, wind, temp, location)
+
+        humidity[0].innerHTML = data.main.humidity+ ' %'
+
+        return
+    }
+    weather()
 
 
     return(
@@ -238,7 +276,7 @@ const DetailPg = () => {
                     </div>
                     {placeDetail.Reviews.map(review => (
                         <div key={review.id} className="detail-single-review">
-                            {console.log(review)}
+                            {/* {console.log(review)} */}
                             <div>
                                 <div>
                                     <span class="material-symbols-outlined">
@@ -275,10 +313,51 @@ const DetailPg = () => {
                             </div>
                         </div>
                     </div>
+                        {/* {weather()} */}
                     <div className="weather-div">
                         <div className="" style={{fontWeight: 'bold', marginBottom: '5px',  marginTop: '10px', marginRight: '50px'}}>Weather</div>
                         <div className="weather-content">
-                            testing test
+                            <div className="weather-main">
+                                <div className="weather-icon">
+                                    <img className="icon" src={clear} alt="clear" />
+                                </div>
+                                <div className="weather-detail">
+                                    <div className="weather-temp">
+                                        Temp
+                                    </div>
+                                    <div className="weather-location">
+                                        location
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="weather-second">
+                                <div className="wind-content">
+                                    <div className="">
+                                        <img className="wind-icon" src={wind} alt="wind" />
+                                    </div>
+                                    <div className="wind-block">
+                                        <div className="weather-wind">
+                                            10 m/h
+                                        </div>
+                                        <div>
+                                            Wind Speed
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="wind-content">
+                                    <div>
+                                        <img className="wind-icon" src={humidity} alt="humidity" />
+                                    </div>
+                                    <div className="wind-block">
+                                        <div className="weather-humidity">
+                                            55%
+                                        </div>
+                                        <div>
+                                            Humidity
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
