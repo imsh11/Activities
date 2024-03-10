@@ -190,12 +190,42 @@
     padding-bottom: 45%;
     position: relative;
     height: 0;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .map-responsive iframe {
-    border: 0;
+    border: solid #e5e5e5;
+    border-radius: 5%;
     height: 100%;
-    width: 48%;
+    width: 95%;
     position: absolute;
+}
+
+.info-content {
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "map weather"; 
+}
+
+.map-div{
+    grid-area: map;
+}
+
+.weather-div{
+    grid-area: weather;
+    /* justify-self: end; */
+    margin-left: 100px;
+    margin-right: 5%;
+}
+
+.weather-content{
+    background-color: #e5e5e5;
+    /* width: 75%; */
+    height: 80%;
+    margin-bottom: 10px;
+    border-radius: 5%;
 }

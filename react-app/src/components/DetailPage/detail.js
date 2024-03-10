@@ -266,21 +266,24 @@ const DetailPg = () => {
         <div className="info-container">
             <div className="embdedMap">
                 <div className="title">Info</div>
-                <div>
-                    <div style={{fontWeight: 'bold', marginBottom: '5px',  marginTop: '10px'}}>Map</div>
-                    <div style={{margin: '0px'}}>
-                        <div className="map-responsive">
-                            {mapEmbeded[placeDetail.Place.id]}
+                <div className="info-content">
+                    <div className="map-div">
+                        <div style={{fontWeight: 'bold', marginBottom: '5px',  marginTop: '10px'}}>Map</div>
+                        <div style={{margin: '0px'}}>
+                            <div className="map-responsive">
+                                {mapEmbeded[placeDetail.Place.id]}
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        {/* <div style={{fontWeight: 'bold', marginBottom: '5px', marginLeft: '20px'}}>Floor Plan</div> */}
-
+                    <div className="weather-div">
+                        <div className="" style={{fontWeight: 'bold', marginBottom: '5px',  marginTop: '10px', marginRight: '50px'}}>Weather</div>
+                        <div className="weather-content">
+                            testing test
+                        </div>
                     </div>
                 </div>
 
             </div>
-            <div></div>
         </div>
 
         {/* <div className="map_page__container">
