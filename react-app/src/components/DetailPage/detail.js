@@ -53,14 +53,15 @@ const DetailPg = () => {
 
     const {id} = useParams()
     const placeDetail = useSelector(state => state.places)
+    const test = useSelector(state => state)
     const userId = useSelector(state => state.session.user)
     const placeVisitList = useSelector(state => state.placesList)
     const cart = useSelector(state => state.cart)
     const allUsers = useSelector(state => state.Users)
     // console.log(allUsers, '-----------allUsers state')
-    console.log((placeDetail), id, typeof(id), cart,'--------stateID')
+    // console.log((placeDetail), id, typeof(id), cart,'--------stateID')
     // console.log(placeDetail.Reviews, placeVisitList, userId, '------------reviews')
-    
+    // console.log(test, 'placedetail')
 
     
 
@@ -72,9 +73,20 @@ const DetailPg = () => {
 
     useEffect(() => {
         dispatch(getDetailByPlaceId(id))
+        console.log(placeDetail, '-----')
+        // if(Object.values(placeDetail.Place).length){
+            
+        // }
 
-        if(Object.values(placeDetail.Place).length){
-            let api_key = '652323fe045c0c5af49bb877c432ed8d'
+        if(userId){
+            dispatch(getPlaceToVisit())
+            dispatch(getUserCart(userId ? userId.id : userId))
+            // .then(() => setIsLoaded(true))
+        }
+    }, [dispatch, userId])
+
+    useEffect(() =>{
+        let api_key = '652323fe045c0c5af49bb877c432ed8d'
             const weather = async () => {
         
                 let cityCode = {
@@ -82,10 +94,11 @@ const DetailPg = () => {
                     NY: 'New York',
                     PA: 'Pennsylvania'
                 }
-        
-                    let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityCode[placeDetail.Place.state]}&units=Imperial&appid=${api_key}`
-            
-                    console.log(cityCode[placeDetail.Place.state], 'testing -------==')
+                    // console.log(placeDetail, '=----------test')
+                    // https://api.openweathermap.org/data/2.5/weather?q=new jersey&units=Imperial&appid=652323fe045c0c5af49bb877c432ed8d
+                    let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityCode[placeDetail?.Place?.state]}&units=Imperial&appid=${api_key}`
+                    console.log(url, 'url-------------')
+                    // console.log(cityCode[placeDetail.Place.state], 'testing -------==')
                     let response = await fetch(url);
             
                     if(!response.ok){
@@ -96,15 +109,10 @@ const DetailPg = () => {
                     setResponse(data)
                     console.log(data, 'data response')
             }
-            weather()
-        }
-
-        if(userId){
-            dispatch(getPlaceToVisit())
-            dispatch(getUserCart(userId ? userId.id : userId))
-            // .then(() => setIsLoaded(true))
-        }
-    }, [dispatch, userId])
+            if(placeDetail.Place){
+                weather()
+            }
+    }, [placeDetail])
 
     if(Object.values(placeDetail).length === 0 || !placeDetail.Reviews){
         return(
