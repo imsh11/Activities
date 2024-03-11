@@ -35,7 +35,7 @@ const DetailPg = () => {
     const [currentPosition, setCurrentPosition] = useState({lat:43.11016617798622,lng:-89.48826131670266})
     const [map, setMap] = useState(null)
 
-    const [response, setResponse] = useState('')
+    const [response, setResponse] = useState('fff')
 
     const { isLoadedGoogle } = useLoadScript({
         // id: 'google-map-script',
@@ -62,38 +62,43 @@ const DetailPg = () => {
     // console.log(placeDetail.Reviews, placeVisitList, userId, '------------reviews')
     
 
-    let api_key = '652323fe045c0c5af49bb877c432ed8d'
+    
 
     // if(Object.values(placeDetail).length !== 0){
     //weather api
 
-        const weather = async () => {
-    
-            let cityCode = {
-                NJ: 'New Jersey',
-                NY: 'New York',
-                PA: 'Pennsylvania'
-            }
-    
-                let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityCode[placeDetail.Place.state]}&units=Imperial&appid=${api_key}`
-        
-                console.log(cityCode[placeDetail.Place.state], 'testing -------==')
-                let response = await fetch(url);
-        
-                if(!response.ok){
-                    throw new Error('Response Error')
-                }
-        
-                let data = await response.json()
-                setResponse(data)
-                console.log(data, 'data response')
-    
-        }
+
     // }
 
     useEffect(() => {
         dispatch(getDetailByPlaceId(id))
-        weather()
+
+        if(Object.values(placeDetail.Place).length){
+            let api_key = '652323fe045c0c5af49bb877c432ed8d'
+            const weather = async () => {
+        
+                let cityCode = {
+                    NJ: 'New Jersey',
+                    NY: 'New York',
+                    PA: 'Pennsylvania'
+                }
+        
+                    let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityCode[placeDetail.Place.state]}&units=Imperial&appid=${api_key}`
+            
+                    console.log(cityCode[placeDetail.Place.state], 'testing -------==')
+                    let response = await fetch(url);
+            
+                    if(!response.ok){
+                        throw new Error('Response Error')
+                    }
+            
+                    let data = await response.json()
+                    setResponse(data)
+                    console.log(data, 'data response')
+            }
+            weather()
+        }
+
         if(userId){
             dispatch(getPlaceToVisit())
             dispatch(getUserCart(userId ? userId.id : userId))
@@ -315,7 +320,7 @@ const DetailPg = () => {
                             </div>
                         </div>
                     </div>
-                    {response && 
+                    {/* {response &&  */}
                         <div className="weather-div">
                             <div className="" style={{fontWeight: 'bold', marginBottom: '5px',  marginTop: '10px', marginRight: '50px'}}>Weather</div>
                             <div className="weather-content">
@@ -325,7 +330,8 @@ const DetailPg = () => {
                                     </div>
                                     <div className="weather-detail">
                                         <div className="weather-temp">
-                                            f{response.main.temp}
+                                            f{console.log(response, '------res')}
+                                            {/* {response.main.temp} */}
                                             {console.log(response, 'test----------')}
                                         </div>
                                         <div className="weather-location">
@@ -363,7 +369,7 @@ const DetailPg = () => {
                                 </div>
                             </div>
                         </div>
-                    }
+                    {/* } */}
                 </div>
             </div>
         </div>
