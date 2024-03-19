@@ -110,7 +110,7 @@ const DetailPg = () => {
                     console.log(data, 'data response')
             }
             if(placeDetail.Place){
-                weather()
+                weather().then(() => setIsLoaded(true))
             }
     }, [placeDetail])
 
@@ -328,7 +328,7 @@ const DetailPg = () => {
                             </div>
                         </div>
                     </div>
-                    {/* {response &&  */}
+                    {isLoaded && //
                         <div className="weather-div">
                             <div className="" style={{fontWeight: 'bold', marginBottom: '5px',  marginTop: '10px', marginRight: '50px'}}>Weather</div>
                             <div className="weather-content">
@@ -338,12 +338,12 @@ const DetailPg = () => {
                                     </div>
                                     <div className="weather-detail">
                                         <div className="weather-temp">
-                                            f{console.log(response, '------res')}
-                                            {/* {response.main.temp} */}
+                                            {console.log(response, '------res')}
+                                            {response.main.temp} ° F
                                             {console.log(response, 'test----------')}
                                         </div>
                                         <div className="weather-location">
-                                            location
+                                            {response.name}
                                         </div>
                                     </div>
                                 </div>
@@ -363,7 +363,7 @@ const DetailPg = () => {
                                     </div>
                                     <div className="wind-content">
                                         <div>
-                                            <img className="wind-icon" src={humidity} alt="humidity" />
+                                            <img className="wind-icon" src={humidity} alt="humidity" style={{color: 'yellow'}}/>
                                         </div>
                                         <div className="wind-block">
                                             <div className="weather-humidity">
@@ -377,7 +377,7 @@ const DetailPg = () => {
                                 </div>
                             </div>
                         </div>
-                    {/* } */}
+                    }
                 </div>
             </div>
         </div>
