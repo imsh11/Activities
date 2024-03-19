@@ -36,6 +36,7 @@ const DetailPg = () => {
     const [map, setMap] = useState(null)
 
     const [response, setResponse] = useState('fff')
+    const [wIcon, setWIcon] = useState(clear)
 
     const { isLoadedGoogle } = useLoadScript({
         // id: 'google-map-script',
@@ -112,7 +113,41 @@ const DetailPg = () => {
             if(placeDetail.Place){
                 weather().then(() => setIsLoaded(true))
             }
+            weatherIcon()
     }, [placeDetail])
+
+    
+    const weatherIcon = () => {
+        const expression = response.weather[0].icon
+        switch(expression){
+            case '02d':
+            case '02n':
+            case '03d':
+            case '03n':
+                setWIcon(cloud);
+                break;
+            case '09d':
+            case '09n':
+            case '10d':
+            case '10n':
+                setWIcon(rain);
+                break;
+            case '13d':
+            case '13n':
+                setWIcon(snow);
+                break;
+            case '11d':
+            case '11n':
+                setWIcon(wind);
+                break;
+            case '50d':
+            case '50n':
+                setWIcon(humidity);
+                break;
+            default:
+                setWIcon(clear);
+        }
+    }
 
     if(Object.values(placeDetail).length === 0 || !placeDetail.Reviews){
         return(
@@ -334,13 +369,12 @@ const DetailPg = () => {
                             <div className="weather-content">
                                 <div className="weather-main">
                                     <div className="weather-icon">
-                                        <img className="icon" src={clear} alt="clear" />
+                                        <img className="icon" src={wIcon} alt="clear" />
                                     </div>
                                     <div className="weather-detail">
                                         <div className="weather-temp" style={{ fontWeight: 'bold', fontSize: '18px'}}>
-                                            {console.log(response, '------res')}
                                             {response.main.temp} °F
-                                            {console.log(response, 'test----------')}
+                                            {/* {console.log(response, 'test----------')} */}
                                         </div>
                                         <div className="weather-location">
                                             {response.name}
