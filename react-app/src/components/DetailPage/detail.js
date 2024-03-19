@@ -337,9 +337,9 @@ const DetailPg = () => {
                                         <img className="icon" src={clear} alt="clear" />
                                     </div>
                                     <div className="weather-detail">
-                                        <div className="weather-temp">
+                                        <div className="weather-temp" style={{ fontWeight: 'bold', fontSize: '18px'}}>
                                             {console.log(response, '------res')}
-                                            {response.main.temp} ° F
+                                            {response.main.temp} °F
                                             {console.log(response, 'test----------')}
                                         </div>
                                         <div className="weather-location">
@@ -354,22 +354,22 @@ const DetailPg = () => {
                                         </div>
                                         <div className="wind-block">
                                             <div className="weather-wind">
-                                                10 m/h
+                                                {response.wind.speed} m/h
                                             </div>
-                                            <div>
+                                            <div style={{fontSize: '12px'}}>
                                                 Wind Speed
                                             </div>
                                         </div>
                                     </div>
                                     <div className="wind-content">
                                         <div>
-                                            <img className="wind-icon" src={humidity} alt="humidity" style={{color: 'yellow'}}/>
+                                            <img className="wind-icon" src={humidity} alt="humidity"/>
                                         </div>
                                         <div className="wind-block">
                                             <div className="weather-humidity">
-                                                55%
+                                                {response.main.humidity}%
                                             </div>
-                                            <div>
+                                            <div style={{fontSize: '12px'}}>
                                                 Humidity
                                             </div>
                                         </div>
