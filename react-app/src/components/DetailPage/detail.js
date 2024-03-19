@@ -107,7 +107,7 @@ const DetailPg = () => {
                     }
             
                     let data = await res.json()
-                    setResponse(data)
+                    await setResponse(data)
                     console.log(data, 'data response')
 
                     // if(data.weather[0].icon === '02d' ||
@@ -134,47 +134,53 @@ const DetailPg = () => {
         //     weatherIcon()
         // }
 
-        // useEffect(() => {
-            // weatherIcon()
-        // }, [response])
-    
+        useEffect(() => {
+
+            
+            weatherIcon()
+        }, [response])
+        
+        const weatherIcon = () => {
+            console.log(response, 'response------testing')
+            const expression = response.weather? response.weather[0].icon : null
+            switch(expression){
+                case '02d':
+                case '02n':
+                case '03d':
+                case '03n':
+                case '04d':
+                case '04n':
+                    setWIcon(cloud);
+                    break;
+                case '09d':
+                case '09n':
+                case '10d':
+                case '10n':
+                    setWIcon(rain);
+                    break;
+                case '13d':
+                case '13n':
+                    setWIcon(snow);
+                    break;
+                case '11d':
+                case '11n':
+                    setWIcon(wind);
+                    break;
+                case '50d':
+                case '50n':
+                    setWIcon(humidity);
+                    break;
+                default:
+                    setWIcon(clear);
+            }
+        }
         console.log(response, '---------outside')
 
-    const weatherIcon = () => {
-        console.log(response, 'response------testing')
-        const expression = response.weather[0].icon
-        switch(expression){
-            case '02d':
-            case '02n':
-            case '03d':
-            case '03n':
-            case '04d':
-            case '04n':
-                setWIcon(cloud);
-                break;
-            case '09d':
-            case '09n':
-            case '10d':
-            case '10n':
-                setWIcon(rain);
-                break;
-            case '13d':
-            case '13n':
-                setWIcon(snow);
-                break;
-            case '11d':
-            case '11n':
-                setWIcon(wind);
-                break;
-            case '50d':
-            case '50n':
-                setWIcon(humidity);
-                break;
-            default:
-                setWIcon(clear);
-        }
-    }
+    // weatherIcon()
 
+    // if(isLoaded){
+    //     () => weatherIcon()
+    // }
     if(Object.values(placeDetail).length === 0 || !placeDetail.Reviews){
         return(
             <p>loading...</p>
@@ -261,9 +267,9 @@ const DetailPg = () => {
                 </div>
                 <div className="detail-review-address">
                     <div className="review">
-                        {!AvgStars ? <div className="rev"><i className="fa-solid fa-star"></i> No Reviews </div> :
+                        {!AvgStars ? <div className="rev"><i className="fa-solid fa-star" style={{color: "#f0b52b"}}></i> No Reviews </div> :
                         <div className="review">
-                            <div className="rev"><i className="fa-solid fa-star"></i> {AvgStars.toFixed(2)}</div>
+                            <div className="rev"><i className="fa-solid fa-star" style={{color: "#f0b52b"}}></i> {AvgStars.toFixed(2)}</div>
                             <div className="review">
                                 <div>&nbsp;{placeDetail.Reviews.length}&nbsp;</div>
                                 {placeDetail.Reviews.length > 1 ?
