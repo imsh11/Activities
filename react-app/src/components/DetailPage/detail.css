@@ -62,7 +62,6 @@
 
 .price-detail{
     grid-area: price;
-    margin-top: 20px;
     border: solid #e5e5e5;
     background-color: #e5e5e5;
     border-radius: 5px;
@@ -75,12 +74,15 @@
     /* align-items: center; */
     margin: auto;
     margin-top: 20px;
+    /* padding-right: 10px; */
+    /* margin-left: 20px; */
     margin-right: 5%;
 }
 
 .review-detail{
     margin-top: 20px;
     margin-left: 5%;
+    margin-right: 10px;
     grid-area: review;
     background-color: #e5e5e5;
     border-radius: 5px;
@@ -225,7 +227,7 @@
 .weather-content{
     background-color: #426cf5;
     /* width: 75%; */
-    height: 80%;
+    height: 82%;
     margin-bottom: 10px;
     border-radius: 5%;
     /* padding: 2px; */
@@ -233,8 +235,11 @@
 }
 
 .icon{
-    height: 50px;
-    width: 50px;
+    height: 50%;
+    width: 50%;
+    display: flex;
+    align-content: center;
+    align-items: center;
 }
 
 .weather-main{
@@ -244,7 +249,8 @@
 }
 
 .weather-second{
-    padding-top: 5px;
+    padding-top: 5%;
+    padding-bottom: 5%;
     display: flex;
     justify-content: space-around;
 }
@@ -273,4 +279,9 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+}
+
+.weather-icon{
+    display: flex;
+    justify-content: center;
 }
