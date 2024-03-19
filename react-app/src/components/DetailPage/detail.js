@@ -133,6 +133,10 @@ const DetailPg = () => {
         // if(response !== 'fff'){
         //     weatherIcon()
         // }
+
+        // useEffect(() => {
+            // weatherIcon()
+        // }, [response])
     
         console.log(response, '---------outside')
 
@@ -363,7 +367,7 @@ const DetailPg = () => {
                             <div style={{fontStyle: 'italic'}}>
                                 {review.review}
                             </div>
-                            <div>
+                            <div style={{paddingTop: '2px'}}>
                                 {/* {review.stars} <i class="fa-solid fa-star"></i> */}
                                 {[...Array(review.stars)].map((ele, i) =>
                                     (<i class="fa-solid fa-star" style={{color: "#f0b52b"}} key={i}></i>))}
@@ -410,7 +414,7 @@ const DetailPg = () => {
                                         </div>
                                         <div className="wind-block">
                                             <div className="weather-wind">
-                                                {response.wind.speed} m/h
+                                                {response.wind.speed.toFixed()} m/h
                                             </div>
                                             <div style={{fontSize: '12px'}}>
                                                 Wind Speed
