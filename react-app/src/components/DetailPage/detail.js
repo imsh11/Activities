@@ -100,30 +100,52 @@ const DetailPg = () => {
                     let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityCode[placeDetail?.Place?.state]}&units=Imperial&appid=${api_key}`
                     console.log(url, 'url-------------')
                     // console.log(cityCode[placeDetail.Place.state], 'testing -------==')
-                    let response = await fetch(url);
+                    let res = await fetch(url);
             
-                    if(!response.ok){
+                    if(!res.ok){
                         throw new Error('Response Error')
                     }
             
-                    let data = await response.json()
+                    let data = await res.json()
                     setResponse(data)
                     console.log(data, 'data response')
+
+                    // if(data.weather[0].icon === '02d' ||
+                    // data.weather[0].icon === '02n' ||
+                    // data.weather[0].icon === '03d' ||
+                    // data.weather[0].icon === '03n' ||
+                    // data.wather[0].icon === '04n'){
+                    //     setWIcon(cloud)
+                    // }
+                    // weatherIcon()
             }
             if(placeDetail.Place){
-                weather().then(() => setIsLoaded(true))
+                weather()
+                // .then(() => weatherIcon())
+                .then(() => setIsLoaded(true))
             }
-            weatherIcon()
-    }, [placeDetail])
-
+            // if(response.weather){
+                console.log(response, 'response-----inded')
+                // weatherIcon()
+            // }
+        }, [placeDetail])
+        
+        // if(response !== 'fff'){
+        //     weatherIcon()
+        // }
     
+        console.log(response, '---------outside')
+
     const weatherIcon = () => {
+        console.log(response, 'response------testing')
         const expression = response.weather[0].icon
         switch(expression){
             case '02d':
             case '02n':
             case '03d':
             case '03n':
+            case '04d':
+            case '04n':
                 setWIcon(cloud);
                 break;
             case '09d':
