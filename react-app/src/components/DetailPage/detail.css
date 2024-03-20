@@ -50,7 +50,7 @@
 .price-review-container{
     /* border: solid chartreuse; */
     margin-top: 20px;
-    margin-left: 40px;
+    /* margin-left: 40px; */
     display: grid;
     grid-auto-columns: 1fr;
     grid-template-columns: 1fr 1fr;
@@ -62,8 +62,8 @@
 
 .price-detail{
     grid-area: price;
-    margin-top: 20px;
     border: solid #e5e5e5;
+    background-color: #e5e5e5;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -74,25 +74,29 @@
     /* align-items: center; */
     margin: auto;
     margin-top: 20px;
-
+    /* padding-right: 10px; */
+    /* margin-left: 20px; */
+    margin-right: 5%;
 }
 
 .review-detail{
     margin-top: 20px;
-    /* margin-left: 40px; */
+    margin-left: 5%;
+    margin-right: 10px;
     grid-area: review;
-    /* background-color: aqua; */
+    background-color: #e5e5e5;
     border-radius: 5px;
     border: solid #e5e5e5;
     display: grid;
-    justify-content: center;
+    /* justify-content: center; */
+    padding-left: 5px;
 }
 
 
 .detail-review-info{
     /* border: solid salmon; */
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     font-weight: bold;
 
 }
@@ -100,8 +104,10 @@
 .detail-single-review{
     /* border-bottom: solid #e5e5e5; */
     border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .detail-image{
@@ -177,7 +183,7 @@
 }
 
 .embdedMap{
-    margin-left: 100px;
+    margin-left: 5%;
     margin-top: 10px;
 }
 
@@ -186,11 +192,96 @@
     padding-bottom: 45%;
     position: relative;
     height: 0;
+    margin-bottom: 5px;
 }
 
 .map-responsive iframe {
-    border: 0;
+    border: solid #e5e5e5;
+    border-radius: 5%;
     height: 100%;
-    width: 70%;
+    width: 95%;
     position: absolute;
+}
+
+.info-content {
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "map weather"; 
+}
+
+.map-div{
+    grid-area: map;
+}
+
+.weather-div{
+    grid-area: weather;
+    /* justify-self: end; */
+    margin-left: 100px;
+    margin-right: 5%;
+}
+
+.weather-content{
+    background-color: #426cf5;
+    /* width: 75%; */
+    height: 82%;
+    margin-bottom: 10px;
+    border-radius: 5%;
+    /* padding: 2px; */
+    /* border: solid 2px #e5e5e5; */
+}
+
+.icon{
+    height: 50%;
+    width: 50%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.weather-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-second{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.weather-detail{
+    padding-top: 2px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    padding-bottom: 2px;
+}
+
+.wind-icon{
+    height: 25px;
+    width: 25px;
+}
+
+.wind-content{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.wind-block{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.weather-icon{
+    display: flex;
+    justify-content: center;
 }

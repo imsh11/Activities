@@ -25,7 +25,9 @@ function SignupFormPage() {
 
     if(firstName.length < 3 || firstName.length > 10) errors['firstName'] = 'firstName require atleast 3 or less than 10 words'
     if(lastName.length < 3 || lastName.length > 10) errors['lastName'] = 'lastName require atleast 3 or less than 10 words'
-    if(!email.includes('@')) errors['email'] = 'Provide a valid email'
+    if(!email.includes('@')) errors['email'] = 'Email must include "@"'
+    if(!(email.endsWith('.com') || email.endsWith('.io') || email.endsWith('.net'))) errors['emailEnd'] = 'Email must end with ".com", ".io" or ".net"'
+    if((email.split('.'))[0].endsWith('@')) errors['validEmail'] = 'Email is not Valid'
     if(password.length < 8) errors['password'] = 'Password must have atleast 8 characters'
 		if(username.length < 3 || username.length > 10) errors['username'] = 'username require atleast 3 or less than 10 words'
 		if(password !== confirmPassword) errors['confirmPassword'] = "Confirm Password field must be the same as the Password field"
@@ -125,6 +127,20 @@ function SignupFormPage() {
               validation.email && (
                 <div style={{color: 'red', fontStyle: 'italic'}}>
                   {validation.email}
+                </div>
+              )
+            }
+            {
+              validation.emailEnd && (
+                <div style={{color: 'red', fontStyle: 'italic'}}>
+                  {validation.emailEnd}
+                </div>
+              )
+            }
+            {
+              validation.validEmail && (
+                <div style={{color: 'red', fontStyle: 'italic'}}>
+                  {validation.validEmail}
                 </div>
               )
             }

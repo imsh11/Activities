@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom";
 import { getAllPlaces } from "../../store/places";
+import { getAllReviews } from "../../store/review"
 import waterimg from '../../images/water-park-photo.jpeg'
 import fiveFlags from '../../images/fair-fairground-ferris-wheel-carousel-40547.jpeg'
 import bronxZoo from '../../images/bronx-zoo.png'
@@ -18,10 +19,12 @@ const LandingPg = () => {
     const history = useHistory()
 
     const placeLst = useSelector(state => Object.values(state.places))
-    // console.log(placeLst, '----state')
+    const Reviews = useSelector(state => Object.values(state.reviews))
+    // console.log(placeLst, Reviews, '----state')
 
     useEffect(() => {
         dispatch(getAllPlaces())
+        dispatch(getAllReviews())
     }, [dispatch])
 
     if (placeLst.length === 0){
@@ -29,6 +32,36 @@ const LandingPg = () => {
             <p>loading...</p>
         )
     }
+
+    let reviewd_place = []
+
+    Reviews.forEach( rev => {
+        reviewd_place.push(rev.place_id)
+    })
+
+    // calculate Avg
+    const placeId = (id) => {
+        let placeArray = []
+        let Avg = 0
+        let rate = 0
+        let count = 0
+        
+        Reviews.forEach( ele => {
+            // console.log(ele, '----test')
+            
+            if(ele.place_id === id) {
+
+                placeArray.push(ele)
+                rate += ele.stars
+                count ++
+            }
+        })
+        Avg = rate/count
+    // console.log(placeArray, Avg, reviewd_place, '-----avg')
+    return Avg.toFixed(1)
+    }
+
+    // placeId(2)
 
     let Images = [fiveFlags, fiveFlags, waterimg, bronxZoo, natural, splish, aqua]
 
@@ -52,7 +85,16 @@ const LandingPg = () => {
                                 {plc.name}
                             </div>
                             <div className="landing-rate">
-                            {/* <i class="fa-solid fa-star fa-lg" style={{color: "#f0b52b"}}></i>x.x */}
+                                    {reviewd_place.includes(plc.id) ? 
+                                    <div className='landing-rate' style={{color: 'black'}}>
+                                        <i class="fa-solid fa-star" style={{color: "#f0b52b"}}></i>
+                                        &nbsp;{placeId(plc.id)}
+                                    </div>
+                                    :
+                                    <div className= 'landing-rate' style={{color: 'black'}}>
+                                        No Reviews
+                                    </div>
+                                    }
                             </div>
                                 <div className="landing-cityState">
                                     <div className="landing-placeCity">
@@ -61,9 +103,9 @@ const LandingPg = () => {
                                     </div>
                                     {/* <div className="landing-placeState">
                                     </div> */}
-                                        <div className="landing-price">
-                                            ${plc.price}
-                                        </div>
+                                </div>
+                                <div className="landing-price">
+                                    ${plc.price} Daily Pass
                                 </div>
                         </div>
                     </div>

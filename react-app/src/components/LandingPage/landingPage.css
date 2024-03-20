@@ -26,17 +26,22 @@
     gap: 0px 0px;
     grid-template-areas:
     "name rate"
-    "cityPrice empty";
+    "city price";
 }
 
 .landing-placeName{
     grid-area: name;
+    font-family: "Indie Flower", cursive;
+    font-weight: 400;
+    font-style: normal;
     font-size: 20px;
+    padding-left: 10px;
 }
 
 .landing-cityState{
-    grid-area: cityPrice;
+    grid-area: city;
     color: black;
+    padding-left: 10px;
 }
 
 .landing-rate{
@@ -44,14 +49,19 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    /* padding-top: 5px; */
-    padding-right: 30px;
+    padding-top: 5px;
+    padding-right: 10px;
+    font-weight: bold;
 }
 
 .landing-price{
+    grid-area: price;
     padding-top: 4px;
     font-weight: 600;
     color: black;
+    display: flex;
+    justify-content: end;
+    padding-right: 10px;
 }
 
 .landing-image{
@@ -60,18 +70,16 @@
 
 .landing-photo{
     height: 400px;
-    /* height: 100%; */
-    /* width: 100%; */
     width: 400px;
     border-radius: 15px;
 }
 
 .main-landing-container{
-        /* background-color: blueviolet; */
+    background-color: #e5e5e5;
     width: 400px;
-    /* width: 100%; */
-    /* height: 100%; */
     height: 500px;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .top-img{
