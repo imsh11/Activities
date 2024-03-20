@@ -6,6 +6,7 @@ import cartReducer from './cart';
 import placeListReducer from './placeToVisit';
 import reviewReducer from './review';
 import OrderHistoryReducer from './order';
+import Users from './users';
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   placesList: placeListReducer,
   reviews: reviewReducer,
-  orderHistory: OrderHistoryReducer
+  orderHistory: OrderHistoryReducer,
+  Users
 });
 
 
