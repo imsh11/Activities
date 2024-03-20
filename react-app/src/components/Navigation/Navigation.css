@@ -9,11 +9,12 @@
   border: 1px solid #f2780c;
   background-color: whitesmoke;
   padding-left: 25px;
+  padding-right: 10px;
   right: 20px;
   width: fit-content;
   /* height: 100px; */
   border-radius: 10px;
-  /* display: flex; */
+  display: flex;
 }
 
 .profile-btn-content{
