@@ -82,6 +82,8 @@
   /* background-color: cornflowerblue; */
   height: 30px;
   width: 50px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-listBtn:hover .main-page-tooltip{
