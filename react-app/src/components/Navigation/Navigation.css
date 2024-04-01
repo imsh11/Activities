@@ -99,3 +99,23 @@
   visibility: visible;
 }
 
+.profile-content-btn{
+    cursor: pointer;
+    height: 25px;
+    width: 110%;
+    /* height: fit-content; */
+    border-radius: 5px;
+    background-color: #f0b52b;
+}
+
+.profile-content-btn:hover{
+  background-color: #f2780c;
+  /* color: white; */
+  transition-delay: 150ms;
+  transition-property: background-color, color;
+}
+
+.profile-li-btn-content{
+  padding-bottom: 5%;
+  padding-top: 5%;
+}

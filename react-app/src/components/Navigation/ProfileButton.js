@@ -48,24 +48,24 @@ function ProfileButton({ user }) {
         {user ? (
           <>
           <div className="profile-btn-content">
-            <div className="profile-user-content">
-              <li>{user.username}</li>
+            <div className="profile-li-btn-content">
+              <li>Hi, {user.username}</li>
             </div>
             {/* <li>{user.email}</li> */}
-            <div className="profile-cart">
+            <div className="profile-li-btn-content">
               <li>
-                <button>
+                <button className="profile-content-btn">
                   <NavLink exact to="/user/cart">
-                  <i class="fa-solid fa-cart-plus fa-sm" style={{color: "#f2780c"}}></i>
+                  <i class="fa-solid fa-cart-plus fa-sm" style={{}}></i>
                   </NavLink>
                 </button>
               </li>
             </div>
-            <div>
+            <div className="profile-li-btn-content">
               <li>
-                <button>
+                <button className="profile-content-btn">
                   <NavLink exact to="/user/userPage">
-                    <div style={{paddingBottom: '0px'}}>My Page</div>
+                    <div style={{fontWeight: "lighter"}}>My Page</div>
                   </NavLink>
                 </button>
               </li>
