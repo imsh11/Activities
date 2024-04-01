@@ -19,6 +19,7 @@
 
 .profile-btn-content{
   /* background-color: palegoldenrod; */
+  list-style-type: none;
   padding-right: 5px;
   padding-bottom: 5px;
 }

@@ -48,21 +48,33 @@ function ProfileButton({ user }) {
         {user ? (
           <>
           <div className="profile-btn-content">
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <NavLink exact to="/user/cart">
-              <i class="fa-solid fa-cart-plus fa-sm" style={{color: "#f2780c"}}></i>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink exact to="/user/userPage">
-              <div style={{paddingBottom: '3px'}}>My Page</div>
-              </NavLink>
-            </li>
-            <li>
-              <button className="button1" onClick={handleLogout}>Log Out</button>
-            </li>
+            <div className="profile-user-content">
+              <li>{user.username}</li>
+            </div>
+            {/* <li>{user.email}</li> */}
+            <div className="profile-cart">
+              <li>
+                <button>
+                  <NavLink exact to="/user/cart">
+                  <i class="fa-solid fa-cart-plus fa-sm" style={{color: "#f2780c"}}></i>
+                  </NavLink>
+                </button>
+              </li>
+            </div>
+            <div>
+              <li>
+                <button>
+                  <NavLink exact to="/user/userPage">
+                    <div style={{paddingBottom: '0px'}}>My Page</div>
+                  </NavLink>
+                </button>
+              </li>
+            </div>
+            <div>
+              <li>
+                <button className="button1" onClick={handleLogout}>Log Out</button>
+              </li>
+            </div>
           </div>
           </>
         ) : (
