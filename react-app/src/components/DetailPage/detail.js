@@ -20,6 +20,7 @@ import cloud from '../../images/cloud.png'
 import drizzle from '../../images/drizzle.png'
 import rain from '../../images/rain.png'
 import snow from '../../images/snow.png'
+import windyIcon from '../../images/wind-6.png'
 import wind from '../../images/wind.png'
 import humidity from '../../images/humidity.png'
 
@@ -164,7 +165,7 @@ const DetailPg = () => {
                     break;
                 case '11d':
                 case '11n':
-                    setWIcon(wind);
+                    setWIcon(windyIcon);
                     break;
                 case '50d':
                 case '50n':
