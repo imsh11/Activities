@@ -75,7 +75,7 @@ const DetailPg = () => {
 
     useEffect(() => {
         dispatch(getDetailByPlaceId(id))
-        console.log(placeDetail, '-----')
+        // console.log(placeDetail, '-----')
         // if(Object.values(placeDetail.Place).length){
             
         // }
@@ -99,7 +99,7 @@ const DetailPg = () => {
                     // console.log(placeDetail, '=----------test')
                     // https://api.openweathermap.org/data/2.5/weather?q=new jersey&units=Imperial&appid=652323fe045c0c5af49bb877c432ed8d
                     let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityCode[placeDetail?.Place?.state]}&units=Imperial&appid=${api_key}`
-                    console.log(url, 'url-------------')
+                    // console.log(url, 'url-------------')
                     // console.log(cityCode[placeDetail.Place.state], 'testing -------==')
                     let res = await fetch(url);
             
@@ -109,7 +109,7 @@ const DetailPg = () => {
             
                     let data = await res.json()
                     await setResponse(data)
-                    console.log(data, 'data response')
+                    // console.log(data, 'data response')
 
                     // if(data.weather[0].icon === '02d' ||
                     // data.weather[0].icon === '02n' ||
@@ -126,7 +126,7 @@ const DetailPg = () => {
                 .then(() => setIsLoaded(true))
             }
             // if(response.weather){
-                console.log(response, 'response-----inded')
+                // console.log(response, 'response-----inded')
                 // weatherIcon()
             // }
         }, [placeDetail])
@@ -142,7 +142,7 @@ const DetailPg = () => {
         }, [response])
         
         const weatherIcon = () => {
-            console.log(response, 'response------testing')
+            // console.log(response, 'response------testing')
             const expression = response.weather? response.weather[0].icon : null
             switch(expression){
                 case '02d':
@@ -175,7 +175,7 @@ const DetailPg = () => {
                     setWIcon(clear);
             }
         }
-        console.log(response, '---------outside')
+        // console.log(response, '---------outside')
 
     // weatherIcon()
 
