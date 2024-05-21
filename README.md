@@ -1,3 +1,11 @@
+# Activities - Flask React Project
+
+## Landing Page
+
+## Features
+
+ 1. Users (Logged In or Out) can access the Landing page
+
 # Flask React Project
 
 This is the starter for the Flask React project.
