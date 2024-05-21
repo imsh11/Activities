@@ -26,7 +26,7 @@ def seed_places():
         zipcode='18104',
         product= 'one day ticket',
         price= 40,
-        img1='http://hrstoday.com/wp-content/uploads/2022/04/dornp2.jpg',
+        img1='https://upload.wikimedia.org/wikipedia/commons/7/7c/Dorney_Park_entrance.jpg',
         img2='https://www.lehighvalleylive.com/resizer/2W-2gX2pveG-yZsbkdQ3CR99ZSE=/800x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.lehighvalleylive.com/home/lvlive-media/width2048/img/lehigh-county/photo/20781440-standard.jpg',
         img3='https://images.coasterpedia.net/thumb/0/0d/Meteor_%28Dorney_Park%29_2012_01.jpg/800px-Meteor_%28Dorney_Park%29_2012_01.jpg',
         img4='https://www.paamusementparks.com/wp-content/uploads/2019/01/9-1-1920x1020.jpg',
