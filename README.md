@@ -1,10 +1,22 @@
 # Activities - Flask React Project
 
-## Landing Page
-
 ## Features
 
  1. Users (Logged In or Out) can access the Landing page
+
+ ![LandingPage](https://github.com/imsh11/Activities/blob/readme/activities-landing.png)
+
+ 2. Users (Logged In or Out) can view the detail page. It also has Weather Info and Google Maps.
+
+ ![DetailPage](https://github.com/imsh11/Activities/blob/readme/activities-detail-page.png)
+
+ 3. Users (Logged In) can access their Place List page. User (Logged In) can add/remove places, and can also update their status for a place.
+
+ ![PlaceList](https://github.com/imsh11/Activities/blob/readme/activities-placeList.png)
+
+ 4. Users (Logged In) have access to their cart. The cart also provides suggestions based on the cart Items.
+
+ ![Cart](https://github.com/imsh11/Activities/blob/readme/activities-cart.png)
 
 # Flask React Project
 
