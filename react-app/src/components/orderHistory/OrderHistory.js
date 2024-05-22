@@ -18,7 +18,7 @@ const OrderHistoryByUserId = () => {
     const places = useSelector(state => state.places)
     const review = useSelector(state => Object.values(state.reviews)) // user reviews
     // const review = useSelector(state => Object.keys(state.reviews)) // user reviews
-    console.log(userOrders, review, '-------order compo')
+    // console.log(userOrders, review, '-------order compo')
 
     useEffect(() => {
         dispatch(getAllPlaces())
