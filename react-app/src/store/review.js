@@ -87,7 +87,7 @@ export const getAllReviews = () => async (dispatch) => {
 
     if(response.ok){
         const data = await response.json()
-        console.log(data, '-----------dataAllRev')
+        // console.log(data, '-----------dataAllRev')
 
         dispatch(allReviews(data))
 
@@ -127,7 +127,7 @@ const reviewReducer = (state = initialState, action) => {
         }
         case GET_ALL_REVIEWS:{
             const newState = {}
-            console.log(action.payload.allReviews, '----------getAllReviewState')
+            // console.log(action.payload.allReviews, '----------getAllReviewState')
 
             action.payload.allReviews.forEach( rev => newState[rev.id] = rev)
 
