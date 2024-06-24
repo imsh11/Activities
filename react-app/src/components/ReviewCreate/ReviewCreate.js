@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createNewReviewByPlaceId } from "../../store/review";
 import './reviewCreate.css'
+import { FaStar } from "react-icons/fa";
 
 
 const CreateReview = ( {id} ) => {
@@ -11,7 +12,8 @@ const CreateReview = ( {id} ) => {
 
     const [modal, setModal] = useState(false)
     const [review, setReview] = useState('')
-    const [stars, setStars] = useState('')
+    const [stars, setStars] = useState(null)
+    const [hover, setHover] = useState(null)
     const [validation, setValidation] = useState('')
 
     const toggleModal = () => {
@@ -23,7 +25,7 @@ const CreateReview = ( {id} ) => {
 
         const errors = {}
         if(review.length < 5 || review.length > 100) errors['review'] = 'Review requires between 5 to 100 characters'
-        if(stars < 1 || stars > 5) errors['stars'] = 'Rating must be between 1 and 5'
+        if(stars < 1 || stars > 5) errors['stars'] = 'Click on a Star to Rate'
 
         if(Object.values(errors).length){
             return setValidation(errors)
@@ -78,7 +80,35 @@ const CreateReview = ( {id} ) => {
                                     </label>
                                 </div>
                                 <div className="update-quantity review-input">
-                                    <label>
+                                    <div>
+                                        {[...Array(5)].map((star, i) =>{
+                                            const starsVal=i+1
+                                            return(
+                                                <label>
+                                                    <input type='radio' name='rating' 
+                                                    style={{display:'none'}}
+                                                    required
+                                                    value={Number(starsVal)}
+                                                    onClick={()=> setStars(Number(starsVal))}
+                                                    />
+                                                    <FaStar size={25}  
+                                                    color={starsVal <= (hover||stars) ? "#ffc107" : "#e4e5e9"} 
+                                                    style={{cursor:'pointer'}}
+                                                    onMouseOver={() => setHover(starsVal)}
+                                                    onMouseOut={() => setHover(null)}
+                                                    />
+                                                </label>
+                                            )
+                                        })}
+                                                    {
+                                                    validation.stars && (
+                                                        <div style={{color: 'red'}}>
+                                                            {validation.stars}
+                                                        </div>
+                                                    )
+                                                    }
+                                    </div>
+                                    {/* <label>
                                         Stars: <input
                                         id="quantity"
                                         required
@@ -94,11 +124,10 @@ const CreateReview = ( {id} ) => {
                                                 </div>
                                             )
                                         }
-                                    </label>
+                                    </label> */}
                                 </div>
                             </form>
                         </div>
-
                         <div className="cart-delBtn">
                                 <div>
                                     <button className="modal-button keep-button-del button1"onClick={toggleModal}>
