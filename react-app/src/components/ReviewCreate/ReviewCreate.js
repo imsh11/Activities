@@ -80,51 +80,39 @@ const CreateReview = ( {id} ) => {
                                     </label>
                                 </div>
                                 <div className="update-quantity review-input">
-                                    <div>
-                                        {[...Array(5)].map((star, i) =>{
-                                            const starsVal=i+1
-                                            return(
-                                                <label>
-                                                    <input type='radio' name='rating' 
-                                                    style={{display:'none'}}
-                                                    required
-                                                    value={Number(starsVal)}
-                                                    onClick={()=> setStars(Number(starsVal))}
-                                                    />
-                                                    <FaStar size={25}  
-                                                    color={starsVal <= (hover||stars) ? "#ffc107" : "#e4e5e9"} 
-                                                    style={{cursor:'pointer'}}
-                                                    onMouseOver={() => setHover(starsVal)}
-                                                    onMouseOut={() => setHover(null)}
-                                                    />
-                                                </label>
-                                            )
-                                        })}
-                                                    {
-                                                    validation.stars && (
-                                                        <div style={{color: 'red'}}>
-                                                            {validation.stars}
-                                                        </div>
-                                                    )
-                                                    }
+                                    <div className="ratingStar">
+                                        <div>
+                                            Rating: &nbsp;
+                                        </div>
+                                        <div>
+                                            {[...Array(5)].map((star, i) =>{
+                                                const starsVal=i+1
+                                                return(
+                                                    <label>
+                                                        <input type='radio' name='rating' 
+                                                        style={{display:'none'}}
+                                                        required
+                                                        value={Number(starsVal)}
+                                                        onClick={()=> setStars(Number(starsVal))}
+                                                        />
+                                                        <FaStar size={25}  
+                                                        color={starsVal <= (hover||stars) ? "#ffc107" : "#e4e5e9"} 
+                                                        style={{cursor:'pointer'}}
+                                                        onMouseOver={() => setHover(starsVal)}
+                                                        onMouseOut={() => setHover(null)}
+                                                        />
+                                                    </label>
+                                                )
+                                            })}
+                                                        {
+                                                        validation.stars && (
+                                                            <div style={{color: 'red'}}>
+                                                                {validation.stars}
+                                                            </div>
+                                                        )
+                                                        }
+                                        </div>
                                     </div>
-                                    {/* <label>
-                                        Stars: <input
-                                        id="quantity"
-                                        required
-                                        placeholder="between 1 to 5"
-                                        value={stars}
-                                        type="number"
-                                        onChange={e => setStars(e.target.value)}
-                                        />
-                                        {
-                                            validation.stars && (
-                                                <div style={{color: 'red'}}>
-                                                    {validation.stars}
-                                                </div>
-                                            )
-                                        }
-                                    </label> */}
                                 </div>
                             </form>
                         </div>
